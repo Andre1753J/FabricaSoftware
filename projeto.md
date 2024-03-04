@@ -82,8 +82,15 @@ A tabela a seguir contém a relação dos Requisitos Funcionais elicitados, com 
 
 | IDENTIFICADOR | NOME | DESCRIÇÃO |
 :---|:---|:---|
-|RF-001 |Nome do Requisito | Descreva aqui as informações sobre o requisito |
-|RF-002 | Nome do Requisito | Descreva aqui as informações sobre o segundo requisito |
+|RF-001 | Exibir lista de animais | Local onde desmonstra os animais |
+|RF-002 | Registro de animais | Registro dos animais |
+|RF-003 | Registro de cliente | Registro dos clientes |
+|RF-004 | Registro de vacinação | Registro das vacinas dos animais |
+|RF-005 | Registro de funcionario | Sistema para registrar os funcionarios |
+|RF-006 | Registro de raças | Sistema para registro das raças de animais |
+|RF-007 | Checar capacitação | Local onde será verificado a capacitação do cliente |
+|RF-008 | Armazenar animais |  |
+
 
 
 ## Requisitos Não Funcionais
