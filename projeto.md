@@ -1,18 +1,19 @@
 <img src='/img/logo.png' alt='logo da empresa' width='50px' heidth='50px'/>
 
-# *FIBONACCI MANAGEMENT SYSTEM*
+# *Sistema de Adoção de animais*
 
 # PROJETO DE SOFTWARE
 
 ## *Stakeholders*
 |NOME|CARGO|E-MAIL|
 |:---|:---|:---|
-|Wagner da Silva Ferreira Filho|Gerente de Projeto|wagner.ferreira@ifro.edu.br|
-|Wagner da Silva Ferreira Filho|Gerente de Projeto|wagner.ferreira@ifro.edu.br|
-|Wagner da Silva Ferreira Filho|Gerente de Projeto|wagner.ferreira@ifro.edu.br|
-|Wagner da Silva Ferreira Filho|Gerente de Projeto|wagner.ferreira@ifro.edu.br|
-|Wagner da Silva Ferreira Filho|Gerente de Projeto|wagner.ferreira@ifro.edu.br|
-
+|André Orocondo Lopes Aguirre|Gerente de Projeto|andreorocondo7801@gmail.com|
+|Júlia Eduarda Monteiro de Oliveira|Gerente de design|dudamonteirinho011@gmail.com|
+|Julio Otávio da Silva|Gerente de Projeto|otaviojulio131@gmail.com|
+|Ikarus Barros Duarte|Gerente de Projeto|cleberraxixe@gmail.com|
+|Keila Rodrigues Silva|Gerente de Projeto|rodrigueskeila570@gmail.com|
+|Brenda Vitória Gomes de Matos|Gerente de Projeto|wagner.ferreira@ifro.edu.br|
+|Erik Gabriel Anicio de Fatima|Gerente de Projeto|gabriel.fatima16@gmail.com|
 
 # Sumário
 
@@ -82,6 +83,12 @@ A tabela a seguir contém a relação dos Requisitos Funcionais elicitados, com 
 
 | IDENTIFICADOR | NOME | DESCRIÇÃO |
 :---|:---|:---|
+<<<<<<< HEAD
+|RF-001 | Mostrar lista de animais | local onde as pessoas pode ver a descrição dos animais |
+|RF-002 | Registro de usuario | Sistema de registros de usuários |
+|RF-003 | Registro de animais | Registra as informações dos animais |
+|RF-004 |  |  |
+=======
 |RF-001 | Exibir lista de animais | Local onde desmonstra os animais |
 |RF-002 | Registro de animais | Registro dos animais |
 |RF-003 | Registro de cliente | Registro dos clientes |
@@ -89,7 +96,21 @@ A tabela a seguir contém a relação dos Requisitos Funcionais elicitados, com 
 |RF-005 | Registro de funcionario | Sistema para registrar os funcionarios |
 |RF-006 | Registro de raças | Sistema para registro das raças de animais |
 |RF-007 | Checar capacitação | Local onde será verificado a capacitação do cliente |
-|RF-008 | Armazenar animais |  |
+|RF-008 | Armazenar animais | Local onde veremos se há espaço suficiente para os animais |
+|RF-009 | Acompanhar adoção | O sistema deve permitir que os usuários acompanhem o status de sua adoção |
+|RF-010 | Comentar satisfação | O sistema deve permitir que os usuários façam comentários e avaliações sobre os animais de estimação que adotaram |
+|RF-011 | Registro de doadores | Regristo das pessoas que doam animais com maior frequência |
+|RF-012 | Interagir com outros donos | O sistema deve permitir que os usuários se comuniquem com outros usuários sobre seus animais de estimação |
+|RF-013 | Encontrar abrigo | O sistema deve permitir que os usuários encontrem abrigos para animais de estimação |
+|RF-014 | Editar usuário | Permite que o usuário mude informações de seu perfil |
+|RF-015 | Excluir registro | Permite que animais ja adotados não apareçam |
+|RF-016 | Registro de parceria | Permite que empresas registrem parcerias |
+|RF-017 | Registro de entrega | Mostra os animais já entregues |
+|RF-018 | Registro de medicação | Mostra quais medicamentos o animal precisa, caso necessário |
+|RF-019 | Registro de adoção | Registra animais já adotados |
+|RF-020 | Confirmar adoção | Confirma com o cliente se realmente irá adotar |
+|RF-021 | Cancelar adoção | Cancela com o cliente a adoção |
+>>>>>>> cd69a4e60466b1940182c4b0c95fd90416741b2a
 
 
 
