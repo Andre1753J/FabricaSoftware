@@ -104,14 +104,13 @@ A tabela a seguir contém a relação dos Requisitos Funcionais elicitados, com 
 |RF-013 | Encontrar abrigo | O sistema deve permitir que os usuários encontrem abrigos para animais de estimação |
 |RF-014 | Editar usuário | Permite que o usuário mude informações de seu perfil |
 |RF-015 | Excluir registro | Permite que animais ja adotados não apareçam |
-|RF-016 | Registro de parceria | Permite que empresas registrem parcerias |
-|RF-017 | Registro de entrega | Mostra os animais já entregues |
-|RF-018 | Registro de medicação | Mostra quais medicamentos o animal precisa, caso necessário |
-|RF-019 | Registro de adoção | Registra animais já adotados |
-|RF-020 | Confirmar adoção | Confirma com o cliente se realmente irá adotar |
-|RF-021 | Cancelar adoção | Cancela com o cliente a adoção |
+|RF-016 | Registro de entrega | Mostra os animais já entregues |
+|RF-017 | Registro de medicação | Mostra quais medicamentos o animal precisa, caso necessário |
+|RF-018 | Registro de adoção | Registra animais já adotados |
+|RF-019 | Confirmar adoção | Confirma com o cliente se realmente irá adotar |
+|RF-020 | Cancelar adoção | Cancela com o cliente a adoção |
 >>>>>>> cd69a4e60466b1940182c4b0c95fd90416741b2a
-
+    
 
 
 ## Requisitos Não Funcionais
