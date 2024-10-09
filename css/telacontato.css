@@ -1,4 +1,7 @@
-
+* {
+    margin: 0;
+    padding: 0;
+}
 body{
     background-image: url("/img/Captura\ de\ tela\ 2024-10-09\ 090923.png");
     background-repeat: no-repeat;

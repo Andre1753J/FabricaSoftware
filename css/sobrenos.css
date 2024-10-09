@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.card-1 {
+    display: flex;
+    justify-content: center;
+    margin: 70px;
+    color: #fff;
+}
+.card-2 {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    color: #fff;
+    
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    background-color: #ccc; 
+    border: solid;
+    border-radius: 50%;
+    font-size: 30px;
+}
+.card-3 {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: 100px;
+    width: 400px;
+    color: #fff;
+    font-size: 150%;
+}
+body {
+    background: no-repeat url(/img/Captura\ de\ tela\ 2024-10-09\ 100432.png);
+    background-size: cover;
+}
+img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
