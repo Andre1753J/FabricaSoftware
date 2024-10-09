@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    background: fixed;
 }
 .card-1 {
     display: flex;
@@ -34,7 +35,7 @@
     font-size: 150%;
 }
 body {
-    background: no-repeat url(/img/Captura\ de\ tela\ 2024-10-09\ 100432.png);
+    background-image: url(/img/Captura\ de\ tela\ 2024-10-09\ 100432.png);
     background-size: cover;
 }
 img {

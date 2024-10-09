@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    background: fixed;
 }
 body{
     background-image: url("/img/Captura\ de\ tela\ 2024-10-09\ 090923.png");
