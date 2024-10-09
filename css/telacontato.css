@@ -1,0 +1,54 @@
+
+body{
+    background-image: url("/img/cachorro\ e\ gato.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.card-pai{
+    width: 680px;
+    height: 400px;
+    display: grid;
+    justify-content: center;
+
+}
+.card-titulo{
+    width: 628px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+}
+.card-secao {
+    background-color: #7798ff;
+    width: 628px;
+    height: 280px;
+    padding: 10px;
+    border-radius: 40px;
+}
+.card-whatsap {
+    background-color: #ffff;
+    width: 565px;
+    height: 53px;
+    margin: 28px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+.card-email {
+    background-color: #ffff;
+    width: 565px;
+    height: 53px;
+    margin: 28px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+.card-telefone {
+    background-color: #ffff;
+    width: 565px;
+    height: 53px;
+    margin: 28px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
