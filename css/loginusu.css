@@ -2,13 +2,13 @@
     margin: 0;
     padding: 0;
 }
-body {
+main {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 62vh;
     margin: 0;
     flex-direction: column;
 }
