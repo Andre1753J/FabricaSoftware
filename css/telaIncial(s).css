@@ -6,6 +6,7 @@
 
 body {
     background: no-repeat center/cover url( "../img/tela_inicial.png");
+    height: 40vw;
 }
 
 .card-pai{
