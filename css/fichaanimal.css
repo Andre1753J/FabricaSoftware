@@ -2,10 +2,21 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    margin: 30px;
+}
 .card-form {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    text-align: center;
+    margin: 20px;
+    gap: 10px;
 }
 .checkbox {
     display: flex;
@@ -16,4 +27,25 @@
 fieldset {
     padding: 10px;
     margin: 10px;
+}
+
+.salvar {
+    position: absolute;
+    margin-top: 15px;
+    left: 53%;
+    text-align: center;
+}
+
+.voltar {
+    position: absolute;
+    margin-top: 15px;
+    left: 0%;
+}
+  
+button {
+    margin: 0 10px;
+}
+
+label {
+ padding: 6px;
 }

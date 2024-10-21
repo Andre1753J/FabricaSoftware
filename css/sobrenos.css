@@ -38,7 +38,7 @@ body {
     background-image: url(/img/Captura\ de\ tela\ 2024-10-09\ 100432.png);
     background-size: cover;
 }
-img {
+.img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
