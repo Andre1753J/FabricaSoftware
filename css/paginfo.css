@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.card-primeiro {
+    height: 490px;
+    background-image: url(/img/Rectangle\ 65.png);
+    background-size: cover;
+}
+
+p {
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    font-size: 20px;
+    
+}
+
+h1 {
+    position: absolute;
+    text-align: right;
+    left: 75%;
+    top: 20%;
+}
+
+.adt {
+    position: absolute;
+    left: 70%;
+    top: 40%;
+    background-color: #1440CD;
+    border: none;
+    border-radius: 10px;
+    font-size: 30px;
+    width: 326px;
+    height: 70px;
+}
+
+.card-text-2 {
+    position: absolute;
+    text-align: center;
+    width: 400px;
+    top: 65%;
+    left: 42%;
+}
+
+.card-link {
+    position: absolute;
+    background-color: #7798FF;
+    width: 100px;
+    height:290px;
+    left: 90%;
+    top: 61%;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.wts {
+    width: 80px;
+}
+
+.itg {
+    width: 80px;
+}
+
+img {
+    margin: 10px 0 0 10px;
+}
+
+.card-text-1 {
+    position: absolute;
+    display: flex;
+    left: 38%;
+    top: 10%;
+    margin: 10px;
+    width: 500px;
+}
