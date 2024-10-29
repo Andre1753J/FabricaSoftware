@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+.content {
+    display: flex;
+    padding: 20px;
+}
+.esquerda, .direita {
+    flex: 1;
+    padding: 20px;
+}
+.esquerda {
+    background-color: #e0e0e0;
+}
+.direita {
+    background-color: #f8f8f8;
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.button.confirme {
+    background-color: #0057FF;
+    color: white;
+}
+.button.cancele {
+    background-color: #000000;
+    color: white;
+}
+
+.salvar {
+    position: absolute;
+    margin-top: 15px;
+    left: 47%;
+    text-align: center;
+    background-color: #0057FF;
+    padding: 3px;
+    border: 3px;
+    font-size: 25px;
+}
+
+.voltar {
+    position: absolute;
+    margin-top: 17px;
+    left: 1.2%;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+}
+button {
+    margin: 0 10px;
+}
+
+label {
+    gap: ;
+    padding: 5px;
+}
+
+.img {
+    width: 30px;
+    position: absolute;
+    margin-top: 0.7%;
+    left: 0%;
+}
+.lero{
+    font-size: 50px;
+}
