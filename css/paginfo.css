@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 .card-primeiro {
     height: 490px;
     background-image: url(/img/gato.png);
@@ -52,7 +51,7 @@ h1 {
     width: 100px;
     height:290px;
     left: 90%;
-    top: 61%;
+    top: 60%;
     border-radius: 25px;
     display: flex;
     justify-content: center;
