@@ -10,13 +10,6 @@ main {
     height: 786px;
 }
 
-header {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-}
-
 nav ul {
     list-style: none;
     padding: 0;
