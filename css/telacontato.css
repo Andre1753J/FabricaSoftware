@@ -6,7 +6,11 @@
 body {
     background-image: url("/img/Captura\ de\ tela\ 2024-10-09\ 090923.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
+    background-attachment: fixed;
+    background-position: center;
+   
+
 }
 
 .card-pai {
