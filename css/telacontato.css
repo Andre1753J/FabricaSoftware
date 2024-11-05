@@ -2,19 +2,22 @@
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     background-image: url("/img/Captura\ de\ tela\ 2024-10-09\ 090923.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card-pai{
+
+.card-pai {
     width: 780px;
     height: 400px;
     display: grid;
     justify-content: center;
     margin: 120px 0;
 }
-.card-titulo{
+
+.card-titulo {
     width: 628px;
     height: 70px;
     display: flex;
@@ -25,6 +28,7 @@ body{
     min-width: 100px;
     min-height: 43px;
 }
+
 .card-secao {
     background-color: #7798ff;
     width: 628px;
@@ -34,6 +38,7 @@ body{
     min-width: 200px;
     min-height: 103px;
 }
+
 .card-whatsap {
     background-color: #ffff;
     width: 565px;
@@ -44,7 +49,9 @@ body{
     border-radius: 20px;
     min-width: 100px;
     min-height: 23px;
+    align-items: center;
 }
+
 .card-email {
     background-color: #ffff;
     width: 565px;
@@ -55,7 +62,9 @@ body{
     border-radius: 20px;
     min-width: 100px;
     min-height: 23px;
+    align-items: center;
 }
+
 .card-telefone {
     background-color: #ffff;
     width: 565px;
@@ -66,4 +75,5 @@ body{
     border-radius: 20px;
     min-width: 100px;
     min-height: 23px;
+    align-items: center;
 }
