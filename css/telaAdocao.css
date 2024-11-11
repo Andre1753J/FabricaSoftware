@@ -7,3 +7,12 @@
     border: none;
     border-radius: 10px;
 }
+
+html {
+    scrollbar-width: none; /* ParaFirefox */
+    -ms-overflow-style: none; /* Para Internet Explorer e Edge */
+}
+    
+html::-webkit-scrollbar {
+    width: 0px; /* Para Chrome, Safari, e Opera */
+}

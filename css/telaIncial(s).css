@@ -3,7 +3,17 @@
     border: 0;
     padding: 0;
 }
-/* aaaa */
+
+html {
+    scrollbar-width: none; /* ParaFirefox */
+    -ms-overflow-style: none; /* Para Internet Explorer e Edge */
+}
+    
+html::-webkit-scrollbar {
+    width: 0px; /* Para Chrome, Safari, e Opera */
+}
+
+
 body {
     background: no-repeat center/cover url("../img/telaInicial.png");
     height: 40vw;

@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+html {
+    scrollbar-width: none; /* ParaFirefox */
+    -ms-overflow-style: none; /* Para Internet Explorer e Edge */
+}
+    
+html::-webkit-scrollbar {
+    width: 0px; /* Para Chrome, Safari, e Opera */
+}
+
 .card-primeiro {
     height: 490px;
     background-image: url(/img/gato.png);
@@ -29,7 +38,8 @@ h1 {
     position: absolute;
     left: 70%;
     top: 40%;
-    background-color: #1440CD;
+    background-color: rgba(20, 64, 205, 1);
+    color: white;
     border: none;
     border-radius: 10px;
     font-size: 30px;

@@ -3,6 +3,15 @@
     padding: 0;
 }
 
+html {
+    scrollbar-width: none; /* ParaFirefox */
+    -ms-overflow-style: none; /* Para Internet Explorer e Edge */
+}
+    
+html::-webkit-scrollbar {
+    width: 0px; /* Para Chrome, Safari, e Opera */
+}
+
 body {
     text-align: center;
 }
@@ -64,7 +73,6 @@ button {
 }
 
 label {
-    gap: ;
     padding: 5px;
 }
 

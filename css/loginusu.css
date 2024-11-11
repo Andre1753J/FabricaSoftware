@@ -2,6 +2,16 @@
     margin: 0;
     padding: 0;
 }
+
+html {
+    scrollbar-width: none; /* ParaFirefox */
+    -ms-overflow-style: none; /* Para Internet Explorer e Edge */
+}
+    
+html::-webkit-scrollbar {
+    width: 0px; /* Para Chrome, Safari, e Opera */
+}
+
 main {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -32,7 +42,8 @@ label {
     color: #555;
 }
 
-input[type="email"], input[type="password"] {
+input[type="email"],
+input[type="password"] {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
