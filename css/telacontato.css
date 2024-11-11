@@ -4,11 +4,13 @@
 }
 
 body {
-    background-image: url("/img/Captura\ de\ tela\ 2024-10-09\ 090923.png");
+    background-image: url("https://www.1zoom.ru/big2/889/310295-frederika.jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100vw 100vh;
     background-attachment: fixed;
     background-position: center;
+    overflow: hidden;
+    
    
 
 }
