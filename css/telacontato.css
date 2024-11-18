@@ -10,9 +10,6 @@ body {
     background-attachment: fixed;
     background-position: center;
     overflow: hidden;
-    
-   
-
 }
 
 .card-pai {
@@ -29,7 +26,6 @@ body {
     display: flex;
     justify-content: center;
     color: #ffff;
-
     padding-bottom: 0px;
     min-width: 100px;
     min-height: 43px;
