@@ -5,12 +5,15 @@
 }
 
 html {
-    scrollbar-width: none; /* ParaFirefox */
-    -ms-overflow-style: none; /* Para Internet Explorer e Edge */
+    scrollbar-width: none;
+    /* ParaFirefox */
+    -ms-overflow-style: none;
+    /* Para Internet Explorer e Edge */
 }
-    
+
 html::-webkit-scrollbar {
-    width: 0px; /* Para Chrome, Safari, e Opera */
+    width: 0px;
+    /* Para Chrome, Safari, e Opera */
 }
 
 .card-primeiro {
@@ -24,7 +27,6 @@ p {
     text-align: center;
     flex-wrap: wrap;
     font-size: 20px;
-    
 }
 
 h1 {
@@ -59,9 +61,9 @@ h1 {
     position: absolute;
     background-color: #7798FF;
     width: 100px;
-    height:290px;
+    height: 250px;
     left: 90%;
-    top: 60%;
+    top: 64%;
     border-radius: 25px;
     display: flex;
     justify-content: center;
@@ -83,7 +85,7 @@ img {
 .card-text-1 {
     position: absolute;
     display: flex;
-    left: 38%;
+    left: 36.5%;
     top: 10%;
     margin: 10px;
     width: 500px;
