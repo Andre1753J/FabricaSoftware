@@ -1,119 +1,87 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.info {
-    border: none;
-    border-radius: 10px;
-}
-
-html {
-    scrollbar-width: none; /* ParaFirefox */
-    -ms-overflow-style: none; /* Para Internet Explorer e Edge */
-}
-    
-html::-webkit-scrollbar {
-    width: 0px; /* Para Chrome, Safari, e Opera */
-}
-
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    background: no-repeat center/cover url("../img/Rectangle\ 35.png");
+    background: no-repeat center/cover url("../img/Rectangle 35.png");
+    
 }
 
-main {
-    height: 786px;
+.container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
 }
 
-header {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+.sidebar {
+    width: 200px;
+    background-color: #e0f7fa;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-.filter {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.filter button {
-    margin: 0 10px;
-    padding: 10px 20px;
-    background-color: #007BFF;
+.sidebar button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #00acc1;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-align: left;
 }
 
-.pets {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+.sidebar button:hover {
+    background-color: #00838f;
+}
+
+.content {
+    flex: 1;
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
 }
 
-.pet {
+.pet-card {
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 200px;
     margin: 10px;
-    padding: 10px;
     text-align: center;
-    width: 500px;
+    padding: 10px;
 }
 
-.pet img {
+.pet-card img {
     border-radius: 50%;
     width: 100px;
     height: 100px;
+    object-fit: cover;
 }
 
-.adopted {
-    display: block;
-    margin-top: 10px;
-    color: red;
-    font-weight: bold;
+.pet-card h3 {
+    margin: 10px 0 5px;
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
+.pet-card p {
+    margin: 5px 0;
 }
 
-footer button {
-    margin: 0 10px;
-    padding: 10px 20px;
-    background-color: #007BFF;
+.disponivel {
+    background-color: #1eff00;
     color: white;
-    border: none;
+    padding: 5px;
     border-radius: 5px;
-    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
 }
 
-.disponivel{
-    display: block;
+.adotado {
+    background-color: #545553;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
     margin-top: 10px;
-    color: green;
-    font-weight: bold;
 }
