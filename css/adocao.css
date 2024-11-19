@@ -14,6 +14,19 @@ body {
     margin-top: 20px;
     background: linear-gradient(to right, #B568F1, #7946A1);
     width: 385px;
+
+html {
+    scrollbar-width: none; /* ParaFirefox */
+    -ms-overflow-style: none; /* Para Internet Explorer e Edge */
+}
+    
+html::-webkit-scrollbar {
+    width: 0px; /* Para Chrome, Safari, e Opera */
+}
+
+.header {
+    background-color: #007bff;
+    padding: 20px;
     text-align: center;
     border-radius: 15px;
 }
