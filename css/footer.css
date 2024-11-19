@@ -9,6 +9,12 @@ footer {
     padding: 32px 20px;
 }
 
+#comment {
+    position: absolute;
+    width: 97.85vw;
+    bottom: 0;
+}
+
 .footer-container {
     display: flex;
     justify-content: space-between;
