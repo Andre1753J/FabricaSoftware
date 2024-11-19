@@ -1,9 +1,19 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+* {
     margin: 0;
     padding: 0;
 }
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.info {
+    font-size: 13px;
+    margin-left: 300px ;
+    margin-top: 20px;
+    background: linear-gradient(to right, #B568F1, #7946A1);
+    width: 385px;
 
 html {
     scrollbar-width: none; /* ParaFirefox */
@@ -18,93 +28,46 @@ html::-webkit-scrollbar {
     background-color: #007bff;
     padding: 20px;
     text-align: center;
+    border-radius: 15px;
 }
 
-.content {
-    display: flex;
-    padding: 20px;
+.gato {
+    margin-left: 250px;
+    margin-top: 10px;
 }
 
-.esquerda,
-.direita {
-    flex: 1;
-    padding: 20px;
-}
-
-.esquerda {
-    background-color: #e0e0e0;
+.info-gato {
+    border-radius: 15px;
+    padding: 10px;
     position: absolute;
-}
-
-.direita {
-    background-color: #D86DE1;
-    position: absolute;
-    border-radius: 12px;
-    width: 600px;
+    left: 45%;
+    top: 30%;
+    width: 500px;
     font-size: 30px;
-    left: 47%;
-    top: 12%;
+    background-color:#D86DE1;
 }
 
-.buttons {
+.info-gerais {
+    margin-left: 370px;
+    width: 150px;
+    padding: 10px;
+    border-radius: 15px;
+    background: linear-gradient(to right, #B568F1, #7946A1);
+}
+
+.seta {
+    width: 30px;
     position: absolute;
-    left: 52.5%;
-    top: 25%;
+    margin-top: 29%;
+    left: 0%;
 }
 
-.button {
-    width: 200px;
-    height: 50px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.button.confirme {
-    background-color: #0057FF;
-    color: white;
-
-}
-
-.button.cancele {
-    background-color: #000000;
-    color: white;
-}
-
-.salvar {
-    position: absolute;
-    margin-top: 15px;
-    left: 47%;
-    text-align: center;
-    background-color: #0057FF;
-    padding: 3px;
-    border: 3px;
-    font-size: 25px;
-}
 
 .voltar {
     position: absolute;
-    margin-top: 17px;
+    margin-top: 9%;
     left: 1.2%;
     background: transparent;
     border: none;
     font-size: 20px;
-}
-
-button {
-    margin: 0 10px;
-}
-
-.icon {
-    width: 30px;
-    position: absolute;
-    margin-top: 0.7%;
-    left: 0%;
-}
-
-.gt {
-    position: absolute;
-    left: 20%;
-    top: 12%;
 }
