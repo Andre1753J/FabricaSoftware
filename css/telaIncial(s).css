@@ -13,7 +13,6 @@ html::-webkit-scrollbar {
     width: 0px; /* Para Chrome, Safari, e Opera */
 }
 
-
 body {
     background: no-repeat center/cover url("../img/telaInicial.png");
     height: 40vw;
