@@ -8,15 +8,32 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 0px 20px;
     background: linear-gradient(to right, #1440CD, #485EA3);
-    height: 80px;
+    height: 100px;
+}
+
+.posicaoli {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.posicao {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.risquinho {
+    text-decoration: underline 5px;
 }
 
 .dropDown {
     width: 40vw;
     height: 0;
-    top: 60px;
+    top: 100px;
     left: -250px;
     transition: 0.6s;
 }
