@@ -13,20 +13,31 @@
 <body>
     <header>
         <div class="logo">
-            <img src="img/Logo Pet shop roxo.png" alt="Logo do Pet's World">
+            <img src="/img/Logo Pet shop roxo.png" alt="Logo do Pet's World">
         </div>
 
-
-        <nav>
-            <ul>
+        <nav class="posicao">
+            <ul class="posicao">
                 <li class="ativo"><a href="PagInfo.html">Início</a></li>
                 <li><a href="SobreNos.html">Sobre Nós</a></li>
                 <li><a href="TelaContato.html">Contatos</a></li>
-                <li><a href="#">Serviços</a></li>
+                <li class="lidrop posicaoli risquinho"><a href="#" class="posicao">Serviços</a>
+                    <div class="dropDown">
+                        <div class="sep">
+                            <button class="dropBotao"> <a href="FichaAnimal.html" style="color: black;"> Criar ficha animal</a> </button>
+                            <button class="dropBotao"> <a href="comentarios.html" style="color: black;"> Comentários</a> </button>
+                        </div>
+                        <div class="sep">
+                            <button class="dropBotao"> <a href="telaAdocao.html" style="color: black;"> Tela de adoção</a> </button>
+                            <button class="dropBotao"> <a href="telaExclusao.html" style="color: black;"> Exclusão de usuário</a> </button>
+                        </div>
+                    </div>
+                    <div>
+                        
+                    </div>
+                </li>
             </ul>
         </nav>
-
-
         <div class="icone">
             <img src="/img/MW4ON7S7AJIGBCD3KEAWLG4WZA.png" alt="Ícone de perfil">
         </div>
@@ -115,6 +126,7 @@
             © 2024 Pet´s World. Todos os direitos reservados
         </div>
     </footer>
+    <script src='/script/dropDown.js'></script>
 </body>
 
 </html>

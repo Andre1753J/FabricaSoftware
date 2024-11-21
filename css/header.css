@@ -31,11 +31,33 @@ header {
 }
 
 .dropDown {
-    width: 40vw;
+    z-index: 3;
+    width: 30vw;
     height: 0;
     top: 100px;
     left: -250px;
     transition: 0.6s;
+    position: absolute;
+    background-color: rgba(72, 94, 163, 1);
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+}
+
+.dropBotao {
+    height: 50px;
+    width: 190px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.sep {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px 20px;
+    height: 6vh;
+    margin: 10px;
 }
 
 #infoG {
