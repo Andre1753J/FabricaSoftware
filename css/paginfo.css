@@ -18,7 +18,7 @@ html::-webkit-scrollbar {
 
 .card-primeiro {
     height: 490px;
-    background-image: url(/img/gato.png);
+    background-image: url(../img/gato.png);
     background-size: cover;
 }
 
