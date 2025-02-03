@@ -6,25 +6,12 @@ import Image from "next/image";
 import styles from "./Header.module.css"
 
 export default function Header() {
-    const [menuOpen, setMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
-
     return (
         <header className={styles.header}>
-            <div className={styles.navContainer}>
-                <Image
-                    src="/"
-                    alt="Menu Icon"
-                    className={styles.menuIcon}
-                    onClick={toggleMenu}
-                    width={50}
-                    height={50}
-                />
+            <div className={styles.logo}>
+                <Image width={80} height={80} src="/images/Logo Pet shop roxo.png"/>
             </div>
-            <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>
+            <nav className={styles.nav}>
                 <ul className={styles.list}>
                     <li className={styles.lit}>
                         <Link href='/'>Holmes</Link>
