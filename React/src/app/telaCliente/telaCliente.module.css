@@ -1,10 +1,24 @@
+.div {
+    background-color: aqua;
+}
 
+.titulo {
+    color: black;
+    text-align: center;
+}
+
+.t2 {
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+/* 
 
 .div {
     background-color: aliceblue;
     color: black;
     width: auto;
-    height: max-content;
+    height: auto;
 }
 
 .inp {
@@ -30,7 +44,7 @@
     text-align: center;
 }
 
-.form1, .form2, .form3, .form4, .form5, .form6, .form7, .form8, .form9, .form10{
+.form1{
     display: inline-block;
     width: 330px;
     margin: 10px;
@@ -38,7 +52,7 @@
 
 .form_select {
     display: inline-block;
-    width: 230px;
+    width: 130px;
 }
 
 .inp_select {
@@ -57,8 +71,4 @@
 
 .inp_select:focus {
     width: 100%;
-}
-
-.a {
-    border: solid;
-}
+} */
