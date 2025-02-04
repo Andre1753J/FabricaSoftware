@@ -9,7 +9,7 @@ export default function Cliente() {
                 <a className={styles.a}>Nome<input className={styles.inp} placeholder="Digite seu nome" type="name"></input></a>
             </label>
             <label className={styles.form2}>
-                <a className={styles.a}>Idade<input className={styles.inp} placeholder="Digite sua idade" type="number"></input></a>
+                <a className={styles.a}>Idade</a><input className={styles.inp} placeholder="Digite sua idade" type="number"></input>
                 </label>
             <label className={styles.form_select}>Sexo
                 <select className={styles.inp_select}>
