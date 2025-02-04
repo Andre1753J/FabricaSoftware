@@ -1,10 +1,12 @@
 .header {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    justify-content: space-between;
     align-items: center;
     padding: 10px;
     background: var(--background);
     color: #ffffff;
+    background: linear-gradient(to right, rgb(20, 64, 205), rgb(72, 94, 163)) ; 
 }
 
 .navContainer {
@@ -44,6 +46,10 @@
 
 .list li {
     margin: 10px 0;
+}
+
+.img {
+    border-radius: 50%;
 }
 
 @media (min-width: 600px) {
