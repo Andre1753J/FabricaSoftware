@@ -23,6 +23,7 @@ export default function Cliente() {
                 <a className={styles.a}>Telefone 1<input placeholder="" type="number"></input></a>
                 <a className={styles.a}>Telefone 2<input placeholder="" type="number"></input></a>
             </label>
+            
 
         </div>
     )
