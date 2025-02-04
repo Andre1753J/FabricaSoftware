@@ -3,18 +3,18 @@ import styles from "./page.module.css"
 
 export default function Inicial() {
     return (
-        <div>
-            <section className={styles.card-pai}>
+        <div className={styles.body}>
+            <section className={styles.cardpai}>
                 <div className={styles.apresentacao}>
-                    <div className={styles.card-titulo}>
+                    <div className={styles.cardtitulo}>
                         <h1 className={styles.gradient}>PET'S WORLD</h1>
                     </div>
-                    <div className={styles.card-botoes}>
+                    <div className={styles.cardbotoes}>
                         <button className={styles.botao}>
-                            <a href="FichaCliente.html">Cadastrar</a>
+                            <a className={styles.ancora} href="FichaCliente.html">Cadastrar</a>
                         </button>
                         <button className={styles.botao}>
-                            <a href="LoginUsuario.html">Login</a>
+                            <a className={styles.ancora}href="LoginUsuario.html">Login</a>
                         </button>
                     </div>
                 </div>
