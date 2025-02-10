@@ -1,0 +1,90 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulo {
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-left: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+main {
+    padding: 20px;
+}
+
+.destaque {
+    display: flex;
+    align-items: center;
+}
+
+.chamada {
+    flex: 1;
+}
+
+.contatos {
+    display: flex;
+    flex-direction: column;
+}
+
+.contato {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contato img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.imagem {
+    flex: 1;
+}
+
+.imagem img {
+    max-width: 100%;
+}
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
