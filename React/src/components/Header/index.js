@@ -10,7 +10,7 @@ export default function Header() {
     return (
         <header className={styles.header}>
             <div className={styles.logo}>
-                <Image width={80} height={80} src="/images/Logo Pet shop roxo.png" alt="Logo tipo da empresa pet's world"/>
+                <Image className={styles.img} width={80} height={80} src="/images/Logo Pet shop roxo.png" alt='logo Pets World'/>
             </div>
             <nav className={styles.nav}>
                 <ul className={styles.list}>
@@ -28,6 +28,9 @@ export default function Header() {
                     </li>
                 </ul>
             </nav>
+            <div>
+                <Image className={styles.img} width={70} height={70} src="/images/noIcon.png" alt='F4'/>
+            </div>
         </header>
     );
 }
