@@ -23,6 +23,9 @@ export default function Header() {
                     <li className={styles.lit}>
                         <Link href='/telaCliente'>Cadastro Cliente</Link>
                     </li>
+                    <li className={styles.lit}>
+                        <Link href='/sobre nos'>Sobre Nós</Link>
+                    </li>
                 </ul>
             </nav>
         </header>
