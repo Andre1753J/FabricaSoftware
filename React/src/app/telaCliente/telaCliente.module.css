@@ -1,11 +1,11 @@
-
-
 .titulo {
+    padding-top: 50px;
     color: black;
     text-align: center;
 }
 
 .t2 {
+    padding-top: 66px;
     color: black;
     display: flex;
     justify-content: center;
@@ -15,8 +15,7 @@
 .div {
     background-color: aliceblue;
     color: black;
-    width: auto;
-    height: auto;
+    padding-bottom: 150px;
 }
 
 .inpt {
@@ -36,7 +35,7 @@
 }
 
 .inpt:focus {
-    width: 60%;
+    width: 40%;
 }
 
 .titulo {
@@ -53,6 +52,7 @@
 
 
 .gnr {
+    height: 50px;
     text-align: center;
     margin-left: 10px;
     color: black;
@@ -73,22 +73,72 @@
 } 
 
 .plhld1{
-    margin-left: -10px;
-    margin-top: px;
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-right: px;
+    margin-bottom: px;
+}
+
+.plhld2{
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-right: px;
+    margin-bottom: px;
+}
+
+.plhld3{
+    margin-left: 35px;
+    margin-top: 20px;
+    margin-right: px;
+    margin-bottom: px;
+}
+
+.plhld4{
+    margin-left: 65px;
+    margin-top: 20px;
     margin-right: px;
     margin-bottom: px;
 }
 
 .plhld5{
     margin-left: 45px;
-    margin-top: px;
+    margin-top: 20px;
+    margin-right: 5px;
+    margin-bottom: px;
+}
+
+.plhld6{
+    margin-left: 35px;
+    margin-top: 20px;
     margin-right: px;
     margin-bottom: px;
 }
 
 .plhld7{
-    margin-left: -30px;
-    margin-top: px;
+    margin-left: -15px;
+    margin-top: 20px;
+    margin-right: 5px;
+    margin-bottom: px;
+}
+
+.plhld8{
+    margin-left: 50px;
+    margin-top: 20px;
     margin-right: px;
     margin-bottom: px;
 }
+
+.plhld9{
+    margin-left: -45px;
+    margin-top: 20px;
+    margin-right: px;
+    margin-bottom: px;
+}
+
+.plhld10{
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-right: -30px;
+    margin-bottom: px;
+}
+
