@@ -11,39 +11,57 @@ export default function Cliente() {
             <label className={styles.formulario}>
                 <label className={styles.cls}>
                     <p className={styles.plhld1}>NOME</p>
-                    <input className={styles.inpt} placeholder="" type=""></input>
+                    <input className={styles.inpt} placeholder="Digite seu nome" type="txt"></input>
 
                     <p className={styles.plhld2}>IDADE</p>
-                    <input className={styles.inpt} placeholder="" type=""></input>
+                    <input className={styles.inpt} placeholder="Digite sua idade" type="number"></input> 
 
+                </label>
+
+                <label className={styles.cls}>
+               
+                    <p className={styles.plhld3}>SEXO</p>
                     <select className={styles.gnr}>
-                        <option className={styles.opt}
+                        <option className={styles.opt}>Masculino</option>
+                        <option className={styles.opt}>Femenino</option>
                     </select>
 
-                    <p className={styles.plhld3}>RG</p>
-                    <input className={styles.inpt} placeholder="" type=""></input>
-
-                    <p className={styles.plhld4}>CPF</p>
-                    <input className={styles.inpt} placeholder="" type=""></input>
-
-                    <p className={styles.plhld5}>EMAIL</p>
-                    <input className={styles.inpt} placeholder="" type=""></input>
-
-                    <p className={styles.plhld6}>BAIRRO</p>
-                    <input className={styles.inpt} placeholder="" type=""></input>
-
-                    <p className={styles.plhld7}>CEP</p>
-                    <input className={styles.inpt} placeholder="" type=""></input>
-
-                    <p className={styles.plhld8}>COMPLEMENTO</p>
-                    <input className={styles.inpt} placeholder="" type=""></input>
-
-                    <p className={styles.plhld9}>TELEFONE 1</p>
-                    <input className={styles.inpt} placeholder="" type=""></input>
-
-                    <p className={styles.plhld10}>TELEFONE 2</p>
-                    <input className={styles.inpt} placeholder="" type=""></input>
+                    <p className={styles.plhld4}>RG</p>
+                    <input className={styles.inpt} placeholder="Número de RG" type="number"></input>
+                
                 </label>
+
+                <label className={styles.cls}>
+
+                    <p className={styles.plhld5}>CPF</p>
+                    <input className={styles.inpt} placeholder="Digite seu CPF" type="number"></input>
+
+                    <p className={styles.plhld6}>EMAIL</p>
+                    <input className={styles.inpt} placeholder="Digite seu endereço de email" type="txt,number"></input>
+
+                </label>
+
+                <label className={styles.cls}>
+
+                    <p className={styles.plhld7}>ENDEREÇO</p>
+                    <input className={styles.inpt} placeholder="Digite seu endereço de sua residência" type="txt,number"></input>
+
+                    <p className={styles.plhld8}>CEP</p>
+                    <input className={styles.inpt} placeholder="Digite seu código postal" type="number"></input>
+
+                </label>
+
+                <label className={styles.cls}>
+
+                    <p className={styles.plhld9}>COMPLEMENTO</p>
+                    <input className={styles.inpt} placeholder="Complemento do endereço de sua residência" type=""></input>
+
+                    <p className={styles.plhld10}>TELEFONE 1</p>
+                    <input className={styles.inpt} placeholder="Digite seu telefone" type="number,txt"></input>
+
+                </label>
+
+
             </label>
             {/* <h1 className={styles.titulo}>Cadastro do Cliente</h1>
             <label className={styles.form1}>

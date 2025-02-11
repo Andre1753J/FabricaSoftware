@@ -1,6 +1,4 @@
-.div {
-    background-color: aqua;
-}
+
 
 .titulo {
     color: black;
@@ -12,7 +10,7 @@
     display: flex;
     justify-content: center;
 }
-/* 
+ 
 
 .div {
     background-color: aliceblue;
@@ -21,9 +19,10 @@
     height: auto;
 }
 
-.inp {
+.inpt {
+    text-align: center;
     color: black;
-    width: 130px;
+    width: 400px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -36,28 +35,28 @@
     margin: 10px;
 }
 
-.inp:focus {
-    width: 100%;
+.inpt:focus {
+    width: 60%;
 }
 
 .titulo {
     text-align: center;
 }
 
-.form1{
-    display: inline-block;
-    width: 330px;
-    margin: 10px;
+.cls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-.form_select {
-    display: inline-block;
-    width: 130px;
-}
 
-.inp_select {
+
+
+.gnr {
+    text-align: center;
+    margin-left: 10px;
     color: black;
-    width: 130px;
+    width: 400px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -69,6 +68,27 @@
     transition: width 0.4s ease-in-out;
 }
 
-.inp_select:focus {
-    width: 100%;
-} */
+.gnr:focus {
+    width: 20%;
+} 
+
+.plhld1{
+    margin-left: -10px;
+    margin-top: px;
+    margin-right: px;
+    margin-bottom: px;
+}
+
+.plhld5{
+    margin-left: 45px;
+    margin-top: px;
+    margin-right: px;
+    margin-bottom: px;
+}
+
+.plhld7{
+    margin-left: -30px;
+    margin-top: px;
+    margin-right: px;
+    margin-bottom: px;
+}
