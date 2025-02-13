@@ -24,7 +24,7 @@ export default function Header() {
                         <Link href='/telaCliente'>Cadastro Cliente</Link>
                     </li>
                     <li className={styles.lit}>
-                        <Link href='/'></Link>
+                        <Link href='/telaLogin'>Login</Link>
                     </li>
                 </ul>
             </nav>
