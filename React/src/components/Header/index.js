@@ -18,13 +18,13 @@ export default function Header() {
                         <Link href='/'>Holmes</Link>
                     </li>
                     <li className={styles.lit}>
-                        <Link href='/sobre'>Sobre</Link>
+                        <Link href='/sobreNos'>Sobre</Link>
                     </li>
                     <li className={styles.lit}>
                         <Link href='/telaCliente'>Cadastro Cliente</Link>
                     </li>
                     <li className={styles.lit}>
-                        <Link href='/sobre nos'>Sobre Nós</Link>
+                        <Link href='/'></Link>
                     </li>
                 </ul>
             </nav>
