@@ -1,0 +1,64 @@
+.deletebox {
+    background-color: #d3d3d3;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.deletebox .userinfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.deletebox .userinfo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.deletebox .userinfo div {
+    text-align: left;
+}
+
+.deletebox .userinfo div p {
+    margin: 0;
+}
+
+.deletebox button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.deletebox button:hover {
+    background-color: darkred;
+}
+
+.deletebox .secondary-button {
+    background-color: white;
+    color: red;
+    border: 2px solid red;
+}
+
+.deletebox .secondary-button:hover {
+    background-color: #f4f4f4;
+}
+
+.titulo {
+    color: red;
+}
