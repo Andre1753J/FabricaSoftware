@@ -9,7 +9,7 @@ html::-webkit-scrollbar {
 
 .body {
   background: no-repeat center/cover url("../../public/images/telaInicial.png");
-  height: 40vw;
+  height: 45vw;
 }
 
 .cardpai {
@@ -27,6 +27,7 @@ html::-webkit-scrollbar {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 4rem;
+  margin-left: 50px;
 }
 
 .cardtitulo {
@@ -57,6 +58,7 @@ html::-webkit-scrollbar {
   justify-content: left;
   display: flex;
   gap: 1em;
+  margin: 50px;
 }
 
 .apresentacao{
