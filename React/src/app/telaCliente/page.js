@@ -73,6 +73,9 @@ export default function Cliente() {
                 </div >
 
             </label >
+            <a href="#" className={styles.card_botao}>
+          <button className={styles.button} >Continuar</button>
+        </a>
         </div >
         </section>
     )
