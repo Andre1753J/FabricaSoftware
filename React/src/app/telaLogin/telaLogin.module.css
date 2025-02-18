@@ -38,10 +38,11 @@
 .inptpass, .inpt_email
  {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     border-radius: 5px;
     font-size: 16px;
     margin-bottom: 10px;
+    background-color: #f4f4f4;
 }
 
 .card_botao {
