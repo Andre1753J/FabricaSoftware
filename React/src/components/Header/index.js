@@ -7,6 +7,14 @@ import styles from "./Header.module.css";
 
 
 export default function Header() {
+    
+    const [abrir, setAbrir] = useState(false);
+
+    function abrirCoisa() {
+        setAbrir(!abrir);
+        console.log(abrir);
+    }
+
     return (
         <header className={styles.header}>
             <div className={styles.logo}>
@@ -14,17 +22,25 @@ export default function Header() {
             </div>
             <nav className={styles.nav}>
                 <ul className={styles.list}>
-                    <li className={styles.lit}>
+                    <li className={styles.list}>
                         <Link href='/'>Holmes</Link>
                     </li>
-                    <li className={styles.lit}>
+                    <li className={styles.list}>
                         <Link href='/sobreNos'>Sobre</Link>
                     </li>
-                    <li className={styles.lit}>
+                    <li className={styles.list}>
                         <Link href='/telaCliente'>Cadastro Cliente</Link>
                     </li>
-                    <li className={styles.lit}>
+                    <li className={styles.list}>
                         <Link href='/telaLogin'>Login</Link>
+                    </li>
+                    <li className={styles.list}>
+                        <p className={styles.nada} onClick={abrirCoisa}>Serviço</p>
+                        {abrir && <div>
+                            <button><Link href='#'>Criar Ficha Animal</Link></button>
+                            <button><Link href='#'>Tela de Adoção</Link></button>
+                            <button><Link href='#'>Conta</Link></button>
+                            </div>}
                     </li>
                 </ul>
             </nav>

@@ -6,7 +6,7 @@
     padding: 10px;
     background: var(--background);
     color: #ffffff;
-    background: linear-gradient(to right, rgb(20, 64, 205), rgb(72, 94, 163)) ; 
+    background: linear-gradient(to right, rgb(20, 64, 205), rgb(72, 94, 163));
 }
 
 .navContainer {
@@ -50,6 +50,10 @@
 
 .img {
     border-radius: 50%;
+}
+
+.nada {
+    cursor: pointer;
 }
 
 @media (min-width: 600px) {
