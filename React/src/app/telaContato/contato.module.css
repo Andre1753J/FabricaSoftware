@@ -1,0 +1,28 @@
+.main {
+    height: 64.3vh;
+}
+
+.titulo {
+    size: 50px;
+}
+
+.container {
+    position: relative;
+    background-color: #66a3ff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.contato {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.info {
+    font-weight: bold;
+}
