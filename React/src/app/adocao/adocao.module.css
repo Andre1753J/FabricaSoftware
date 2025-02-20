@@ -1,0 +1,101 @@
+
+.header {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.filter {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.filter button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pets {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.pet {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 600px;
+}
+
+.pet img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.adopted {
+    display: block;
+    margin-top: 10px;
+    color: red;
+    font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+}
+
+.footer button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.disponivel{
+    display: block;
+    margin-top: 10px;
+    color: green;
+    font-weight: bold;
+}
+
+.telaEsquerda{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    height: 600px;
+    flex-wrap: wrap;
+    
+}
