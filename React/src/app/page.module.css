@@ -50,7 +50,6 @@ html::-webkit-scrollbar {
 
 .botao:hover {
   background-color: rgb(187, 187, 187);
-  color: rgb(0, 0, 0);
 }
 
 .cardbotoes {
@@ -62,10 +61,10 @@ html::-webkit-scrollbar {
 }
 
 .apresentacao{
-  position: absolute;
-  bottom: 42%;
+  padding: 100px;
 }
 
 .ancora {
   text-decoration: none;
+  color: black;
 }

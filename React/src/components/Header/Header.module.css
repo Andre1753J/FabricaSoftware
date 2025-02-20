@@ -9,6 +9,29 @@
     background: linear-gradient(to right, rgb(20, 64, 205), rgb(72, 94, 163));
 }
 
+.dropBotao {
+    height: 50%;
+    width: 190px;
+    border: none;
+    margin-top: 3%;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #333390;
+}
+
+.divNHeader {
+    position: absolute;
+    right: 5vw;
+    background-color: rgba(72, 94, 163, 1);
+    display: flex;
+    justify-content: space-around;
+    gap: 20px 20px;
+    height: 15vh;
+    border-radius: 0 0 5px 5px;
+}
+
 .navContainer {
     display: flex;
     justify-content: space-between;
