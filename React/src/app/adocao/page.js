@@ -4,8 +4,7 @@ import Image from 'next/image'
 export default function adocao() {
     return (
     <section className={styles.pets}>
-        <div className={styles.telaEsquerda}>
-            Filtro
+        <div>
         </div>
         <div className={styles.pet}>
             <Image  src="/images/brawl-stars.png" width={80} height={80} alt="Brawo Stars"/>
