@@ -9,6 +9,18 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+
+  label {
+    color: black;
+  }
+
+  legend {
+    color: black;
+  }
+
+  button {
+    color: black;
+  }
 }
 
 html,
