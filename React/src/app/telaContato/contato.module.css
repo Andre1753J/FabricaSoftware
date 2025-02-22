@@ -1,17 +1,36 @@
 .main {
-    height: 64.3vh;
+    min-height: 80vh;
+    /* Garante que ocupe toda a tela */
+    background-image: url("https://www.1zoom.ru/big2/889/310295-frederika.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0;
+    /* Espaço extra para evitar corte pelo footer */
 }
 
 .titulo {
-    size: 50px;
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .container {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-60%, -50%);
+    /* Move a div mais para a esquerda */
     background-color: #66a3ff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 780px;
 }
 
 .contato {
@@ -19,8 +38,12 @@
     align-items: center;
     margin-bottom: 10px;
     padding: 10px;
-    background-color: #fff;
+    background-color: #333;
+    /* Cor de fundo mais escura */
     border-radius: 5px;
+    justify-content: center;
+    color: #fff;
+    /* Cor do texto branca */
 }
 
 .info {

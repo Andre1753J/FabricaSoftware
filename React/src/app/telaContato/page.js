@@ -1,23 +1,20 @@
 import styles from './contato.module.css'
-import Image from 'next/image'
 
-export default function contato() {
+export default function Contato() {
     return (
-        <section className={styles.main}>
-            <section className={styles.contato}>
-                <h1 className={styles}>ENTRE EM CONTATO CONOSCO!</h1>
-                <div className={styles.container}>
-                    <div className={styles.contato}>
-                        <span className={styles.info}>69 9985-5963</span>
-                    </div>
-                    <div className={styles.contato}>
-                        <span className={styles.info}>petsworldsupport@gmail.com</span>
-                    </div>
-                    <div className={styles.contato}>
-                        <span className={styles.info}>3322-6585</span>
-                    </div>
+        <main className={styles.main}>
+            <div className={styles.container}>
+                <h2 className={styles.titulo}>ENTRE EM CONTATO CONOSCO</h2>
+                <div className={styles.contato}>
+                    <h3 className={styles.info}>69 9985-5963</h3>
                 </div>
-            </section>
-        </section>
+                <div className={styles.contato}>
+                    <h3 className={styles.info}>petsworldsuport@gmail.com</h3>
+                </div>
+                <div className={styles.contato}>
+                    <h3 className={styles.info}>3322-6585</h3>
+                </div>
+            </div>
+        </main>
     )
 }
