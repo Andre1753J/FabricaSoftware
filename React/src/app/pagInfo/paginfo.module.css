@@ -1,0 +1,77 @@
+.main {
+    padding: 20px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: url(../../../public/images/gato.png);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.card_primeiro {
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para melhorar a legibilidade */
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.card_text_1 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.titulo1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.adt {
+    background-color: rgba(20, 64, 205, 1);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.adt:hover {
+    background-color: rgba(20, 64, 205, 0.8);
+}
+
+.card_segundo {
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para melhorar a legibilidade */
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 800px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.card_text_2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.card_link {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.wts, .itg {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s;
+}
+
+.wts:hover, .itg:hover {
+    transform: scale(1.1);
+}
