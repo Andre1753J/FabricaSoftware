@@ -30,10 +30,7 @@ export default function Header() {
                             <Link href='/sobreNos'>Sobre</Link>
                         </li>
                         <li className={styles.list}>
-                            <Link href='/telaCliente'>Cadastro Cliente</Link>
-                        </li>
-                        <li className={styles.list}>
-                            <Link href='/telaLogin'>Login</Link>
+                            <Link href='/telaContato'>Contatos</Link>
                         </li>
                         <li className={styles.list}>
                             <p className={styles.nada} onClick={abrirCoisa}>Serviço</p>
