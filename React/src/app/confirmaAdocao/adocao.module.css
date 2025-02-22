@@ -1,0 +1,116 @@
+.main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+}
+
+.palavra {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.info {
+    font-size: 1rem;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.gato {
+    margin: 20px 0;
+}
+
+.cat {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.info_gato {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    color: #333;
+}
+
+.info_gerais {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 800px;
+    text-align: left;
+    font-size: 18px;
+}
+
+.botaos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.bot_1, .bot_2 {
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.bot_1 {
+    background-color: #28a745;
+    color: white;
+}
+
+.bot_1:hover {
+    background-color: #218838;
+}
+
+.bot_2 {
+    background-color: #dc3545;
+    color: white;
+}
+
+.bot_2:hover {
+    background-color: #c82333;
+}
+
+.but {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+/* .seta {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+} */
+
+/* .voltar {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    color: #2575fc;
+    cursor: pointer;
+} */
