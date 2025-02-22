@@ -7,19 +7,19 @@ export default function SobreNos() {
             <h1 className={styles.h1}>SOBRE NÓS</h1>
             <div className={styles.membros}>
                 <div className={styles.membro}>
-                    <Image src="/andre.jpg" alt="André" width={100} height={100} />
+                    <Image src="/images/andre.jpg" alt="André" width={100} height={100} />
                     <p className={styles.integrantes}>André</p>
                 </div>
                 <div className={styles.membro}>
-                    <Image src="/julio.jpg" alt="Julio" width={100} height={100} />
+                    <Image src="/images/julio.jpg" alt="Julio" width={100} height={100} />
                     <p className={styles.integrantes}>Julio</p>
                 </div>
                 <div className={styles.membro}>
-                    <Image src="/ikarus.jpg" alt="Ikarus" width={100} height={100} />
+                    <Image src="/images/ikarus.jpg" alt="Ikarus" width={100} height={100} />
                     <p className={styles.integrantes}>Ikarus</p>
                 </div>
                 <div className={styles.membro}>
-                    <Image src="/brenda.jpg" alt="Brenda" width={100} height={100} />
+                    <Image src="/images/brenda.jpg" alt="Brenda" width={100} height={100} />
                     <p className={styles.integrantes}>Brenda</p>
                 </div>
             </div>
