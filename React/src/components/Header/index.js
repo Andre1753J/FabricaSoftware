@@ -5,9 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Header.module.css";
 
-
 export default function Header() {
-
     const [abrir, setAbrir] = useState(false);
 
     function abrirCoisa() {
@@ -24,7 +22,7 @@ export default function Header() {
                 <nav className={styles.nav}>
                     <ul className={styles.list}>
                         <li className={styles.list}>
-                            <Link href='/'>Holmes</Link>
+                            <Link href='/'>Início</Link>
                         </li>
                         <li className={styles.list}>
                             <Link href='/sobreNos'>Sobre</Link>
