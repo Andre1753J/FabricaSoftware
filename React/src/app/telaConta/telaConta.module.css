@@ -1,0 +1,81 @@
+.contaContainer {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.t1 {
+    text-align: center;
+    color: #333;
+}
+
+.infoSection,
+.securitySection {
+    margin-bottom: 30px;
+}
+
+.t2 {
+    color: #555;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.infoItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.infoLabel {
+    font-weight: bold;
+    color: #333;
+}
+
+.infoValue {
+    color: #666;
+}
+
+.editButton,
+.changePasswordButton,
+.deactivateButton,
+.logoutButton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.editButton {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.changePasswordButton {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.deactivateButton {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.logoutButton {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.editButton:hover,
+.changePasswordButton:hover,
+.deactivateButton:hover,
+.logoutButton:hover {
+    opacity: 0.9;
+}
