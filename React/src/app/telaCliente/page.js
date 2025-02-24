@@ -3,58 +3,61 @@ import Link from 'next/link';
 
 export default function Cliente() {
     return (
-        <section className={styles.sct}>
-            <div className={styles.div}>
-                <h1 className={styles.titulo}>Cadastro Cliente</h1>
-                <label className={styles.t2}><h4 className={styles.t}></h4></label>
-                <label className={styles.formulario}>
-                    <div className={styles.form}>
-                        <label className={styles.cls}>
-                            <p className={styles.plhld1}>NOME</p>
-                            <input className={styles.inpt} placeholder="Digite seu nome" type="text" />
-                            <p className={styles.plhld2}>IDADE</p>
-                            <input className={styles.inpt} placeholder="Digite sua idade" type="number" />
-                        </label>
+        <section className={styles.section}>
+            <div className={styles.container}>
+                <h1 className={styles.title}>Cadastro Cliente</h1>
+                
+                <form className={styles.form}>
+                    <div className={styles.formGroup}>
+                        <label className={styles.label} htmlFor="nome">NOME</label>
+                        <input className={styles.input} id="nome" placeholder="Digite seu nome" type="text" required />
                     </div>
-                    <div className={styles.form}>
-                        <label className={styles.cls}>
-                            <p className={styles.plhld3}>SEXO</p>
-                            <select className={styles.gnr}>
-                                <option className={styles.opt}>Masculino</option>
-                                <option className={styles.opt}>Feminino</option>
-                            </select>
-                        </label>
+
+                    <div className={styles.formGroup}>
+                        <label className={styles.label} htmlFor="idade">IDADE</label>
+                        <input className={styles.input} id="idade" placeholder="Digite sua idade" type="number" required />
                     </div>
-                    <div className={styles.form}>
-                        <label className={styles.cls}>
-                            <p className={styles.plhld4}>RG</p>
-                            <input className={styles.inpt} placeholder="Número de RG" type="number" />
-                        </label>
+
+                    <div className={styles.formGroup}>
+                        <label className={styles.label} htmlFor="sexo">SEXO</label>
+                        <select className={styles.select} id="sexo" required>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                        </select>
                     </div>
-                    <div className={styles.form}>
-                        <label className={styles.cls}>
-                            <p className={styles.plhld5}>CPF</p>
-                            <input className={styles.inpt} placeholder="Digite seu CPF" type="number" />
-                            <p className={styles.plhld6}>EMAIL</p>
-                            <input className={styles.inpt} placeholder="Digite seu endereço de email" type="email" />
-                        </label>
+
+                    <div className={styles.formGroup}>
+                        <label className={styles.label} htmlFor="rg">RG</label>
+                        <input className={styles.input} id="rg" placeholder="Número de RG" type="text" required />
                     </div>
-                    <div className={styles.form}>
-                        <label className={styles.cls}>
-                            <p className={styles.plhld7}>ENDEREÇO</p>
-                            <input className={styles.inpt} placeholder="Digite seu endereço de sua residência" type="text" />
-                            <p className={styles.plhld8}>CEP</p>
-                            <input className={styles.inpt} placeholder="Digite seu código postal" type="number" />
-                        </label>
+
+                    <div className={styles.formGroup}>
+                        <label className={styles.label} htmlFor="cpf">CPF</label>
+                        <input className={styles.input} id="cpf" placeholder="Digite seu CPF" type="text" required />
                     </div>
-                    <div className={styles.form}>
-                        <label className={styles.cls}>
-                            <p className={styles.plhld9}>PORTE DO ANIMAL</p>
-                            <input className={styles.inpt} placeholder="Complemento do endereço de sua residência" type="text" />
-                        </label>
+
+                    <div className={styles.formGroup}>
+                        <label className={styles.label} htmlFor="email">EMAIL</label>
+                        <input className={styles.input} id="email" placeholder="Digite seu endereço de email" type="email" required />
                     </div>
-                </label>
-                <Link href="/dashboard" className={styles.card_botao}>
+
+                    <div className={styles.formGroup}>
+                        <label className={styles.label} htmlFor="endereco">ENDEREÇO</label>
+                        <input className={styles.input} id="endereco" placeholder="Digite o endereço da sua residência" type="text" required />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label className={styles.label} htmlFor="cep">CEP</label>
+                        <input className={styles.input} id="cep" placeholder="Digite seu código postal" type="text" required />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label className={styles.label} htmlFor="porte">PORTE DO ANIMAL</label>
+                        <input className={styles.input} id="porte" placeholder="Complemento do endereço da sua residência" type="text" />
+                    </div>
+                </form>
+
+                <Link href="/pagInfo" className={styles.link}>
                     <button className={styles.button}>Continuar</button>
                 </Link>
             </div>

@@ -1,167 +1,122 @@
-.titulo {
-    padding-top: 50px;
-    color: black;
-    text-align: center;
-}
-
-.t2 {
-    padding-top: 66px;
-    color: black;
+.section {
     display: flex;
     justify-content: center;
-}
- 
-
-.div {
-    background-color: rgb(255, 255, 255);
-    color: black;
-    padding-bottom: 150px;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+    padding: 20px;
 }
 
-.inpt {
-    text-align: center;
-    color: black;
-    width: 400px;
-    box-sizing: border-box;
-    border: 2px solid #000000;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    transition: width 0.4s ease-in-out;
-    margin: 10px;
-}
-
-.inpt:focus {
-    width: 40%;
-}
-
-.titulo {
-    text-align: center;
-}
-
-.cls {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-
-
-
-.gnr {
-    height: 50px;
-    text-align: center;
-    margin-left: 10px;
-    color: black;
-    width: 400px;
-    box-sizing: border-box;
-    border: 2px solid #000000;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    transition: width 0.4s ease-in-out;
-}
-
-.gnr:focus {
-    width: 20%;
-} 
-
-.plhld1{
-    margin-left: 30px;
-    margin-top: 20px;
-    margin-right: px;
-    margin-bottom: px;
-}
-
-.plhld2{
-    margin-left: 30px;
-    margin-top: 20px;
-    margin-right: px;
-    margin-bottom: px;
-}
-
-.plhld3{
-    margin-left: 35px;
-    margin-top: 20px;
-    margin-right: px;
-    margin-bottom: px;
-}
-
-.plhld4{
-    margin-left: 65px;
-    margin-top: 20px;
-    margin-right: px;
-    margin-bottom: px;
-}
-
-.plhld5{
-    margin-left: 45px;
-    margin-top: 20px;
-    margin-right: 5px;
-    margin-bottom: px;
-}
-
-.plhld6{
-    margin-left: 35px;
-    margin-top: 20px;
-    margin-right: px;
-    margin-bottom: px;
-}
-
-.plhld7{
-    margin-left: -15px;
-    margin-top: 20px;
-    margin-right: 5px;
-    margin-bottom: px;
-}
-
-.plhld8{
-    margin-left: 50px;
-    margin-top: 20px;
-    margin-right: px;
-    margin-bottom: px;
-}
-
-.plhld9{
-    margin-left: -45px;
-    margin-top: 20px;
-    margin-right: px;
-    margin-bottom: px;
-}
-
-.plhld10{
-    margin-left: 15px;
-    margin-top: 20px;
-    margin-right: -30px;
-    margin-bottom: px;
-}
-
-.card_botao {
-    position: relative;
-    min-width: 10px;
-    left: 40%;
-    display: flex;
-    justify-content: center;
-    max-width: 400px;
-}
-
-.card_botao button {
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 800px;
     width: 100%;
+}
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.label {
+    font-size: 1rem;
+    color: #555;
+}
+
+.input, .select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.input:focus, .select:focus {
+    border-color: #4B6FE2;
+    outline: none;
+}
+
+.select {
+    appearance: none;
+    background-color: white;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007BFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button {
     padding: 10px 20px;
-    background-color: #007BFF;
+    background-color: #4B6FE2;
     color: white;
     border: none;
     border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
-    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
-.card_botao button:hover {
-    background-color: #0056b3;
+.button:hover {
+    background-color: #3a5bbf;
+}
+
+@media (prefers-color-scheme: dark) {
+    .section {
+        background-color: #1a1a1a;
+    }
+
+    .container {
+        background-color: #2a2a2a;
+    }
+
+    .title {
+        color: #fff;
+    }
+
+    .label {
+        color: #ccc;
+    }
+
+    .input, .select {
+        background-color: #333;
+        border-color: #444;
+        color: #fff;
+    }
+
+    .input:focus, .select:focus {
+        border-color: #4B6FE2;
+    }
+
+    .button {
+        background-color: #4B6FE2;
+    }
+
+    .button:hover {
+        background-color: #3a5bbf;
+    }
 }

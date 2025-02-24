@@ -17,12 +17,12 @@ export default function TelaLogin() {
                         <input className={styles.inptpass} type="password" name="pass" id="pass" placeholder="Digite sua senha" required />
                     </form>
                 </section>
-                <Link href="/dashboard" className={styles.card_botao}>
+                <Link href="/pagInfo" className={styles.card_botao}>
                     <button className={styles.button}>Continuar</button>
                 </Link>
                 <p className={styles.card_texto}>
                     Não tem cadastro?
-                    <Link href="/cadastro" className={styles.card_cada}> Cadastra-se </Link>
+                    <Link href="/telaCliente" className={styles.card_cada}> Cadastra-se </Link>
                 </p>
             </main>
         </div>
