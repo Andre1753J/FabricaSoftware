@@ -16,14 +16,15 @@
     margin-left: 1vw;
     margin-right: 1vw;
     border-radius: 5px;
-    font-size: 16px;
-    background-color: #4CAF50; /* Cor mais aceitável */
+    font-size: 16px;  
+    background-color: #4CAF50;
     color: white;
     cursor: pointer;
 }
 
 .divNHeader {
     position: absolute;
+    z-index: 99;
     right: 5vw;
     background: linear-gradient(to right, rgb(20, 64, 205), rgb(72, 94, 163));;
     display: flex;
