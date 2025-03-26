@@ -1,3 +1,14 @@
+caixa de mensagens, botao de acesso ao WhatsApp ao invés de contato
+
+Filtro nos animais
+
+adicionar Vacinas Mais Importantes, Data do último vermífugo, Botao de adicionar fotos, na ficha animal
+
+saber o propósito do projeto
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
