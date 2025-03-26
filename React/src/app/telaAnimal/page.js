@@ -19,8 +19,8 @@ export default function FichaAnimal() {
                         </div>
                         
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="idade">Idade</label>
-                            <input className={styles.input} type="number" id="idade" placeholder="Idade do animal" required />
+                            <label className={styles.label} htmlFor="idade">Data de nascimento</label>
+                            <input className={styles.input} type="number" id="idade" placeholder="Data de nascimento do animal" required />
                         </div>
                     </form>
 

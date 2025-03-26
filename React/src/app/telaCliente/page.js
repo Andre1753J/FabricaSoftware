@@ -14,8 +14,8 @@ export default function Cliente() {
                     </div>
 
                     <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="idade">IDADE</label>
-                        <input className={styles.input} id="idade" placeholder="Digite sua idade" type="number" required />
+                        <label className={styles.label} htmlFor="idade">DATA DE NASCIMENTO</label>
+                        <input className={styles.input} id="idade" placeholder="Digite sua data de nascimento" type="number" required />
                     </div>
 
                     <div className={styles.formGroup}>
