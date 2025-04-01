@@ -66,22 +66,6 @@ export default function FichaAnimal() {
                             <label className={styles.label} htmlFor="canino">Canino</label>
                         </div>
                     </fieldset>
-
-                    <fieldset className={styles.fieldset}>
-                        <legend className={styles.legend}>Porte do Animal</legend>
-                        <div className={styles.checkboxItem}>
-                            <input type="radio" name="porte" id="pequeno" />
-                            <label className={styles.label} htmlFor="pequeno">Pequeno</label>
-                        </div>
-                        <div className={styles.checkboxItem}>
-                            <input type="radio" name="porte" id="medio" />
-                            <label className={styles.label} htmlFor="medio">Médio</label>
-                        </div>
-                        <div className={styles.checkboxItem}>
-                            <input type="radio" name="porte" id="grande" />
-                            <label className={styles.label} htmlFor="grande">Grande</label>
-                        </div>
-                    </fieldset>
                 </div>
 
                 <button className={styles.button}>Salvar</button>
