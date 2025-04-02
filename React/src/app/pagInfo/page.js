@@ -10,10 +10,6 @@ export default function PagInfo() {
             </div>
             <div className={styles.card_segundo}>
                 <p className={styles.card_text_2}>Aqui no Pet's World, acreditamos que todo animal merece um lar cheio de amor. 💖 Somos um site dedicado a conectar animais em busca de um lar com pessoas que sonham em ter um companheiro de quatro patas. 🐾</p>
-                <div className={styles.card_link}>
-                    <a href="https://www.whatsapp.com"><img className={styles.wts} src="/images/whatsapp_256_black.png" alt="WhatsApp" /></a>
-                    <a href="https://www.instagram.com"><img className={styles.itg} src="/images/instagram-logo-instagram-logo-transparent-instagram-icon-transparent-free-free-png.webp" alt="Instagram" /></a>
-                </div>
             </div>
         </main>
     );

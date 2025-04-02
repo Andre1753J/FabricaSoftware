@@ -22,6 +22,11 @@ export default function FichaAnimal() {
                             <label className={styles.label} htmlFor="idade">Data de nascimento</label>
                             <input className={styles.input} type="number" id="idade" placeholder="Data de nascimento do animal" required />
                         </div>
+
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="situacao">Vacinas Importantes</label>
+                            <input className={styles.input} type="text" id="situacao" placeholder="Vacinas Importantes que o animal tomou" />
+                        </div>
                     </form>
 
                     <form className={styles.form}>
@@ -39,6 +44,12 @@ export default function FichaAnimal() {
                             <label className={styles.label} htmlFor="situacao">Situação</label>
                             <input className={styles.input} type="text" id="situacao" placeholder="Situação do animal" />
                         </div>
+
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="situacao">Ultímo Vermífugo</label>
+                            <input className={styles.input} type="date" id="situacao" placeholder="" />
+                        </div>
+
                     </form>
                 </div>
 
