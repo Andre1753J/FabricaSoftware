@@ -5,6 +5,17 @@ export default function FichaAnimal() {
         <section className={styles.section}>
             <main className={styles.main}>
                 <h1 className={styles.title}>FICHA ANIMAL</h1>
+                <div className={styles.title_image_main}>
+                <label className={styles.title_image}>Foto do Animal</label>
+                </div>
+                <div className={styles.box_image}>
+                    <form action='#'>
+                        <input className={styles.button_img} type="file" id="img" name="img" accept="image/*"></input>
+                    </form>
+                </div>
+                <div className={styles.image_button_main}>
+                <input className={styles.image_button} type="submit"></input>
+                </div>
                 
                 <div className={styles.formContainer}>
                     <form className={styles.form}>
@@ -20,7 +31,7 @@ export default function FichaAnimal() {
                         
                         <div className={styles.formGroup}>
                             <label className={styles.label} htmlFor="idade">Data de nascimento</label>
-                            <input className={styles.input} type="number" id="idade" placeholder="Data de nascimento do animal" required />
+                            <input className={styles.input} type="date" id="idade" placeholder="Data de nascimento do animal" required />
                         </div>
 
                         <div className={styles.formGroup}>

@@ -14,10 +14,12 @@ export default function Contato() {
                     </div>
                 </div>
                 <div className={styles.div_2}>
-                <div className={styles.caixa_mensagem}>
-                            <label className={styles.box_txt}>Dúvida</label>
-                            <input className={styles.inpt_txt} type='textarea' id='txt' placeholder='Diga-nos sua dúvida'></input>
-                        </div>
+                    <div className={styles.title}>
+                        <h1 className={styles.title_main}>Dúvida</h1>
+                    </div>
+                    <div className={styles.caixa_mensagem}>
+                        <input className={styles.inpt_txt} type='textarea' id='txt' placeholder='Diga-nos sua dúvida'></input>
+                    </div>
                 </div>
             </div>
         </main>

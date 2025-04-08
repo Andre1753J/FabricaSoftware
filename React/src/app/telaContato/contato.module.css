@@ -72,10 +72,24 @@
 }
 
 .caixa_mensagem {
-   
+    justify-content: center;
+    display: flex;
+    height: 200px;
     /* Move a div mais para a esquerda */
     background-color: #b1cef9;
     padding: 20px;
     border-radius: 10px;
     max-width: 780px;
+}
+
+.inpt_txt {
+    border: none;
+    border-radius: 10px;
+    height: 160px;
+    width: 380px;
+    text-align: center;
+}
+
+.title {
+    text-align: center;
 }
