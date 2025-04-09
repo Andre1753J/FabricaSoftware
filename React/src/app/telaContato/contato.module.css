@@ -83,11 +83,19 @@
 }
 
 .inpt_txt {
+    transition: width 0.9s, height 0.9s;
+    width: 200px;
+    height: 70px;
     border: none;
     border-radius: 10px;
-    height: 160px;
-    width: 380px;
+    max-height: 160px;
+    max-width: 380px;
     text-align: center;
+}
+
+.inpt_txt:hover {
+    width: 380px;
+    height: 160px;
 }
 
 .title {
