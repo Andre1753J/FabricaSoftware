@@ -41,7 +41,7 @@ export default function Header() {
             </section>
             <section>
                 {abrir && <div className={styles.divNHeader}>
-                    <button onClick={abrirCoisa} href='/telaAnimal' className={styles.dropBotao}><Link onClick={abrirCoisa} href='/telaAnimal'>Criar Ficha Animal</Link></button>
+                    <button onClick={abrirCoisa} href='/Cadastro_A' className={styles.dropBotao}><Link onClick={abrirCoisa} href='/Cadastro_A'>Criar Ficha Animal</Link></button>
                     <button className={styles.dropBotao}><Link onClick={abrirCoisa} href='/adocao'>Tela de Adoção</Link></button>
                     <button className={styles.dropBotao}><Link onClick={abrirCoisa} href='/telaConta'>Conta</Link></button>
                 </div>}

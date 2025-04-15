@@ -22,7 +22,7 @@ export default function TelaLogin() {
                 </Link>
                 <p className={styles.card_texto}>
                     Não tem cadastro?
-                    <Link href="/telaCliente" className={styles.card_cada}> Cadastra-se </Link>
+                    <Link href="/Cadastro_C" className={styles.card_cada}> Cadastra-se </Link>
                 </p>
             </main>
         </div>

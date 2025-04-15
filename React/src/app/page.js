@@ -11,7 +11,7 @@ export default function Inicial() {
                     </div>
                     <div className={styles.cardbotoes}>
                         <button className={styles.botao}>
-                            <a className={styles.ancora} href="/telaCliente">Cadastrar</a>
+                            <a className={styles.ancora} href="/Cadastro_C">Cadastrar</a>
                         </button>
                         <button className={styles.botao}>
                             <a className={styles.ancora}href="/telaLogin">Login</a>
