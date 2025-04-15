@@ -1,4 +1,4 @@
-import styles from './telaCliente.module.css';
+import styles from './cadastro_C.module.css';
 import Link from 'next/link';
 
 export default function Cliente() {
@@ -14,8 +14,8 @@ export default function Cliente() {
                     </div>
 
                     <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="idade">DATA DE NASCIMENTO</label>
-                        <input className={styles.input} id="idade" placeholder="Digite sua data de nascimento" type="number" required />
+                        <label className={styles.label} htmlFor="dt_nasci">DATA DE NASCIMENTO</label>
+                        <input className={styles.input} id="dt_nasci" placeholder="Digite sua data de nascimento" type="date" required />
                     </div>
 
                     <div className={styles.formGroup}>
@@ -49,11 +49,6 @@ export default function Cliente() {
                     <div className={styles.formGroup}>
                         <label className={styles.label} htmlFor="cep">CEP</label>
                         <input className={styles.input} id="cep" placeholder="Digite seu código postal" type="text" required />
-                    </div>
-
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="porte">PORTE DO ANIMAL</label>
-                        <input className={styles.input} id="porte" placeholder="Complemento do endereço da sua residência" type="text" />
                     </div>
                 </form>
 

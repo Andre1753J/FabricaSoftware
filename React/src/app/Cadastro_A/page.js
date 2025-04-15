@@ -1,4 +1,4 @@
-import styles from './fichaAnimal.module.css';
+import styles from './cadastro_A.module.css';
 
 export default function FichaAnimal() {
     return (
