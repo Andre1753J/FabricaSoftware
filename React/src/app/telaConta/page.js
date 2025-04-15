@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './telaConta.module.css';
+import RotaSegura from '@/components/rotaSegura';
 
 const MinhaConta = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -15,7 +16,8 @@ const MinhaConta = () => {
   };
 
   return (
-    <div className={styles.contaContainer}>
+    <RotaSegura>
+      <div className={styles.contaContainer}>
       <h1 className={styles.t1}>Minha Conta</h1>
       <div className={styles.infoSection}>
         <h2 className={styles.t2}>Informações do Usuário</h2>
@@ -76,6 +78,7 @@ const MinhaConta = () => {
         </div>
       )}
     </div>
+    </RotaSegura>
   );
 };
 
