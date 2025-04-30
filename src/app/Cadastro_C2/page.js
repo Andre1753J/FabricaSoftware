@@ -1,4 +1,6 @@
 import styles from '../Cadastro_A/cadastro_A.module.css';
+import Link from 'next/link';
+
 export default function FichaAnimal() {
     return (
         <section className={styles.section}>
@@ -89,7 +91,9 @@ export default function FichaAnimal() {
                     </fieldset>
                 </div>
 
+               <Link href='/pagInfo'>
                 <button className={styles.button}>Salvar</button>
+                </Link>
             </main>
         </section>
     );
