@@ -18,7 +18,7 @@ export default function Cliente() {
                     </div>
                 </form>
             
-                <Link href="/pagInfo" className={styles.link}>
+                <Link href="/Cadastro_C2" className={styles.link}>
                     <button className={styles.button}>Continuar</button>
                 </Link>
             </div>

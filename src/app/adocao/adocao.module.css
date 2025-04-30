@@ -90,3 +90,15 @@
 .link{
     text-decoration:underline;
 }
+
+.macho {
+    color: blue;
+}
+
+.femea {
+    color: pink;
+}
+
+.name {
+    color: black;
+}
