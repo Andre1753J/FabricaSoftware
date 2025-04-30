@@ -1,0 +1,245 @@
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/Footer/Footer.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+.Footer_footer__4vzqH {
+    background-color: #333;
+    color: #ccc;
+    padding: 32px 20px;
+}
+
+#Footer_comment__2XHh4 {
+    position: absolute;
+    width: 97.85vw;
+    bottom: 0;
+}
+
+.Footer_footercontainer__BrBj0 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.Footer_footercolumn__VUy_d {
+    flex: 1 1;
+    margin: 10px;
+    min-width: 200px;
+}
+
+.Footer_footercolumn__VUy_d h3 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.Footer_footercolumn__VUy_d a {
+    color: #f68e3c;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+
+.Footer_footercolumn__VUy_d a:hover {
+    color: #fff;
+}
+
+.Footer_footercolumn__VUy_d p {
+    margin: 5px 0;
+}
+
+.Footer_whatsappicon__5qU9p {
+    color: green;
+    margin-left: 5px;
+}
+
+.Footer_footerlogos__G4IR_ img {
+    max-width: 100px;
+    margin: 10px 20px 10px 0;
+}
+
+.Footer_floatbutton__EEUqm {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #2979ff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.Footer_floatbutton__EEUqm img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.Footer_footerbottom__QtmA1 {
+    text-align: center;
+    margin-top: 0;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/globals.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --corPrincipal: rgb(20, 64, 205);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+
+  label {
+    color: black;
+  }
+
+  legend {
+    color: black;
+  }
+
+  button {
+    color: black;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  /*   */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/Header/Header.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+.Header_header__AF_3G {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: var(--background);
+    color: #ffffff;
+    background: linear-gradient(to right, rgb(20, 64, 205), rgb(72, 94, 163));
+}
+
+.Header_dropBotao__AY_0M {
+    height: 50%;
+    width: 190px;
+    border: none;
+    margin-top: 3%;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    border-radius: 5px;
+    font-size: 16px;  
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.Header_divNHeader__6ElFz {
+    position: absolute;
+    z-index: 50;
+    right: 5vw;
+    background: linear-gradient(to right, rgb(20, 64, 205), rgb(72, 94, 163));;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px 20px;
+    height: 15vh;
+    border-radius: 0 0 5px 5px;
+}
+
+.Header_navContainer___CbJF {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.Header_logo__1FRrW {
+    font-size: 1.5rem;
+}
+
+.Header_menuIcon__aSp2R {
+    cursor: pointer;
+    transition: transform 0.6s;
+    display: block;
+}
+
+.Header_nav__LVYU2 {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.Header_navOpen__inIop {
+    display: flex;
+}
+
+.Header_list__Ho2Bd {
+    list-style: none;
+    padding: 0;
+}
+
+.Header_list__Ho2Bd li {
+    margin: 10px 0;
+}
+
+.Header_img__pQOKa {
+    border-radius: 50%;
+}
+
+.Header_nada__QmKDi {
+    cursor: pointer;
+}
+
+@media (min-width: 600px) {
+    .Header_nav__LVYU2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .Header_list__Ho2Bd {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .Header_list__Ho2Bd li {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+}
