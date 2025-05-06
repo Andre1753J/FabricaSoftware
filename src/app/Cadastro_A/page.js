@@ -1,6 +1,7 @@
 import styles from './cadastro_A.module.css';
 
 export default function FichaAnimal() {
+    
     return (
         <section className={styles.section}>
             <main className={styles.main}>
