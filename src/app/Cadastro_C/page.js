@@ -7,20 +7,18 @@ export default function Cliente() {
             <div className={styles.container}>
                 <h1 className={styles.title}>Cadastro Cliente</h1>
                 
-                <form className={styles.form}>
+                <form className={styles.form} action="/Cadastro_C2" method="POST">
                     <div className={styles.formGroup}>
                         <label className={styles.label} htmlFor="email">EMAIL</label>
-                        <input className={styles.input} id="email" placeholder="Digite seu endereço de email" type="email" required />
+                        <input className={styles.input} id="email" name="email" placeholder="Digite seu endereço de email" type="email" required />
                     </div>
-                    <div>
-                        <label className={styles.label} htmlFor='pass'>SENHA</label>
-                        <input className={styles.input} id="pass" placeholder="Digite a senha para ser cadastrada" type="password" minLength="8"/>
+                    <div className={styles.formGroup}>
+                        <label className={styles.label} htmlFor="pass">SENHA</label>
+                        <input className={styles.input} id="pass" name="pass" placeholder="Digite a senha para ser cadastrada" type="password" minLength="8" required />
                     </div>
+
+                    <button type="submit" className={styles.button}>Continuar</button>
                 </form>
-            
-                <Link href="/Cadastro_C2" className={styles.link}>
-                    <button className={styles.button}>Continuar</button>
-                </Link>
             </div>
         </section>
     );

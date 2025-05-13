@@ -1,3 +1,4 @@
+/* Container principal, centralizando o conteúdo */
 .section {
     display: flex;
     justify-content: center;
@@ -7,8 +8,9 @@
     padding: 20px;
 }
 
+/* Container do formulário */
 .container {
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 30px;
@@ -16,6 +18,7 @@
     width: 100%;
 }
 
+/* Título do formulário */
 .title {
     text-align: center;
     font-size: 2rem;
@@ -23,6 +26,7 @@
     margin-bottom: 20px;
 }
 
+/* Estilos do formulário e seus campos */
 .form {
     display: flex;
     flex-direction: column;
@@ -35,11 +39,13 @@
     gap: 5px;
 }
 
+/* Estilos dos labels */
 .label {
     font-size: 1rem;
     color: #555;
 }
 
+/* Estilos para inputs e selects */
 .input, .select {
     width: 100%;
     padding: 10px;
@@ -50,26 +56,30 @@
     transition: border-color 0.3s ease;
 }
 
+/* Efeito de foco para inputs e selects */
 .input:focus, .select:focus {
     border-color: #4B6FE2;
     outline: none;
 }
 
+/* Estilo do select personalizado */
 .select {
     appearance: none;
-    background-color: white;
+    background-color: #fff;
     background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007BFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 12px;
 }
 
+/* Link para navegar (continuação) */
 .link {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
+/* Estilos para o botão */
 .button {
     padding: 10px 20px;
     background-color: #4B6FE2;
@@ -81,10 +91,12 @@
     transition: background-color 0.3s ease;
 }
 
+/* Efeito de hover no botão */
 .button:hover {
     background-color: #3a5bbf;
 }
 
+/* Estilos para o tema escuro */
 @media (prefers-color-scheme: dark) {
     .section {
         background-color: #1a1a1a;
@@ -94,12 +106,8 @@
         background-color: #2a2a2a;
     }
 
-    .title {
+    .title, .label {
         color: #fff;
-    }
-
-    .label {
-        color: #ccc;
     }
 
     .input, .select {

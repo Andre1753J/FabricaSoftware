@@ -1,3 +1,5 @@
+
+
 .section {
     display: flex;
     justify-content: center;
@@ -14,6 +16,7 @@
     padding: 30px;
     max-width: 800px;
     width: 100%;
+    transition: all 0.3s ease; /* Suaviza a transição */
 }
 
 .title {
@@ -51,6 +54,7 @@
     border-radius: 5px;
     font-size: 1rem;
     color: #333;
+    transition: border-color 0.3s ease; /* Transição suave no foco */
 }
 
 .input:focus {
@@ -148,6 +152,7 @@
     }
 }
 
+/* Estilo da caixa de imagem */
 .box_image {
     display: flex;
     justify-content: space-evenly;
@@ -175,6 +180,11 @@
     width: 100px;
     height: 30px;
     border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.image_button:hover {
+    background-color: #4B6FE2;
 }
 
 .button_img {
@@ -182,4 +192,9 @@
     width: 400px;
     height: 30px;
     font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.button_img:hover {
+    background-color: #4B6FE2;
 }
