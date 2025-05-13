@@ -2,35 +2,10 @@
 
 import styles from '../Cadastro_A/cadastro_A.module.css';
 import Link from 'next/link';
-import { useState } from 'react';
-import Image from 'next/image';
 
 
 
 export default function FichaAnimal() {
-
-    const [imageFile, setImageFile] = useState(null);
-    const [imageUrl, setImageUrl] = useState('');
-
-    const handleUpload = async (e) => {
-        e.preventDefault();
-        if (!imageFile) return alert('Selecione uma imagem!');
-
-        const formData = new FormData();
-        formData.append('imagem', imageFile);
-
-        const res = await fetch('/api/upload', {
-            method: 'POST',
-            body: formData,
-        });
-
-        const data = await res.json();
-        if (data.id) {
-            // Busca a imagem pelo ID e salva a URL para exibir
-            const res2 = await fetch(`/api/image/${data.id}`);
-            const imageData = await res2.json();
-            setImageUrl(imageData.url);
-        }}
 
     return (
         
