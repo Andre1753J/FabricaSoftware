@@ -8,7 +8,7 @@ html::-webkit-scrollbar {
 } */
 
 .body {
-  background: no-repeat center/cover url("../../public/images/telaInicial.png");
+  background: no-repeat center/cover url("../../public/images/telaInicial.webp");
   height: 45vw;
 }
 

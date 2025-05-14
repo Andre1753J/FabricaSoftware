@@ -3,19 +3,28 @@
     flex-direction: column;
     gap: 2rem;
     padding: 2rem;
-    max-width: 1200px;
+    max-width: 2600px;
     margin: 0 auto;
+    background-image: url('/images/gato.png'); /* Substitua com o caminho da sua imagem */
+    background-size: cover; /* A imagem vai cobrir todo o fundo */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Impede que a imagem se repita */
+    height: 75vh; /* A altura será 100% da tela */
+    width: 100vw; /* A largura será 100% da tela */
+    overflow: hidden; /* Garante que o conteúdo não saia da tela */
 }
+
 
 .card_primeiro,
 .card_segundo {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo com transparência para destacar o conteúdo */
     border-radius: 1rem;
     padding: 2rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .titulo1 {
+    color: black;
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
@@ -52,8 +61,13 @@
     background-color: #e35050;
 }
 
-/* Responsividade opcional */
+/* Responsividade para dispositivos móveis */
 @media (max-width: 600px) {
+    .main {
+        height: auto; /* No mobile, a altura pode se ajustar conforme o conteúdo */
+        padding: 1.5rem; /* Ajuste o padding para dispositivos móveis */
+    }
+
     .titulo1 {
         font-size: 2rem;
     }
