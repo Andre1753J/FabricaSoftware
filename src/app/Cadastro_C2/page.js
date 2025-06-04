@@ -4,12 +4,12 @@ import { useState } from 'react';
 import styles from '../Cadastro_A/cadastro_A.module.css';
 import Link from 'next/link';
 
-export default function FichaAnimal() {
+export default function FichaCliente() {
     // State para armazenar as informações dos campos
     const [animalData, setAnimalData] = useState({
         nome: '',
-        raca: '',
-        idade: '',
+        estado_civil: '',
+        dt_nasimento: '',
         situacao: '',
         mae: '',
         pai: '',
@@ -36,10 +36,10 @@ export default function FichaAnimal() {
     return (
         <section className={styles.section}>
             <main className={styles.main}>
-                <h1 className={styles.title}>FICHA ANIMAL</h1>
+                <h1 className={styles.title}>FICHA CLIENTE</h1>
                 
                 <div className={styles.title_image_main}>
-                    <label className={styles.title_image}>Foto do Animal</label>
+                    <label className={styles.title_image}>Foto do Cliente</label>
                 </div>
                 
                 <div className={styles.box_image}>
@@ -69,20 +69,20 @@ export default function FichaAnimal() {
                                 id="nome" 
                                 value={animalData.nome} 
                                 onChange={handleChange} 
-                                placeholder="Nome do animal" 
+                                placeholder="Nome do Cliente" 
                                 required 
                             />
                         </div>
                         
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="raca">Raça</label>
+                            <label className={styles.label} htmlFor="raca">CPF</label>
                             <input 
                                 className={styles.input} 
-                                type="text" 
-                                id="raca" 
+                                type="number" 
+                                id="cpf" 
                                 value={animalData.raca} 
                                 onChange={handleChange} 
-                                placeholder="Raça do animal" 
+                                placeholder="Estado Civil" 
                                 required 
                             />
                         </div>
@@ -92,7 +92,7 @@ export default function FichaAnimal() {
                             <input 
                                 className={styles.input} 
                                 type="date" 
-                                id="idade" 
+                                id="dt_nasimento" 
                                 value={animalData.idade} 
                                 onChange={handleChange} 
                                 placeholder="Data de nascimento" 
@@ -101,14 +101,14 @@ export default function FichaAnimal() {
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="situacao">Vacinas Importantes</label>
+                            <label className={styles.label} htmlFor="situacao">Endereço</label>
                             <input 
                                 className={styles.input} 
-                                type="text" 
+                                type="address" 
                                 id="situacao" 
                                 value={animalData.situacao} 
                                 onChange={handleChange} 
-                                placeholder="Vacinas importantes" 
+                                placeholder="Endereço do Cliente" 
                             />
                         </div>
                     </div>
@@ -116,49 +116,50 @@ export default function FichaAnimal() {
                     <div className={styles.formContainer}>
                         {/* Formulário 2 */}
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="mae">Mãe</label>
+                            <label className={styles.label} htmlFor="mae">Bairro</label>
                             <input 
                                 className={styles.input} 
-                                type="text" 
-                                id="mae" 
+                                type="address" 
+                                id="bairro" 
                                 value={animalData.mae} 
                                 onChange={handleChange} 
-                                placeholder="Mãe do animal" 
+                                placeholder="Bairro do cliente" 
                             />
                         </div>
                         
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="pai">Pai</label>
+                            <label className={styles.label} htmlFor="pai">Telefone</label>
                             <input 
                                 className={styles.input} 
-                                type="text" 
-                                id="pai" 
+                                type="number" 
+                                id="fone" 
                                 value={animalData.pai} 
                                 onChange={handleChange} 
-                                placeholder="Pai do animal" 
+                                placeholder="Telefone do cliente" 
                             />
                         </div>
                         
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="situacao">Situação</label>
+                            <label className={styles.label} htmlFor="situacao">Profissão</label>
                             <input 
                                 className={styles.input} 
                                 type="text" 
-                                id="situacao" 
+                                id="profissão" 
                                 value={animalData.situacao} 
                                 onChange={handleChange} 
-                                placeholder="Situação do animal" 
+                                placeholder="Profissão do Cliente" 
                             />
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="verme">Último Vermífugo</label>
+                            <label className={styles.label} htmlFor="verme">E-mail</label>
                             <input 
                                 className={styles.input} 
-                                type="date" 
-                                id="verme" 
-                                value={animalData.ultimoVerme} 
+                                type="email" 
+                                id="email" 
+                               value={animalData.ultimoVerme} 
                                 onChange={handleChange} 
+                                placeholder="E-mail do Cliente"
                             />
                         </div>
                     </div>
@@ -172,7 +173,7 @@ export default function FichaAnimal() {
                                     type="radio" 
                                     name="sexo" 
                                     id="macho" 
-                                    value="Macho" 
+                                    value="Masculino" 
                                     onChange={handleChange} 
                                     checked={animalData.sexo === 'Macho'} 
                                 />
@@ -183,7 +184,7 @@ export default function FichaAnimal() {
                                     type="radio" 
                                     name="sexo" 
                                     id="femea" 
-                                    value="Fêmea" 
+                                    value="Femenino" 
                                     onChange={handleChange} 
                                     checked={animalData.sexo === 'Fêmea'} 
                                 />
@@ -191,31 +192,6 @@ export default function FichaAnimal() {
                             </div>
                         </fieldset>
 
-                        <fieldset className={styles.fieldset}>
-                            <legend className={styles.legend}>Espécie</legend>
-                            <div className={styles.checkboxItem}>
-                                <input 
-                                    type="radio" 
-                                    name="especie" 
-                                    id="felino" 
-                                    value="Felino" 
-                                    onChange={handleChange} 
-                                    checked={animalData.especie === 'Felino'} 
-                                />
-                                <label className={styles.label} htmlFor="felino">Felino</label>
-                            </div>
-                            <div className={styles.checkboxItem}>
-                                <input 
-                                    type="radio" 
-                                    name="especie" 
-                                    id="canino" 
-                                    value="Canino" 
-                                    onChange={handleChange} 
-                                    checked={animalData.especie === 'Canino'} 
-                                />
-                                <label className={styles.label} htmlFor="canino">Canino</label>
-                            </div>
-                        </fieldset>
                     </div>
 
                     {/* Botão de Salvar */}
