@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import "./globals.css";
 import Header from "@/components/Header";
+import StatusGate from "@/components/StatusGate";
 
 export const metadata = {
   title: "Pet's World",
@@ -14,9 +15,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <StatusGate>
         <Header/>
         {children}
         <Footer/>
+        </StatusGate>
       </body>
     </html>
   );
