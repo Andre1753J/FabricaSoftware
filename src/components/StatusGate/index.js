@@ -6,7 +6,7 @@ export default function StatusGate({ children }) {
 
   useEffect(() => {
     const verificar = async () => {
-        const res = await fetch("http://localhost:9000/api/status");
+        const res = await fetch("https://petsworldapi.dev.vilhena.ifro.edu.br/status");
         const data = await res.json();
         if (res.ok && data.status) {
           setStatus("ok");
