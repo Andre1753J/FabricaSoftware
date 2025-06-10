@@ -139,7 +139,7 @@ export default function FichaCliente() {
                             />
                         </div>
                         
-                        <div className={styles.formGroup}>
+                        {/* <div className={styles.formGroup}>
                             <label className={styles.label} htmlFor="situacao">Profissão</label>
                             <input 
                                 className={styles.input} 
@@ -149,9 +149,9 @@ export default function FichaCliente() {
                                 onChange={handleChange} 
                                 placeholder="Profissão do Cliente" 
                             />
-                        </div>
+                        </div> */}
 
-                        <div className={styles.formGroup}>
+                        {/* <div className={styles.formGroup}>
                             <label className={styles.label} htmlFor="verme">E-mail</label>
                             <input 
                                 className={styles.input} 
@@ -161,7 +161,7 @@ export default function FichaCliente() {
                                 onChange={handleChange} 
                                 placeholder="E-mail do Cliente"
                             />
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Seleção de Sexo e Espécie */}
@@ -205,3 +205,10 @@ export default function FichaCliente() {
         </section>
     );
 }
+
+// não tem porque pegar o e email denovo se ja ta castrado
+// não faz sentido pegar a profissão do cliente
+// não se utiliza "macho" e "fêmea" como opções de sexo, mas sim "masculino" e "feminino"
+// há inumeras desconexões com o back
+// colque todas as informações do cliente corretamente
+// as informações do cliente estão no .txt isso são apenas orientações
