@@ -1,70 +1,82 @@
-.main {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+.div_pai {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 65.1vh;
-    margin: 0;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.main {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    display: flex;
     flex-direction: column;
+    align-items: stretch;
 }
 
 .card_titulo {
     text-align: center;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.card_form_2 {
+.card_form {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 15px;
+    gap: 15px;
 }
 
-.email {
-
-    margin-bottom: 5px;
-    color: #555;
-  
+.formGroup {
+    display: flex;
+    flex-direction: column;
 }
 
+.email,
 .pass {
     margin-bottom: 5px;
     color: #555;
+    font-weight: 500;
 }
 
-.inptpass, .inpt_email
- {
+.inpt_email,
+.inptpass {
     padding: 10px;
     border: 1px solid #000000;
     border-radius: 5px;
     font-size: 16px;
-    margin-bottom: 10px;
-    background-color: #f4f4f4;
+    background-color: #fefefe; /* fundo mais claro */
+    color: #000; /* <- ESSA LINHA RESOLVE! */
+    transition: border-color 0.3s;
 }
 
-.card_botao {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: 400px;
-    margin-top: 20px;
+
+.inpt_email:focus,
+.inptpass:focus {
+    border-color: #007BFF;
+    outline: none;
 }
 
-.card_botao button {
-    width: 100%;
-    padding: 10px 20px;
+.button {
+    padding: 12px;
     background-color: #007BFF;
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s;
+    width: 100%;
 }
 
-.card_botao button:hover {
+.button:hover {
     background-color: #0056b3;
 }
 
@@ -72,13 +84,16 @@
     text-align: center;
     margin-top: 20px;
     color: #555;
+    font-size: 14px;
 }
 
-.card_texto a {
+.card_cada {
     color: #007BFF;
     text-decoration: none;
+    margin-left: 5px;
+    font-weight: 500;
 }
 
-.card_texto a:hover {
+.card_cada:hover {
     text-decoration: underline;
 }
