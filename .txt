@@ -1,6 +1,6 @@
 ROTA: https://petsworld.dev.vilhena.ifro.edu.br
 
-informações necessarias no cadastro do Cliente
+//informações necessarias no cadastro do Cliente
 nome., cpf., cep., complemento.,
 dt_nascimento., telefone., rg,
 sexo., bairro, estado, rua, telefone2.
