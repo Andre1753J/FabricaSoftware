@@ -15,11 +15,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <StatusGate>
+        {/* <StatusGate> */}
         <Header/>
         {children}
         <Footer/>
-        </StatusGate>
+        {/* </StatusGate> */}
       </body>
     </html>
   );

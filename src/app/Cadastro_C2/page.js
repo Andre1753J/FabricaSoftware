@@ -2,26 +2,25 @@
 
 import { useState } from 'react';
 import styles from '../Cadastro_A/cadastro_A.module.css';
-import Link from 'next/link';
 
 export default function FichaCliente() {
-    // State para armazenar as informações dos campos
-    const [animalData, setAnimalData] = useState({
+    const [clienteData, setClienteData] = useState({
         nome: '',
-        estado_civil: '',
-        dt_nasimento: '',
-        situacao: '',
-        mae: '',
-        pai: '',
-        ultimoVerme: '',
+        dt_nascimento: '',
         sexo: '',
-        especie: ''
+        cpf: '',
+        rg: '',
+        telefone_1: '',
+        telefone_2: '',
+        rua: '',
+        bairro: '',
+        complemento: '',
+        estado: '',
     });
 
-    // Função para atualizar os dados do formulário
     const handleChange = (e) => {
         const { id, value } = e.target;
-        setAnimalData(prevState => ({
+        setClienteData(prevState => ({
             ...prevState,
             [id]: value
         }));
@@ -29,27 +28,27 @@ export default function FichaCliente() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Aqui você pode enviar os dados para a API ou processá-los conforme necessário
-        console.log(animalData);
+        console.log(clienteData);
+        // Aqui você pode redirecionar com useRouter(), se quiser
     };
 
     return (
         <section className={styles.section}>
             <main className={styles.main}>
                 <h1 className={styles.title}>FICHA CLIENTE</h1>
-                
+
                 <div className={styles.title_image_main}>
                     <label className={styles.title_image}>Foto do Cliente</label>
                 </div>
-                
+
                 <div className={styles.box_image}>
                     <form>
-                        <input 
-                            className={styles.button_img} 
-                            type="file" 
-                            id="img" 
-                            name="img" 
-                            accept="image/*" 
+                        <input
+                            className={styles.button_img}
+                            type="file"
+                            id="img"
+                            name="img"
+                            accept="image/*"
                         />
                     </form>
                 </div>
@@ -60,151 +59,173 @@ export default function FichaCliente() {
 
                 <form className={styles.form} onSubmit={handleSubmit}>
                     <div className={styles.formContainer}>
-                        {/* Formulário 1 */}
                         <div className={styles.formGroup}>
                             <label className={styles.label} htmlFor="nome">Nome</label>
-                            <input 
-                                className={styles.input} 
-                                type="text" 
-                                id="nome" 
-                                value={animalData.nome} 
-                                onChange={handleChange} 
-                                placeholder="Nome do Cliente" 
-                                required 
-                            />
-                        </div>
-                        
-                        <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="raca">CPF</label>
-                            <input 
-                                className={styles.input} 
-                                type="number" 
-                                id="cpf" 
-                                value={animalData.raca} 
-                                onChange={handleChange} 
-                                placeholder="Estado Civil" 
-                                required 
-                            />
-                        </div>
-                        
-                        <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="idade">Data de nascimento</label>
-                            <input 
-                                className={styles.input} 
-                                type="date" 
-                                id="dt_nasimento" 
-                                value={animalData.idade} 
-                                onChange={handleChange} 
-                                placeholder="Data de nascimento" 
-                                required 
+                            <input
+                                className={styles.input}
+                                type="text"
+                                id="nome"
+                                value={clienteData.nome}
+                                onChange={handleChange}
+                                placeholder="Nome do Cliente"
+                                required
                             />
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="situacao">Endereço</label>
-                            <input 
-                                className={styles.input} 
-                                type="address" 
-                                id="situacao" 
-                                value={animalData.situacao} 
-                                onChange={handleChange} 
-                                placeholder="Endereço do Cliente" 
+                            <label className={styles.label} htmlFor="dt_nascimento">Data de Nascimento</label>
+                            <input
+                                className={styles.input}
+                                type="date"
+                                id="dt_nascimento"
+                                value={clienteData.dt_nascimento}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="cpf">CPF</label>
+                            <input
+                                className={styles.input}
+                                type="number"
+                                id="cpf"
+                                value={clienteData.cpf}
+                                onChange={handleChange}
+                                placeholder="CPF do cliente"
+                                required
+                            />
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="rg">RG</label>
+                            <input
+                                className={styles.input}
+                                type="number"
+                                id="rg"
+                                value={clienteData.rg}
+                                onChange={handleChange}
+                                placeholder="RG do cliente"
                             />
                         </div>
                     </div>
 
                     <div className={styles.formContainer}>
-                        {/* Formulário 2 */}
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="mae">Bairro</label>
-                            <input 
-                                className={styles.input} 
-                                type="address" 
-                                id="bairro" 
-                                value={animalData.mae} 
-                                onChange={handleChange} 
-                                placeholder="Bairro do cliente" 
+                            <label className={styles.label} htmlFor="telefone_1">Telefone 1</label>
+                            <input
+                                className={styles.input}
+                                type="number"
+                                id="telefone_1"
+                                value={clienteData.telefone_1}
+                                onChange={handleChange}
+                                placeholder="Telefone do cliente"
                             />
                         </div>
-                        
-                        <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="pai">Telefone</label>
-                            <input 
-                                className={styles.input} 
-                                type="number" 
-                                id="fone" 
-                                value={animalData.pai} 
-                                onChange={handleChange} 
-                                placeholder="Telefone do cliente" 
-                            />
-                        </div>
-                        
-                        {/* <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="situacao">Profissão</label>
-                            <input 
-                                className={styles.input} 
-                                type="text" 
-                                id="profissão" 
-                                value={animalData.situacao} 
-                                onChange={handleChange} 
-                                placeholder="Profissão do Cliente" 
-                            />
-                        </div> */}
 
-                        {/* <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="verme">E-mail</label>
-                            <input 
-                                className={styles.input} 
-                                type="email" 
-                                id="email" 
-                               value={animalData.ultimoVerme} 
-                                onChange={handleChange} 
-                                placeholder="E-mail do Cliente"
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="telefone_2">Telefone 2</label>
+                            <input
+                                className={styles.input}
+                                type="number"
+                                id="telefone_2"
+                                value={clienteData.telefone_2}
+                                onChange={handleChange}
+                                placeholder="Telefone do cliente"
                             />
-                        </div> */}
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="rua">Rua</label>
+                            <input
+                                className={styles.input}
+                                type="text"
+                                id="rua"
+                                value={clienteData.rua}
+                                onChange={handleChange}
+                                placeholder="Rua do Cliente"
+                            />
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="bairro">Bairro</label>
+                            <input
+                                className={styles.input}
+                                type="text"
+                                id="bairro"
+                                value={clienteData.bairro}
+                                onChange={handleChange}
+                                placeholder="Bairro do cliente"
+                            />
+                        </div>
                     </div>
 
-                    {/* Seleção de Sexo e Espécie */}
+                    <div className={styles.formContainer}>
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="complemento">Complemento</label>
+                            <input
+                                className={styles.input}
+                                type="text"
+                                id="complemento"
+                                value={clienteData.complemento}
+                                onChange={handleChange}
+                                placeholder="Complemento do Local"
+                            />
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="estado">Estado</label>
+                            <input
+                                className={styles.input}
+                                type="text"
+                                id="estado"
+                                value={clienteData.estado}
+                                onChange={handleChange}
+                                placeholder="Estado onde o cliente mora"
+                            />
+                        </div>
+                    </div>
+
                     <div className={styles.checkboxGroup}>
                         <fieldset className={styles.fieldset}>
                             <legend className={styles.legend}>Sexo</legend>
+
                             <div className={styles.checkboxItem}>
-                                <input 
-                                    type="radio" 
-                                    name="sexo" 
-                                    id="macho" 
-                                    value="Masculino" 
-                                    onChange={handleChange} 
-                                    checked={animalData.sexo === 'Macho'} 
+                                <input
+                                    type="radio"
+                                    name="sexo"
+                                    id="sexo"
+                                    value="Masculino"
+                                    onChange={handleChange}
+                                    checked={clienteData.sexo === 'Masculino'}
                                 />
-                                <label className={styles.label} htmlFor="macho">Macho</label>
+                                <label className={styles.label} htmlFor="sexo">Masculino</label>
                             </div>
+
                             <div className={styles.checkboxItem}>
-                                <input 
-                                    type="radio" 
-                                    name="sexo" 
-                                    id="femea" 
-                                    value="Femenino" 
-                                    onChange={handleChange} 
-                                    checked={animalData.sexo === 'Fêmea'} 
+                                <input
+                                    type="radio"
+                                    name="sexo"
+                                    id="sexo"
+                                    value="Feminino"
+                                    onChange={handleChange}
+                                    checked={clienteData.sexo === 'Feminino'}
                                 />
-                                <label className={styles.label} htmlFor="femea">Fêmea</label>
+                                <label className={styles.label} htmlFor="sexo">Feminino</label>
                             </div>
                         </fieldset>
-
                     </div>
 
-                    {/* Botão de Salvar */}
-                    <Link href='/pagInfo'>
-                        <button className={styles.button} type="submit">
-                            Salvar
-                        </button>
-                    </Link>
+
+                    <button className={styles.button} type="submit">
+                        Salvar
+                    </button>
                 </form>
             </main>
         </section>
     );
 }
+
 
 // não tem porque pegar o e email denovo se ja ta castrado
 // não faz sentido pegar a profissão do cliente
