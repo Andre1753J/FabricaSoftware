@@ -1,19 +1,20 @@
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
+import { useRouter, useSearchParams } from "next/navigation";
 
 const RotaSegura = ({ children }) => {
   const router = useRouter();
-  const [userLoggedIn, setUserLoggedIn] = useState(null); 
+  const searchParams = useSearchParams(); // Chame aqui, fora do useEffect
+  const [userLoggedIn, setUserLoggedIn] = useState(null);
 
   useEffect(() => {
-    const isLoggedIn = Cookies.get('key'); 
+    const keyFromUrl = searchParams.get("key");
+    const key = keyFromUrl || (typeof window !== "undefined" ? localStorage.getItem("clienteKey") : null);
 
-    setUserLoggedIn(!!isLoggedIn); 
-    if (userLoggedIn === false) {
-      router.push('/'); 
+    setUserLoggedIn(!!key);
+    if (!key) {
+      router.push('/');
     }
-  }, [router, userLoggedIn]);
+  }, [router, searchParams]);
 
   if (userLoggedIn === null) {
     return null;
