@@ -32,10 +32,12 @@ export default function Cliente() {
                 body: JSON.stringify({ email, senha }),
             });
             const data = await resp.json();
+            console.log("Resposta do servidor:", data);
             if (resp.ok) {
-                // Se o backend retornar uma chave/token, passe para a próxima etapa
-                // Exemplo: router.push(`/Cadastro_C2?key=${data.key}`);
-                router.push("/Cadastro_C2");
+                if (data.response) {
+                    localStorage.setItem("clienteKey", data.response);
+                }
+                router.push(`/Cadastro_C2`);
             } else {
                 setErro(data.message || "Erro ao cadastrar.");
             }

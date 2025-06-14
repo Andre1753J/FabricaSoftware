@@ -25,9 +25,9 @@ function formatarCEP(valor) {
 }
 
 export default function FichaCliente() {
-    // Se precisar do key/token, descomente as linhas abaixo:
-    // const searchParams = useSearchParams();
-    // const key = searchParams.get("key");
+    const searchParams = useSearchParams();
+    const keyFromUrl = searchParams.get("key");
+    const key = keyFromUrl || (typeof window !== "undefined" ? localStorage.getItem("clienteKey") : null);
 
     const [form, setForm] = useState({
         nome: "",
@@ -66,7 +66,12 @@ export default function FichaCliente() {
     }
 
     function validarCampos() {
-        for (const campo in form) {
+        // Campos obrigatórios (sem complemento e telefone2)
+        const obrigatorios = [
+            "nome", "cpf", "cep", "dt_nascimento", "telefone",
+            "rg", "sexo", "bairro", "estado", "rua"
+        ];
+        for (const campo of obrigatorios) {
             if (!form[campo]) {
                 setErro(`Preencha o campo: ${campo}`);
                 return false;
@@ -84,7 +89,7 @@ export default function FichaCliente() {
             setErro("Telefone deve ter 10 ou 11 dígitos numéricos.");
             return false;
         }
-        if (!/^\d{10,11}$/.test(form.telefone2)) {
+        if (form.telefone2 && !/^\d{10,11}$/.test(form.telefone2)) {
             setErro("Telefone 2 deve ter 10 ou 11 dígitos numéricos.");
             return false;
         }
@@ -102,12 +107,15 @@ export default function FichaCliente() {
         setErro("");
         setSucesso("");
         try {
-            // Troque "key" pela variável correta se necessário
-            // const resp = await fetch(API_ROUTES.cadastrarClientePt2(key), {
-            const resp = await fetch(API_ROUTES.cadastrarClientePt2("key"), {
-                method: "POST",
+            const dados = {
+                ...form,
+                complemento: form.complemento ? form.complemento : null,
+                telefone2: form.telefone2 ? form.telefone2 : null,
+            };
+            const resp = await fetch(API_ROUTES.cadastrarClientePt2(key), {
+                method: "PATCH",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(form),
+                body: JSON.stringify(dados),
             });
             if (resp.ok) {
                 setSucesso("Cadastro finalizado com sucesso!");
@@ -130,8 +138,8 @@ export default function FichaCliente() {
                 const data = await resp.json();
                 setErro(data.message || "Erro ao cadastrar.");
             }
-        } catch {
-            setErro("Erro de conexão com o servidor.");
+        } catch(Error) {
+            setErro("Erro de conexão com o servidor.", Error);
         }
         setLoading(false);
     }
@@ -189,7 +197,6 @@ export default function FichaCliente() {
                             id="complemento"
                             value={form.complemento}
                             onChange={handleChange}
-                            required
                             type="text"
                         />
                     </div>
@@ -226,7 +233,6 @@ export default function FichaCliente() {
                             id="telefone2"
                             value={form.telefone2}
                             onChange={handleChange}
-                            required
                             type="tel"
                             inputMode="tel"
                             pattern="\d{10,11}"
