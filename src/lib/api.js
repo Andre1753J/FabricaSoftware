@@ -14,6 +14,7 @@ export const API_ROUTES = {
   deletarCliente: (key) => `${API_BASE_URL}/deletar_cliente/${key}`,
 
   // Animal
+  uploadImagem: `${API_BASE_URL}/upload`,
   cadastrarAnimal: (key) => `${API_BASE_URL}/cadastrar_a/${key}`,
   listarAnimais: `${API_BASE_URL}/listar_animais`,
   listarAnimaisCliente: (key) => `${API_BASE_URL}/listar_animais_cliente/${key}`,
