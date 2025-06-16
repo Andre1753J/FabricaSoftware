@@ -27,13 +27,13 @@ export default function TelaLogin() {
 
         try {
             const resp = await fetch("https://petsworldapi.dev.vilhena.ifro.edu.br/login", {
-                method: "GET",
+                method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, senha }),
             });
             const data = await resp.json();
-            if (resp.ok && data.key) {
-                localStorage.setItem("clienteKey", data.key);
+            if (resp.ok && data.response) {
+                localStorage.setItem("clienteKey", data.response);
                 router.push('/pagInfo');
             } else {
                 setErro(data.message || "Email ou senha inválidos.");
