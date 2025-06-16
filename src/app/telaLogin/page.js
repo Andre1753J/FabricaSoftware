@@ -33,7 +33,7 @@ export default function TelaLogin() {
             });
             const data = await resp.json();
             if (resp.ok && data.response) {
-                localStorage.setItem("clienteKey", data.response);
+                localStorage.setItem("clienteKey", data.response); // não deve ter um .key aqui e sim .response se estiver errado troque
                 router.push('/pagInfo');
             } else {
                 setErro(data.message || "Email ou senha inválidos.");

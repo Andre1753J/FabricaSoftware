@@ -1,25 +1,25 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-const RotaSegura = ({ children }) => {
-  const router = useRouter();
-  const [carregando, setCarregando] = useState(true);
+export default function RotaSegura({ children }) {
+    const router = useRouter();
+    const [autenticado, setAutenticado] = useState(null);
 
-  useEffect(() => {
-    const key = typeof window !== "undefined" ? localStorage.getItem("clienteKey") : null;
-    if (!key) {
-      router.replace("/telaLogin");
-    } else {
-      setCarregando(false);
+    useEffect(() => {
+        // Só roda no client
+        const key = typeof window !== "undefined" ? localStorage.getItem("clienteKey") : null;
+        if (!key) {
+            router.replace("/telaLogin");
+        } else {
+            setAutenticado(true);
+        }
+    }, [router]);
+
+    if (autenticado === null) {
+        // Enquanto verifica, não mostra nada
+        return null;
     }
-  }, [router]);
 
-  if (carregando) {
-    return null;
-  }
-
-  return children;
-};
-
-export default RotaSegura;
+    return children;
+}
