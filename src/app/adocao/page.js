@@ -15,6 +15,7 @@ const pets = [
 
 export default function TelaAdocao() {
   return (
+
     <main className={styles.main}>
       <section className={styles.pets}>
         {pets.map((pet, index) => (
@@ -42,5 +43,6 @@ export default function TelaAdocao() {
         ))}
       </section>
     </main>
+
   );
 }

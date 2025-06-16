@@ -1,4 +1,5 @@
 "use client";
+import RotaSegura from '@/components/rotaSegura';
 import { useState } from "react";
 import styles from '../Cadastro_A/cadastro_A.module.css';
 import { API_ROUTES } from "@/lib/api";
@@ -138,178 +139,180 @@ export default function FichaCliente() {
                 const data = await resp.json();
                 setErro(data.message || "Erro ao cadastrar.");
             }
-        } catch(Error) {
+        } catch (Error) {
             setErro("Erro de conexão com o servidor.", Error);
         }
         setLoading(false);
     }
 
     return (
-        <section className={styles.section}>
-            <main className={styles.main}>
-                <h1 className={styles.title}>FICHA CLIENTE</h1>
-                <form className={styles.form} onSubmit={handleSubmit}>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="nome">NOME</label>
-                        <input
-                            className={styles.input}
-                            id="nome"
-                            value={form.nome}
-                            onChange={handleChange}
-                            required
-                            type="text"
-                        />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="cpf">CPF</label>
-                        <input
-                            className={styles.input}
-                            id="cpf"
-                            value={form.cpf}
-                            onChange={handleChange}
-                            required
-                            type="text"
-                            inputMode="numeric"
-                            maxLength={14}
-                            placeholder="000.000.000-00"
-                            title="Digite o CPF no formato 000.000.000-00"
-                        />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="cep">CEP</label>
-                        <input
-                            className={styles.input}
-                            id="cep"
-                            value={form.cep}
-                            onChange={handleChange}
-                            required
-                            type="text"
-                            inputMode="numeric"
-                            maxLength={9}
-                            placeholder="00000-000"
-                            title="Digite o CEP no formato 00000-000"
-                        />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="complemento">COMPLEMENTO</label>
-                        <input
-                            className={styles.input}
-                            id="complemento"
-                            value={form.complemento}
-                            onChange={handleChange}
-                            type="text"
-                        />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="dt_nascimento">DATA DE NASCIMENTO</label>
-                        <input
-                            className={styles.input}
-                            id="dt_nascimento"
-                            value={form.dt_nascimento}
-                            onChange={handleChange}
-                            required
-                            type="date"
-                        />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="telefone">TELEFONE</label>
-                        <input
-                            className={styles.input}
-                            id="telefone"
-                            value={form.telefone}
-                            onChange={handleChange}
-                            required
-                            type="tel"
-                            inputMode="tel"
-                            pattern="\d{10,11}"
-                            maxLength={11}
-                            placeholder="Apenas números"
-                        />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="telefone2">TELEFONE 2</label>
-                        <input
-                            className={styles.input}
-                            id="telefone2"
-                            value={form.telefone2}
-                            onChange={handleChange}
-                            type="tel"
-                            inputMode="tel"
-                            pattern="\d{10,11}"
-                            maxLength={11}
-                            placeholder="Apenas números"
-                        />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="rg">RG</label>
-                        <input
-                            className={styles.input}
-                            id="rg"
-                            value={form.rg}
-                            onChange={handleChange}
-                            required
-                            type="text"
-                            inputMode="numeric"
-                            pattern="\d{7,14}"
-                            maxLength={14}
-                            placeholder="Apenas números"
-                        />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="sexo">SEXO</label>
-                        <select
-                            className={styles.input}
-                            id="sexo"
-                            value={form.sexo}
-                            onChange={handleChange}
-                            required
-                        >
-                            <option value="">Selecione</option>
-                            <option value="M">Masculino</option>
-                            <option value="F">Feminino</option>
-                            <option value="O">Outro</option>
-                        </select>
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="bairro">BAIRRO</label>
-                        <input
-                            className={styles.input}
-                            id="bairro"
-                            value={form.bairro}
-                            onChange={handleChange}
-                            required
-                            type="text"
-                        />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="estado">ESTADO</label>
-                        <input
-                            className={styles.input}
-                            id="estado"
-                            value={form.estado}
-                            onChange={handleChange}
-                            required
-                            type="text"
-                        />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="rua">RUA</label>
-                        <input
-                            className={styles.input}
-                            id="rua"
-                            value={form.rua}
-                            onChange={handleChange}
-                            required
-                            type="text"
-                        />
-                    </div>
-                    {erro && <div style={{ color: "red" }}>{erro}</div>}
-                    {sucesso && <div style={{ color: "green" }}>{sucesso}</div>}
-                    <button className={styles.button} type="submit" disabled={loading}>
-                        {loading ? "Enviando..." : "Salvar"}
-                    </button>
-                </form>
-            </main>
-        </section>
+        <RotaSegura>
+            <section className={styles.section}>
+                <main className={styles.main}>
+                    <h1 className={styles.title}>FICHA CLIENTE</h1>
+                    <form className={styles.form} onSubmit={handleSubmit}>
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="nome">NOME</label>
+                            <input
+                                className={styles.input}
+                                id="nome"
+                                value={form.nome}
+                                onChange={handleChange}
+                                required
+                                type="text"
+                            />
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="cpf">CPF</label>
+                            <input
+                                className={styles.input}
+                                id="cpf"
+                                value={form.cpf}
+                                onChange={handleChange}
+                                required
+                                type="text"
+                                inputMode="numeric"
+                                maxLength={14}
+                                placeholder="000.000.000-00"
+                                title="Digite o CPF no formato 000.000.000-00"
+                            />
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="cep">CEP</label>
+                            <input
+                                className={styles.input}
+                                id="cep"
+                                value={form.cep}
+                                onChange={handleChange}
+                                required
+                                type="text"
+                                inputMode="numeric"
+                                maxLength={9}
+                                placeholder="00000-000"
+                                title="Digite o CEP no formato 00000-000"
+                            />
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="complemento">COMPLEMENTO</label>
+                            <input
+                                className={styles.input}
+                                id="complemento"
+                                value={form.complemento}
+                                onChange={handleChange}
+                                type="text"
+                            />
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="dt_nascimento">DATA DE NASCIMENTO</label>
+                            <input
+                                className={styles.input}
+                                id="dt_nascimento"
+                                value={form.dt_nascimento}
+                                onChange={handleChange}
+                                required
+                                type="date"
+                            />
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="telefone">TELEFONE</label>
+                            <input
+                                className={styles.input}
+                                id="telefone"
+                                value={form.telefone}
+                                onChange={handleChange}
+                                required
+                                type="tel"
+                                inputMode="tel"
+                                pattern="\d{10,11}"
+                                maxLength={11}
+                                placeholder="Apenas números"
+                            />
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="telefone2">TELEFONE 2</label>
+                            <input
+                                className={styles.input}
+                                id="telefone2"
+                                value={form.telefone2}
+                                onChange={handleChange}
+                                type="tel"
+                                inputMode="tel"
+                                pattern="\d{10,11}"
+                                maxLength={11}
+                                placeholder="Apenas números"
+                            />
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="rg">RG</label>
+                            <input
+                                className={styles.input}
+                                id="rg"
+                                value={form.rg}
+                                onChange={handleChange}
+                                required
+                                type="text"
+                                inputMode="numeric"
+                                pattern="\d{7,14}"
+                                maxLength={14}
+                                placeholder="Apenas números"
+                            />
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="sexo">SEXO</label>
+                            <select
+                                className={styles.input}
+                                id="sexo"
+                                value={form.sexo}
+                                onChange={handleChange}
+                                required
+                            >
+                                <option value="">Selecione</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
+                                <option value="O">Outro</option>
+                            </select>
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="bairro">BAIRRO</label>
+                            <input
+                                className={styles.input}
+                                id="bairro"
+                                value={form.bairro}
+                                onChange={handleChange}
+                                required
+                                type="text"
+                            />
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="estado">ESTADO</label>
+                            <input
+                                className={styles.input}
+                                id="estado"
+                                value={form.estado}
+                                onChange={handleChange}
+                                required
+                                type="text"
+                            />
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="rua">RUA</label>
+                            <input
+                                className={styles.input}
+                                id="rua"
+                                value={form.rua}
+                                onChange={handleChange}
+                                required
+                                type="text"
+                            />
+                        </div>
+                        {erro && <div style={{ color: "red" }}>{erro}</div>}
+                        {sucesso && <div style={{ color: "green" }}>{sucesso}</div>}
+                        <button className={styles.button} type="submit" disabled={loading}>
+                            {loading ? "Enviando..." : "Salvar"}
+                        </button>
+                    </form>
+                </main>
+            </section>
+        </RotaSegura>
     );
 }

@@ -1,28 +1,25 @@
+"use client";
 import { useEffect, useState } from 'react';
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const RotaSegura = ({ children }) => {
   const router = useRouter();
-  const searchParams = useSearchParams(); // Chame aqui, fora do useEffect
-  const [userLoggedIn, setUserLoggedIn] = useState(null);
+  const [carregando, setCarregando] = useState(true);
 
   useEffect(() => {
-    const keyFromUrl = searchParams.get("key");
-    const key = keyFromUrl || (typeof window !== "undefined" ? localStorage.getItem("clienteKey") : null);
-
-    setUserLoggedIn(!!key);
+    const key = typeof window !== "undefined" ? localStorage.getItem("clienteKey") : null;
     if (!key) {
-      router.push('/');
+      router.replace("/telaLogin");
+    } else {
+      setCarregando(false);
     }
-  }, [router, searchParams]);
+  }, [router]);
 
-  if (userLoggedIn === null) {
+  if (carregando) {
     return null;
   }
-  if (userLoggedIn === true) {
-    return children;
-  }
-  return null;
+
+  return children;
 };
 
 export default RotaSegura;

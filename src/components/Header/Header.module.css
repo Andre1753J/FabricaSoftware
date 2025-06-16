@@ -6,32 +6,53 @@
     background: var(--background);
     color: #ffffff;
     background: linear-gradient(to right, rgb(20, 64, 205), rgb(72, 94, 163));
+    position: relative; /* Para posicionar o dropdown em relação ao header */
 }
 
 .dropBotao {
-    height: 50%;
-    width: 190px;
+    min-width: 180px;
     border: none;
-    margin-top: 3%;
-    margin-left: 1vw;
-    margin-right: 1vw;
+    margin: 0 1vw;
     border-radius: 5px;
-    font-size: 16px;  
+    font-size: 16px;
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
+    padding: 12px 0;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    align-items: center;
+    /* justify-content: center; */
+    transition: background 0.2s;
+    font-weight: bold;
+}
+
+.dropBotao:hover {
+    background-color: #388e3c;
+}
+
+.servicoContainer {
+    position: relative;
+    display: inline-block;
+    /* Garante que o dropdown seja posicionado em relação a este item */
+    z-index: 100;
 }
 
 .divNHeader {
     position: absolute;
+    top: 100%; /* logo abaixo do item Serviço */
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 50;
-    right: 5vw;
-    background: linear-gradient(to right, rgb(20, 64, 205), rgb(72, 94, 163));;
+    background: linear-gradient(to right, rgb(20, 64, 205), rgb(72, 94, 163));
     display: flex;
-    justify-content: space-around;
-    gap: 20px 20px;
-    height: 15vh;
-    border-radius: 0 0 5px 5px;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    min-width: 400px;
 }
 
 .navContainer {
@@ -56,7 +77,7 @@
     flex-direction: column;
     align-items: center;
     transition: max-height 0.3s ease-in-out;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .navOpen {
@@ -96,5 +117,22 @@
     .list li {
         margin: 0;
         font-size: 1.5rem;
+    }
+    .divNHeader {
+        min-width: 600px;
+    }
+}
+
+@media (max-width: 600px) {
+    .divNHeader {
+        flex-direction: column;
+        min-width: 90vw;
+        left: 5vw;
+        transform: none;
+        padding: 10px 0;
+    }
+    .dropBotao {
+        min-width: 90vw;
+        margin: 8px 0;
     }
 }
