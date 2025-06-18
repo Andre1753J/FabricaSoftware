@@ -1,22 +1,33 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import styles from './cadastro_A.module.css';
 
 const API_BASE_URL = "https://petsworldapi.dev.vilhena.ifro.edu.br";
-const TYPE_ANIMAL = 2; // ajuste se necessário
+const TYPE_ANIMAL = 2;
 
 export default function FichaAnimal() {
     const [formData, setFormData] = useState({
         nome: '',
         idade: '',
-        dataNascimento: '', // só para exibir, não será enviado
+        dataNascimento: '',
         sexo: '',
         imagem: null,
     });
     const [erro, setErro] = useState("");
     const [loading, setLoading] = useState(false);
+    const [verificandoAuth, setVerificandoAuth] = useState(true);
     const router = useRouter();
+
+    // ⛔ Redireciona se não estiver logado
+    useEffect(() => {
+        const key = localStorage.getItem("clienteKey");
+        if (!key) {
+            router.push("/telaLogin"); // ou outra rota de login
+        } else {
+            setVerificandoAuth(false);
+        }
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -44,8 +55,7 @@ export default function FichaAnimal() {
         setLoading(true);
 
         try {
-            // 1. Cadastrar animal (sem imagem, sem dataNascimento)
-            const key = typeof window !== "undefined" ? localStorage.getItem("clienteKey") : null;
+            const key = localStorage.getItem("clienteKey");
             if (!key) {
                 setErro("Usuário não autenticado.");
                 setLoading(false);
@@ -58,14 +68,6 @@ export default function FichaAnimal() {
                 sexo: formData.sexo,
                 disponivel: 1
             };
-
-            // Debug: Mostra os dados antes de enviar
-            console.log("Dados para cadastro:", animalData);
-            Object.entries(animalData).forEach(([k, v]) => {
-                if (typeof v === "undefined") {
-                    console.warn(`Campo ${k} está undefined!`);
-                }
-            });
 
             const resp = await fetch(`${API_BASE_URL}/cadastrar_a/${key}`, {
                 method: "POST",
@@ -80,7 +82,6 @@ export default function FichaAnimal() {
                 return;
             }
 
-            // Supondo que o backend retorna o id do animal cadastrado em respData.id
             const idAnimal = respData.id || respData.response?.id;
             if (!idAnimal) {
                 setErro("ID do animal não retornado pelo backend.");
@@ -88,17 +89,8 @@ export default function FichaAnimal() {
                 return;
             }
 
-            // 2. Upload da imagem
             const imgData = new FormData();
             imgData.append("imagem", formData.imagem);
-
-            // Debug: Mostra o FormData da imagem
-            for (let pair of imgData.entries()) {
-                console.log("FormData imagem:", pair[0], pair[1]);
-                if (typeof pair[1] === "undefined") {
-                    console.warn(`Campo de imagem está undefined!`);
-                }
-            }
 
             const uploadUrl = `${API_BASE_URL}/upload/${key}/type/${TYPE_ANIMAL}/animal/${idAnimal}`;
             const imgResp = await fetch(uploadUrl, {
@@ -120,6 +112,9 @@ export default function FichaAnimal() {
         }
         setLoading(false);
     };
+
+    // ⏳ Mostra "null" ou loading enquanto verifica login
+    if (verificandoAuth) return null;
 
     return (
         <section className={styles.section}>

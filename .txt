@@ -5,7 +5,7 @@ nome., cpf., cep., complemento.,
 dt_nascimento., telefone., rg,
 sexo., bairro, estado, rua, telefone2.
 
-informações necessarias no cadastro do Animal
+//informações necessarias no cadastro do Animal
 nome, idade, sexo
 (favor colocar as demais informações que faltam irei alterar no back depois)
 

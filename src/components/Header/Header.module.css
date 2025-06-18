@@ -37,12 +37,13 @@
     display: inline-block;
     /* Garante que o dropdown seja posicionado em relação a este item */
     z-index: 100;
+    
 }
 
 .divNHeader {
     position: absolute;
-    top: 100%; /* logo abaixo do item Serviço */
-    left: 50%;
+    top: 240%; /* logo abaixo do item Serviço */
+    left: 490%;
     transform: translateX(-50%);
     z-index: 50;
     background: linear-gradient(to right, rgb(20, 64, 205), rgb(72, 94, 163));
