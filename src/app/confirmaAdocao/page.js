@@ -8,12 +8,10 @@ export default function ConfirmarAdocao() {
     const [isConfirmed, setIsConfirmed] = useState(false);
 
     const handleConfirm = () => {
-        // Aqui você pode adicionar lógica para salvar ou processar a adoção
         setIsConfirmed(true);
     };
 
     const handleCancel = () => {
-        // A lógica para cancelar pode ser redirecionar ou limpar informações, por exemplo
         alert('Adoção cancelada!');
     };
 

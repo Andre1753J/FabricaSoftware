@@ -1,5 +1,5 @@
 import styles from './paginfo.module.css';
-import Link from 'next/link'; // Remova se não estiver usando Next.js
+import Link from 'next/link';
 
 export default function PagInfo() {
     return (

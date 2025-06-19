@@ -5,19 +5,19 @@
     padding: 2rem;
     max-width: 2600px;
     margin: 0 auto;
-    background-image: url('/images/gato.png'); /* Substitua com o caminho da sua imagem */
-    background-size: cover; /* A imagem vai cobrir todo o fundo */
-    background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Impede que a imagem se repita */
-    height: 75vh; /* A altura será 100% da tela */
-    width: 100vw; /* A largura será 100% da tela */
-    overflow: hidden; /* Garante que o conteúdo não saia da tela */
+    background-image: url('/images/gato.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 75vh;
+    width: 100vw; 
+    overflow: hidden; 
 }
 
 
 .card_primeiro,
 .card_segundo {
-    background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo com transparência para destacar o conteúdo */
+    background-color: rgba(255, 255, 255, 0.8); 
     border-radius: 1rem;
     padding: 2rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -32,7 +32,7 @@
 }
 
 .break {
-    display: block; /* Substitui <br /> por quebra visual */
+    display: block; 
 }
 
 .card_text_1,
@@ -61,11 +61,10 @@
     background-color: #e35050;
 }
 
-/* Responsividade para dispositivos móveis */
 @media (max-width: 600px) {
     .main {
-        height: auto; /* No mobile, a altura pode se ajustar conforme o conteúdo */
-        padding: 1.5rem; /* Ajuste o padding para dispositivos móveis */
+        height: auto; 
+        padding: 1.5rem; 
     }
 
     .titulo1 {

@@ -19,11 +19,11 @@ export default function FichaAnimal() {
     const [verificandoAuth, setVerificandoAuth] = useState(true);
     const router = useRouter();
 
-    // ⛔ Redireciona se não estiver logado
+    // Redireciona se não estiver logado
     useEffect(() => {
         const key = localStorage.getItem("clienteKey");
         if (!key) {
-            router.push("/telaLogin"); // ou outra rota de login
+            router.push("/telaLogin");
         } else {
             setVerificandoAuth(false);
         }
@@ -113,7 +113,7 @@ export default function FichaAnimal() {
         setLoading(false);
     };
 
-    // ⏳ Mostra "null" ou loading enquanto verifica login
+    // Mostra "null" ou loading enquanto verifica login
     if (verificandoAuth) return null;
 
     return (

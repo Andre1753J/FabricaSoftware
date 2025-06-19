@@ -134,7 +134,6 @@ export default function FichaCliente() {
                     estado: "",
                     rua: "",
                 });
-                // router.push("/alguma_pagina");
             } else {
                 const data = await resp.json();
                 setErro(data.message || "Erro ao cadastrar.");

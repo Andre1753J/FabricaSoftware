@@ -15,7 +15,6 @@ export default function TelaLogin() {
         const email = e.target.email.value;
         const senha = e.target.password.value;
 
-        // Validação extra
         if (!email || !senha) {
             setErro("Preencha todos os campos.");
             return;
