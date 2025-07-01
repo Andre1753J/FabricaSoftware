@@ -1,0 +1,22 @@
+Para acessar: 
+email: Vinicius@gmail.com
+senha: 12345678
+
+pode criar um usuario caso precise ou queira
+
+Paginas que funcionam:
+Login
+Cadastro do Cliente
+Cadastro do Animal
+
+responsividade do Header
+caso cliente esteja logado ou não ele vai estar de um jeito especifico
+
+caso queira sair do usuario ainda não esta funcionando
+então você deve especionar o elemento ir em Application
+abrir o Local Storage e então deletar o "clienteKey"
+
+Divisão dos trabalhos:
+Cadastro Cliente -> Andre
+Cadastro Animal -> Julio e Ikarus
+Login -> Brenda e Andre
