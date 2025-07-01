@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from 'react';
 import RotaSegura from '@/components/rotaSegura';
 import { useState } from "react";
 import styles from '../Cadastro_A/cadastro_A.module.css';
@@ -24,8 +25,9 @@ function formatarCEP(valor) {
     }
     return valor;
 }
+function fichaClienteConteudo() {
+    
 
-export default function FichaCliente() {
     const searchParams = useSearchParams();
     const keyFromUrl = searchParams.get("key");
     const key = keyFromUrl || (typeof window !== "undefined" ? localStorage.getItem("clienteKey") : null);
@@ -312,6 +314,15 @@ export default function FichaCliente() {
                     </form>
                 </main>
             </section>
+ 
         </RotaSegura>
+    );
+    
+}
+export default function FichaCliente() {
+    return(
+        <Suspense fallback={<div>Carregando...</div>}>
+            <fichaClienteConteudo />
+        </Suspense>
     );
 }
