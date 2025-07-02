@@ -9,7 +9,6 @@ const TYPE_ANIMAL = 2;
 export default function FichaAnimal() {
     const [formData, setFormData] = useState({
         nome: '',
-        idade: '',
         dataNascimento: '',
         sexo: '',
         imagem: null,
@@ -42,7 +41,7 @@ export default function FichaAnimal() {
 
     function validarCampos() {
         if (!formData.nome) return setErro("Preencha o nome");
-        if (!formData.idade) return setErro("Preencha a idade");
+        if (!formData.dt_nascimento) return setErro("Preencha a data de nascimento");
         if (!formData.sexo) return setErro("Selecione o sexo");
         if (!formData.imagem) return setErro("Selecione uma imagem");
         return true;
@@ -64,7 +63,7 @@ export default function FichaAnimal() {
 
             const animalData = {
                 nome: formData.nome,
-                idade: formData.idade,
+                dt_nascimento: formData.dt_nascimento,
                 sexo: formData.sexo,
                 disponivel: 1
             };
@@ -134,13 +133,13 @@ export default function FichaAnimal() {
                         />
                     </div>
                     <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="idade">Idade *</label>
+                        <label className={styles.label} htmlFor="dt_nascimento">data nascimento *</label>
                         <input
                             className={styles.input}
                             type="number"
                             id="idade"
-                            name="idade"
-                            value={formData.idade}
+                            name="data nascimento"
+                            value={formData.dt_nascimento}
                             onChange={handleChange}
                             required
                             min={0}
