@@ -1,6 +1,7 @@
 // Centralização das rotas da API do PetsWorld
 
-export const API_BASE_URL = "https://petsworldapi.dev.vilhena.ifro.edu.br";
+// export const API_BASE_URL = "https://petsworldapi.dev.vilhena.ifro.edu.br";
+export const API_BASE_URL = "https://localhost:9000";
 
 export const API_ROUTES = {
   // Autenticação
