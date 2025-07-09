@@ -26,7 +26,7 @@ function formatarCEP(valor) {
     return valor;
 }
 
-function fichaClienteConteudo() {
+function FichaClienteConteudo() {
     const searchParams = useSearchParams();
     const keyFromUrl = searchParams.get("key");
     const key = keyFromUrl || (typeof window !== "undefined" ? localStorage.getItem("clienteKey") : null);
@@ -333,7 +333,7 @@ function fichaClienteConteudo() {
 export default function FichaCliente() {
     return (
         <Suspense fallback={<div>Carregando...</div>}>
-            <fichaClienteConteudo />
+            <FichaClienteConteudo/>
         </Suspense>
     );
 }
