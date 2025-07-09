@@ -2,19 +2,6 @@ ROTA: https://petsworld.dev.vilhena.ifro.edu.br
 
 
 
-
-
-botão de salvar o cadastro do Animal deveriam pelo menos levar para a pag inicial
-
-Header:
-na aba serviço AINDA está com problema
-você só consegue acessar a pagina clicando na palavra
-sendo que deveria acessar a pagina quando se clica no botão em si
-
-Login:
-Faça com que ele seja obrigado a digitar algo nos campos de email e senha
-a senha tem que ter até 8 digitos
-
 Adoção:
 colocar um filtro na pagina (faça apenas o desing dele depois fazeremos funcionar)
 

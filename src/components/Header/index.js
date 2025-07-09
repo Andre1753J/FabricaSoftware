@@ -50,6 +50,12 @@ export default function Header() {
                                 <Link className={styles.dropBotao} href='/telaConta' onClick={fecharDropdown}>
                                     Conta
                                 </Link>
+                                <Link className={styles.dropBotao} href='/Pedidos' onClick={fecharDropdown}>
+                                    Pedidos de Adoção
+                                </Link>
+                                <Link className={styles.dropBotao} href='/Solicitações' onClick={fecharDropdown}>
+                                    Solicitações de Adoção
+                                </Link>
                             </div>
                         )}
                     </li>
