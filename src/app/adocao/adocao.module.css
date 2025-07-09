@@ -1,8 +1,14 @@
-.pets {
+.main-container {
+    display: flex; 
+    align-items: flex-start; 
+    gap: 20px; 
+  }
+  
+  .pets {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 20px;
+    flex-direction: column; 
+    gap: 10px; 
+    flex: 1; 
 }
 
 .pet {
@@ -57,3 +63,64 @@
 .name {
     color: black;
 }
+
+.filtros {
+    width: 200px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  
+  .filtroGrupo {
+    margin-bottom: 12px;
+  }
+  
+  .filtroGrupo p {
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+  
+  .filtroGrupo button {
+    display: block;
+    width: 100%;
+    margin-bottom: 4px;
+    padding: 6px;
+    border: none;
+    background-color: #3f51b5;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .filtroGrupo button:hover {
+    background-color: #303f9f;
+  }
+
+  .mainComFiltro {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .filtros {
+    width: 200px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  
+  .pets {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+    flex: 1;  
+  }
+  
+  .pet {
+    text-align: center;
+    background: white;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }

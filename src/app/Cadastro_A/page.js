@@ -9,17 +9,23 @@ const TYPE_ANIMAL = 2;
 export default function FichaAnimal() {
     const [formData, setFormData] = useState({
         nome: '',
-        idade: '',
         dataNascimento: '',
         sexo: '',
         imagem: null,
+        descricao: '',
+        castrado: false,
+        vacinado: false,
+        vermifugado: false,
+        idEspecie: '',
+        idRaca: '',
+        idCor: '',
+        idPorte: ''
     });
     const [erro, setErro] = useState("");
     const [loading, setLoading] = useState(false);
     const [verificandoAuth, setVerificandoAuth] = useState(true);
     const router = useRouter();
 
-    // Redireciona se não estiver logado
     useEffect(() => {
         const key = localStorage.getItem("clienteKey");
         if (!key) {
@@ -30,8 +36,9 @@ export default function FichaAnimal() {
     }, []);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const { name, value, type, checked } = e.target;
+        const val = type === "checkbox" ? checked : value;
+        setFormData({ ...formData, [name]: val });
         setErro("");
     };
 
@@ -41,9 +48,13 @@ export default function FichaAnimal() {
     };
 
     function validarCampos() {
-        if (!formData.nome) return setErro("Preencha o nome");
-        if (!formData.idade) return setErro("Preencha a idade");
-        if (!formData.sexo) return setErro("Selecione o sexo");
+        const obrigatorios = [
+            "nome", "dataNascimento", "sexo", "descricao",
+            "idEspecie", "idRaca", "idCor", "idPorte"
+        ];
+        for (let campo of obrigatorios) {
+            if (!formData[campo]) return setErro(`Preencha o campo: ${campo}`);
+        }
         if (!formData.imagem) return setErro("Selecione uma imagem");
         return true;
     }
@@ -64,9 +75,17 @@ export default function FichaAnimal() {
 
             const animalData = {
                 nome: formData.nome,
-                idade: formData.idade,
+                data_nascimento: formData.dataNascimento,
                 sexo: formData.sexo,
-                disponivel: 1
+                disponivel: 1,
+                descricao: formData.descricao,
+                castrado: formData.castrado ? 1 : 0,
+                vacinado: formData.vacinado ? 1 : 0,
+                vermifugado: formData.vermifugado ? 1 : 0,
+                idEspecie: parseInt(formData.idEspecie),
+                idRaca: parseInt(formData.idRaca),
+                idCor: parseInt(formData.idCor),
+                idPorte: parseInt(formData.idPorte),
             };
 
             const resp = await fetch(`${API_BASE_URL}/cadastrar_a/${key}`, {
@@ -113,7 +132,6 @@ export default function FichaAnimal() {
         setLoading(false);
     };
 
-    // Mostra "null" ou loading enquanto verifica login
     if (verificandoAuth) return null;
 
     return (
@@ -123,79 +141,56 @@ export default function FichaAnimal() {
                 <form onSubmit={handleSubmit} className={styles.formFull}>
                     <div className={styles.formGroup}>
                         <label className={styles.label} htmlFor="nome">Nome *</label>
-                        <input
-                            className={styles.input}
-                            type="text"
-                            id="nome"
-                            name="nome"
-                            value={formData.nome}
-                            onChange={handleChange}
-                            required
-                        />
+                        <input className={styles.input} type="text" name="nome" value={formData.nome} onChange={handleChange} required />
                     </div>
+
                     <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="idade">Idade *</label>
-                        <input
-                            className={styles.input}
-                            type="number"
-                            id="idade"
-                            name="idade"
-                            value={formData.idade}
-                            onChange={handleChange}
-                            required
-                            min={0}
-                        />
+                        <label className={styles.label} htmlFor="dataNascimento">Data de nascimento *</label>
+                        <input className={styles.input} type="date" name="dataNascimento" value={formData.dataNascimento} onChange={handleChange} required />
                     </div>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="dataNascimento">Data de nascimento (opcional)</label>
-                        <input
-                            className={styles.input}
-                            type="date"
-                            id="dataNascimento"
-                            name="dataNascimento"
-                            value={formData.dataNascimento}
-                            onChange={handleChange}
-                        />
-                    </div>
+
                     <fieldset className={styles.fieldset}>
                         <legend className={styles.legend}>Sexo *</legend>
-                        <div className={styles.checkboxItem}>
-                            <input
-                                type="radio"
-                                name="sexo"
-                                id="macho"
-                                value="M"
-                                onChange={handleChange}
-                                checked={formData.sexo === 'M'}
-                                required
-                            />
-                            <label className={styles.label} htmlFor="macho">Macho</label>
-                        </div>
-                        <div className={styles.checkboxItem}>
-                            <input
-                                type="radio"
-                                name="sexo"
-                                id="femea"
-                                value="F"
-                                onChange={handleChange}
-                                checked={formData.sexo === 'F'}
-                                required
-                            />
-                            <label className={styles.label} htmlFor="femea">Fêmea</label>
-                        </div>
+                        <label><input type="radio" name="sexo" value="M" checked={formData.sexo === 'M'} onChange={handleChange} /> Macho</label>
+                        <label><input type="radio" name="sexo" value="F" checked={formData.sexo === 'F'} onChange={handleChange} /> Fêmea</label>
                     </fieldset>
+
+                    <div className={styles.formGroup}>
+                        <label className={styles.label} htmlFor="descricao">Descrição *</label>
+                        <textarea className={styles.input} name="descricao" value={formData.descricao} onChange={handleChange} required />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label><input type="checkbox" name="castrado" checked={formData.castrado} onChange={handleChange} /> Castrado</label>
+                        <label><input type="checkbox" name="vacinado" checked={formData.vacinado} onChange={handleChange} /> Vacinado</label>
+                        <label><input type="checkbox" name="vermifugado" checked={formData.vermifugado} onChange={handleChange} /> Vermifugado</label>
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label>Espécie ID *</label>
+                        <input className={styles.input} type="number" name="idEspecie" value={formData.idEspecie} onChange={handleChange} required />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label>Raça ID *</label>
+                        <input className={styles.input} type="number" name="idRaca" value={formData.idRaca} onChange={handleChange} required />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label>Cor ID *</label>
+                        <input className={styles.input} type="number" name="idCor" value={formData.idCor} onChange={handleChange} required />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label>Porte ID *</label>
+                        <input className={styles.input} type="number" name="idPorte" value={formData.idPorte} onChange={handleChange} required />
+                    </div>
+
                     <div className={styles.formGroup}>
                         <label className={styles.label} htmlFor="imagem">Foto do Animal *</label>
-                        <input
-                            className={styles.input}
-                            type="file"
-                            id="imagem"
-                            name="imagem"
-                            accept="image/*"
-                            onChange={handleFileChange}
-                            required
-                        />
+                        <input className={styles.input} type="file" name="imagem" accept="image/*" onChange={handleFileChange} required />
                     </div>
+
                     {erro && <div style={{ color: "red" }}>{erro}</div>}
                     <button className={styles.button} type="submit" disabled={loading}>
                         {loading ? "Salvando..." : "Salvar"}

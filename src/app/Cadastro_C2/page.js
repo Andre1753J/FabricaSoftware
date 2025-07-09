@@ -25,9 +25,8 @@ function formatarCEP(valor) {
     }
     return valor;
 }
-function fichaClienteConteudo() {
-    
 
+function fichaClienteConteudo() {
     const searchParams = useSearchParams();
     const keyFromUrl = searchParams.get("key");
     const key = keyFromUrl || (typeof window !== "undefined" ? localStorage.getItem("clienteKey") : null);
@@ -44,7 +43,8 @@ function fichaClienteConteudo() {
         sexo: "",
         bairro: "",
         estado: "",
-        rua: "",
+        cidade: "",
+        endereco: "",
     });
     const [erro, setErro] = useState("");
     const [sucesso, setSucesso] = useState("");
@@ -72,7 +72,7 @@ function fichaClienteConteudo() {
         // Campos obrigatórios (sem complemento e telefone2)
         const obrigatorios = [
             "nome", "cpf", "cep", "dt_nascimento", "telefone",
-            "rg", "sexo", "bairro", "estado", "rua"
+            "rg", "sexo", "bairro", "estado", "cidade", "endereco"
         ];
         for (const campo of obrigatorios) {
             if (!form[campo]) {
@@ -134,7 +134,8 @@ function fichaClienteConteudo() {
                     sexo: "",
                     bairro: "",
                     estado: "",
-                    rua: "",
+                    cidade: "",
+                    endereco: "",
                 });
             } else {
                 const data = await resp.json();
@@ -296,11 +297,22 @@ function fichaClienteConteudo() {
                             />
                         </div>
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="rua">RUA</label>
+                            <label className={styles.label} htmlFor="cidade">CIDADE</label>
                             <input
                                 className={styles.input}
-                                id="rua"
-                                value={form.rua}
+                                id="cidade"
+                                value={form.cidade}
+                                onChange={handleChange}
+                                required
+                                type="text"
+                            />
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label className={styles.label} htmlFor="endereco">ENDEREÇO</label>
+                            <input
+                                className={styles.input}
+                                id="endereco"
+                                value={form.endereco}
                                 onChange={handleChange}
                                 required
                                 type="text"
@@ -314,13 +326,12 @@ function fichaClienteConteudo() {
                     </form>
                 </main>
             </section>
- 
         </RotaSegura>
     );
-    
 }
+
 export default function FichaCliente() {
-    return(
+    return (
         <Suspense fallback={<div>Carregando...</div>}>
             <fichaClienteConteudo />
         </Suspense>
