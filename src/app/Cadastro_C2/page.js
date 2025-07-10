@@ -1,10 +1,11 @@
 "use client";
 import { Suspense } from 'react';
 import RotaSegura from '@/components/rotaSegura';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from '../Cadastro_A/cadastro_A.module.css';
 import { API_ROUTES } from "@/lib/api";
 import { useRouter, useSearchParams } from "next/navigation";
+import cep from 'cep-promise';
 
 // Função para formatar o CPF enquanto digita
 function formatarCPF(valor) {
@@ -49,6 +50,7 @@ function FichaClienteConteudo() {
     const [erro, setErro] = useState("");
     const [sucesso, setSucesso] = useState("");
     const [loading, setLoading] = useState(false);
+    const [cepLoading, setCepLoading] = useState(false);
     const router = useRouter();
 
     function handleChange(e) {
@@ -67,6 +69,30 @@ function FichaClienteConteudo() {
         setErro("");
         setSucesso("");
     }
+
+    useEffect(() => {
+        const cepOnlyNumbers = form.cep.replace(/\D/g, '');
+
+        if (cepOnlyNumbers.length === 8) {
+            setCepLoading(true);
+            setErro("");
+            cep(cepOnlyNumbers)
+                .then(result => {
+                    setForm(prev => ({
+                        ...prev,
+                        endereco: result.street,
+                        bairro: result.neighborhood,
+                        cidade: result.city,
+                        estado: result.state,
+                    }));
+                })
+                .catch(err => {
+                    setErro(err.message || "CEP não encontrado ou inválido.");
+                    setForm(prev => ({ ...prev, endereco: "", bairro: "", cidade: "", estado: "" }));
+                })
+                .finally(() => setCepLoading(false));
+        }
+    }, [form.cep]);
 
     function validarCampos() {
         // Campos obrigatórios (sem complemento e telefone2)
@@ -193,6 +219,7 @@ function FichaClienteConteudo() {
                                 placeholder="00000-000"
                                 title="Digite o CEP no formato 00000-000"
                             />
+                            {cepLoading && <div style={{ color: "#007bff", marginTop: '5px', fontSize: '14px' }}>Buscando CEP...</div>}
                         </div>
                         <div className={styles.formGroup}>
                             <label className={styles.label} htmlFor="complemento">COMPLEMENTO</label>
@@ -320,7 +347,7 @@ function FichaClienteConteudo() {
                         </div>
                         {erro && <div style={{ color: "red" }}>{erro}</div>}
                         {sucesso && <div style={{ color: "green" }}>{sucesso}</div>}
-                        <button className={styles.button} type="submit" disabled={loading}>
+                        <button className={styles.button} type="submit" disabled={loading || cepLoading}>
                             {loading ? "Enviando..." : "Salvar"}
                         </button>
                     </form>
