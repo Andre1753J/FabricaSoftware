@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "cep-promise": "^4.4.1",
     "js-cookie": "^3.0.5",
     "next": "15.3.2",
     "react": "^19.0.0",
