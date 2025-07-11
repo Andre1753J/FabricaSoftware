@@ -2,8 +2,38 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import styles from './cadastro_A.module.css';
+import { API_ROUTES } from '@/lib/api';
 
-const API_BASE_URL = "https://petsworldapi.dev.vilhena.ifro.edu.br";
+// --- DADOS ESTÁTICOS PARA O FORMULÁRIO ---
+// No futuro, buscar estes dados da API
+const especies = [
+  { idEspecie: 1, nome: 'Cachorro' },
+  { idEspecie: 2, nome: 'Gato' },
+];
+
+const racasPorEspecie = {
+  1: [ // Raças para Cachorro (idEspecie: 1)
+    { idRaca: 1, nome: 'Sem Raça Definida (SRD)' }, { idRaca: 2, nome: 'Labrador' },
+    { idRaca: 3, nome: 'Golden Retriever' }, { idRaca: 4, nome: 'Bulldog' },
+    { idRaca: 5, nome: 'Poodle' },
+  ],
+  2: [ // Raças para Gato (idEspecie: 2)
+    { idRaca: 6, nome: 'Sem Raça Definida (SRD)' }, { idRaca: 7, nome: 'Siamês' },
+    { idRaca: 8, nome: 'Persa' }, { idRaca: 9, nome: 'Maine Coon' },
+  ],
+};
+
+const cores = [
+  { idCor: 1, nome: 'Preto' }, { idCor: 2, nome: 'Branco' },
+  { idCor: 3, nome: 'Marrom' }, { idCor: 4, nome: 'Caramelo' },
+  { idCor: 5, nome: 'Cinza' }, { idCor: 6, nome: 'Mesclado' },
+];
+
+const portes = [
+  { idPorte: 1, nome: 'Pequeno' }, { idPorte: 2, nome: 'Médio' }, { idPorte: 3, nome: 'Grande' },
+];
+// --- FIM DOS DADOS ESTÁTICOS ---
+
 const TYPE_ANIMAL = 2;
 
 export default function FichaAnimal() {
@@ -21,6 +51,7 @@ export default function FichaAnimal() {
         idCor: '',
         idPorte: ''
     });
+    const [racasDisponiveis, setRacasDisponiveis] = useState([]);
     const [erro, setErro] = useState("");
     const [loading, setLoading] = useState(false);
     const [verificandoAuth, setVerificandoAuth] = useState(true);
@@ -29,11 +60,16 @@ export default function FichaAnimal() {
     useEffect(() => {
         const key = localStorage.getItem("clienteKey");
         if (!key) {
-            router.push("/telaLogin");
+            router.replace("/telaLogin");
         } else {
             setVerificandoAuth(false);
         }
-    }, []);
+    }, [router]);
+
+    useEffect(() => {
+        setRacasDisponiveis(racasPorEspecie[formData.idEspecie] || []);
+        setFormData(prev => ({ ...prev, idRaca: '' })); // Reseta a raça ao trocar de espécie
+    }, [formData.idEspecie]);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -49,11 +85,14 @@ export default function FichaAnimal() {
 
     function validarCampos() {
         const obrigatorios = [
-            "nome", "dataNascimento", "sexo", "descricao",
+            "nome", "dataNascimento", "sexo",
             "idEspecie", "idRaca", "idCor", "idPorte"
         ];
         for (let campo of obrigatorios) {
-            if (!formData[campo]) return setErro(`Preencha o campo: ${campo}`);
+            if (!formData[campo]) {
+                setErro(`O campo '${campo}' é obrigatório.`);
+                return false;
+            }
         }
         if (!formData.imagem) return setErro("Selecione uma imagem");
         return true;
@@ -75,7 +114,7 @@ export default function FichaAnimal() {
 
             const animalData = {
                 nome: formData.nome,
-                data_nascimento: formData.dataNascimento,
+                dt_nascimento: formData.dataNascimento,
                 sexo: formData.sexo,
                 disponivel: 1,
                 descricao: formData.descricao,
@@ -88,7 +127,7 @@ export default function FichaAnimal() {
                 idPorte: parseInt(formData.idPorte),
             };
 
-            const resp = await fetch(`${API_BASE_URL}/cadastrar_a/${key}`, {
+            const resp = await fetch(API_ROUTES.cadastrarAnimal(key), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(animalData),
@@ -96,40 +135,35 @@ export default function FichaAnimal() {
 
             const respData = await resp.json();
             if (!resp.ok) {
-                setErro(respData.response || "Erro ao cadastrar animal.");
-                setLoading(false);
-                return;
+                throw new Error(respData.response || "Erro ao cadastrar o animal.");
             }
 
-            const idAnimal = respData.id || respData.response?.id;
+            const idAnimal = respData.id;
             if (!idAnimal) {
-                setErro("ID do animal não retornado pelo backend.");
-                setLoading(false);
-                return;
+                throw new Error("ID do animal não foi retornado pelo backend.");
             }
 
             const imgData = new FormData();
             imgData.append("imagem", formData.imagem);
 
-            const uploadUrl = `${API_BASE_URL}/upload/${key}/type/${TYPE_ANIMAL}/animal/${idAnimal}`;
+            const uploadUrl = API_ROUTES.uploadImagem(key, TYPE_ANIMAL, idAnimal);
             const imgResp = await fetch(uploadUrl, {
                 method: "POST",
                 body: imgData,
             });
 
-            const imgResult = await imgResp.json();
             if (!imgResp.ok) {
-                setErro(imgResult.response || "Erro ao enviar imagem.");
-                setLoading(false);
-                return;
+                const imgResult = await imgResp.json();
+                throw new Error(imgResult.response || "Erro ao enviar a imagem do animal.");
             }
 
-            router.push("/adocao");
+            router.push("/pagInfo");
         } catch (err) {
-            setErro("Erro de conexão com o servidor.");
+            setErro(err.message || "Erro de conexão com o servidor.");
             console.error("Erro no cadastro:", err);
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
     };
 
     if (verificandoAuth) return null;
@@ -138,7 +172,7 @@ export default function FichaAnimal() {
         <section className={styles.section}>
             <main className={styles.main}>
                 <h1 className={styles.title}>Cadastro de Animal</h1>
-                <form onSubmit={handleSubmit} className={styles.formFull}>
+                <form onSubmit={handleSubmit}>
                     <div className={styles.formGroup}>
                         <label className={styles.label} htmlFor="nome">Nome *</label>
                         <input className={styles.input} type="text" name="nome" value={formData.nome} onChange={handleChange} required />
@@ -151,8 +185,10 @@ export default function FichaAnimal() {
 
                     <fieldset className={styles.fieldset}>
                         <legend className={styles.legend}>Sexo *</legend>
-                        <label><input type="radio" name="sexo" value="M" checked={formData.sexo === 'M'} onChange={handleChange} /> Macho</label>
-                        <label><input type="radio" name="sexo" value="F" checked={formData.sexo === 'F'} onChange={handleChange} /> Fêmea</label>
+                        <div className={styles.radioContainer}>
+                            <label><input type="radio" name="sexo" value="M" checked={formData.sexo === 'M'} onChange={handleChange} /> Macho</label>
+                            <label><input type="radio" name="sexo" value="F" checked={formData.sexo === 'F'} onChange={handleChange} /> Fêmea</label>
+                        </div>
                     </fieldset>
 
                     <div className={styles.formGroup}>
@@ -160,30 +196,50 @@ export default function FichaAnimal() {
                         <textarea className={styles.input} name="descricao" value={formData.descricao} onChange={handleChange} required />
                     </div>
 
-                    <div className={styles.formGroup}>
+                    <div className={styles.checkboxGroup}>
                         <label><input type="checkbox" name="castrado" checked={formData.castrado} onChange={handleChange} /> Castrado</label>
                         <label><input type="checkbox" name="vacinado" checked={formData.vacinado} onChange={handleChange} /> Vacinado</label>
                         <label><input type="checkbox" name="vermifugado" checked={formData.vermifugado} onChange={handleChange} /> Vermifugado</label>
                     </div>
 
                     <div className={styles.formGroup}>
-                        <label>Espécie ID *</label>
-                        <input className={styles.input} type="number" name="idEspecie" value={formData.idEspecie} onChange={handleChange} required />
+                        <label className={styles.label}>Espécie *</label>
+                        <select className={styles.input} name="idEspecie" value={formData.idEspecie} onChange={handleChange} required>
+                            <option value="">Selecione a espécie</option>
+                            {especies.map(e => (
+                                <option key={e.idEspecie} value={e.idEspecie}>{e.nome}</option>
+                            ))}
+                        </select>
                     </div>
 
                     <div className={styles.formGroup}>
-                        <label>Raça ID *</label>
-                        <input className={styles.input} type="number" name="idRaca" value={formData.idRaca} onChange={handleChange} required />
+                        <label className={styles.label}>Raça *</label>
+                        <select className={styles.input} name="idRaca" value={formData.idRaca} onChange={handleChange} required disabled={!formData.idEspecie}>
+                            <option value="">Selecione a raça</option>
+                            {racasDisponiveis.map(r => (
+                                <option key={r.idRaca} value={r.idRaca}>{r.nome}</option>
+                            ))}
+                        </select>
                     </div>
 
                     <div className={styles.formGroup}>
-                        <label>Cor ID *</label>
-                        <input className={styles.input} type="number" name="idCor" value={formData.idCor} onChange={handleChange} required />
+                        <label className={styles.label}>Cor *</label>
+                        <select className={styles.input} name="idCor" value={formData.idCor} onChange={handleChange} required>
+                            <option value="">Selecione a cor</option>
+                            {cores.map(c => (
+                                <option key={c.idCor} value={c.idCor}>{c.nome}</option>
+                            ))}
+                        </select>
                     </div>
 
                     <div className={styles.formGroup}>
-                        <label>Porte ID *</label>
-                        <input className={styles.input} type="number" name="idPorte" value={formData.idPorte} onChange={handleChange} required />
+                        <label className={styles.label}>Porte *</label>
+                        <select className={styles.input} name="idPorte" value={formData.idPorte} onChange={handleChange} required>
+                            <option value="">Selecione o porte</option>
+                            {portes.map(p => (
+                                <option key={p.idPorte} value={p.idPorte}>{p.nome}</option>
+                            ))}
+                        </select>
                     </div>
 
                     <div className={styles.formGroup}>
