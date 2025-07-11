@@ -15,11 +15,11 @@ export const API_ROUTES = {
   deletarCliente: (key) => `${API_BASE_URL}/deletar_cliente/${key}`,
 
   // Animal
-  uploadImagem: `${API_BASE_URL}/upload`,
+  uploadImagem: (key, type, animalId) => `${API_BASE_URL}/upload/${key}/type/${type}/animal/${animalId}`,
   cadastrarAnimal: (key) => `${API_BASE_URL}/cadastrar_a/${key}`,
   listarAnimais: `${API_BASE_URL}/listar_animais`,
   listarAnimaisCliente: (key) => `${API_BASE_URL}/listar_animais_cliente/${key}`,
-  editarAnimal: (key, animalId) => `${API_BASE_URL}/editar_animal/${key}/${animalId}`,
+  editarAnimal: (key, animalId) => `${API_BASE_URL}/editar_a/${key}/${animalId}`,
   deletarAnimal: (key, animalId) => `${API_BASE_URL}/deletar_animal/${key}/${animalId}`,
 
   // Adoção
