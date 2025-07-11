@@ -39,10 +39,11 @@ export default function Cliente() {
                 }
                 router.push(`/Cadastro_C2`);
             } else {
-                setErro(data.message || "Erro ao cadastrar.");
+                setErro(data.response || data.message || data.erro || "Erro ao cadastrar.");
             }
-        } catch {
-            setErro("Erro de conexão com o servidor.");
+        } catch (error) {
+            console.error("Falha na requisição de cadastro:", error);
+            setErro("Erro de conexão com o servidor. Verifique o console.");
         }
         setLoading(false);
     };

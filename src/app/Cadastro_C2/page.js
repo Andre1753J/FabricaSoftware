@@ -165,10 +165,11 @@ function FichaClienteConteudo() {
                 });
             } else {
                 const data = await resp.json();
-                setErro(data.message || "Erro ao cadastrar.");
+                setErro(data.response || data.message || "Erro ao cadastrar.");
             }
-        } catch (Error) {
-            setErro("Erro de conexão com o servidor.", Error);
+        } catch (error) {
+            console.error("Falha na requisição:", error);
+            setErro("Erro de conexão com o servidor. Verifique o console para mais detalhes.");
         }
         setLoading(false);
     }
