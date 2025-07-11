@@ -95,10 +95,11 @@ function FichaClienteConteudo() {
     }, [form.cep]);
 
     function validarCampos() {
-        // Campos obrigatórios (sem complemento e telefone2)
+        // TODO: RG é opcional apenas para desenvolvimento. Reativar a obrigatoriedade.
+        // Campos obrigatórios
         const obrigatorios = [
             "nome", "cpf", "cep", "dt_nascimento", "telefone",
-            "rg", "sexo", "bairro", "estado", "cidade", "endereco"
+            "sexo", "bairro", "estado", "cidade", "endereco"
         ];
         for (const campo of obrigatorios) {
             if (!form[campo]) {
@@ -122,8 +123,9 @@ function FichaClienteConteudo() {
             setErro("Telefone 2 deve ter 10 ou 11 dígitos numéricos.");
             return false;
         }
-        if (!/^\d{7,14}$/.test(form.rg)) {
-            setErro("RG deve ter entre 7 e 14 dígitos numéricos.");
+        // Valida RG apenas se preenchido
+        if (form.rg && !/^\d{7,14}$/.test(form.rg)) {
+            setErro("RG (se preenchido) deve ter entre 7 e 14 dígitos numéricos.");
             return false;
         }
         return true;
@@ -140,6 +142,7 @@ function FichaClienteConteudo() {
                 ...form,
                 complemento: form.complemento ? form.complemento : null,
                 telefone2: form.telefone2 ? form.telefone2 : null,
+                rg: form.rg ? form.rg : null, // Envia null se o RG estiver vazio
             };
             const resp = await fetch(API_ROUTES.cadastrarClientePt2(key), {
                 method: "PATCH",
@@ -147,22 +150,8 @@ function FichaClienteConteudo() {
                 body: JSON.stringify(dados),
             });
             if (resp.ok) {
-                setSucesso("Cadastro finalizado com sucesso!");
-                setForm({
-                    nome: "",
-                    cpf: "",
-                    cep: "",
-                    complemento: "",
-                    dt_nascimento: "",
-                    telefone: "",
-                    telefone2: "",
-                    rg: "",
-                    sexo: "",
-                    bairro: "",
-                    estado: "",
-                    cidade: "",
-                    endereco: "",
-                });
+                setSucesso("Cadastro finalizado com sucesso! Redirecionando...");
+                setTimeout(() => router.push('/pagInfo'), 2000); // Redireciona após 2 segundos
             } else {
                 const data = await resp.json();
                 setErro(data.response || data.message || "Erro ao cadastrar.");
@@ -273,13 +262,12 @@ function FichaClienteConteudo() {
                             />
                         </div>
                         <div className={styles.formGroup}>
-                            <label className={styles.label} htmlFor="rg">RG</label>
+                            <label className={styles.label} htmlFor="rg">RG (Opcional para dev)</label>
                             <input
                                 className={styles.input}
                                 id="rg"
                                 value={form.rg}
                                 onChange={handleChange}
-                                required
                                 type="text"
                                 inputMode="numeric"
                                 pattern="\d{7,14}"
