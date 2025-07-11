@@ -66,6 +66,16 @@
     margin-bottom: 20px;
 }
 
+.checkboxGroup input, .radioContainer input {
+    margin-right: 5px; /* Adiciona um espaço à direita do checkbox/radio */
+    vertical-align: middle; /* Alinha o checkbox/radio com o texto */
+}
+
+.radioContainer {
+    display: flex;
+    gap: 20px;
+}
+
 .fieldset {
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -113,6 +123,12 @@
 
     .main {
         background-color: #2a2a2a;
+        color: #eee; /* Garante que o texto padrão seja claro */
+    }
+
+    /* Garante que TODAS as labels, incluindo as de checkboxes/radios, fiquem claras */
+    .main label {
+        color: #ccc;
     }
 
     .title {
