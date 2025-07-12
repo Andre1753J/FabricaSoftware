@@ -39,12 +39,15 @@ export default function TelaAdocao() {
       try {
         const res = await fetch(`${API_BASE_URL}/filtrar_animais?${params.toString()}`);
         if (!res.ok) {
-          throw new Error('Falha ao buscar os animais');
+          // Tenta ler a mensagem de erro específica do backend
+          const errorData = await res.json().catch(() => null);
+          const errorMessage = errorData?.response || `Falha ao buscar os animais (Status: ${res.status})`;
+          throw new Error(errorMessage);
         }
         const data = await res.json();
         setPets(data.response || []);
       } catch (error) {
-        console.error("Erro ao carregar pets:", error);
+        console.error("Erro ao carregar pets:", error.message);
         setPets([]);
       } finally {
         setLoading(false);
