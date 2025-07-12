@@ -2,21 +2,12 @@
 import styles from './adocao.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
-
-
-const pets = [
-  { nome: "Brawl Stars", sexo: "macho", status: "disponivel", porte: "pequeno", imagem: "Ellipse 14.webp" },
-  { nome: "Luna", sexo: "femea", status: "adotado", porte: "medio", imagem: "Ellipse 15.webp" },
-  { nome: "Juninho Ruindade Pura", sexo: "macho", status: "adotado", porte: "grande", imagem: "Ellipse 19.webp" },
-  { nome: "Mimi", sexo: "femea", status: "disponivel", porte: "pequeno", imagem: "Ellipse 17.webp" },
-  { nome: "Black Opps II", sexo: "macho", status: "disponivel", porte: "medio", imagem: "Ellipse 18.webp" },
-  { nome: "Rei da coitadolandia", sexo: "macho", status: "disponivel", porte: "grande", imagem: "Ellipse 16.webp" },
-  { nome: "Ze Ruelinha", sexo: "macho", status: "disponivel", porte: "pequeno", imagem: "Ellipse 20.webp" },
-  { nome: "Buck", sexo: "macho", status: "disponivel", porte: "medio", imagem: "Ellipse 21.webp" }
-];
+import { useState, useEffect } from 'react';
+import { API_BASE_URL } from '../../lib/api';
 
 export default function TelaAdocao() {
+  const [pets, setPets] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [filtros, setFiltros] = useState({
     porte: 'todos',
     sexo: 'todos',
@@ -30,13 +21,38 @@ export default function TelaAdocao() {
     }));
   };
 
-  
-  const petsFiltrados = pets.filter(pet =>
-    (filtros.porte === 'todos' || pet.porte === filtros.porte) &&
-    (filtros.sexo === 'todos' || pet.sexo === filtros.sexo) &&
-    (filtros.status === 'todos' || pet.status === filtros.status)
-    
-  );
+  useEffect(() => {
+    const fetchPets = async () => {
+      setLoading(true);
+      const params = new URLSearchParams();
+
+      if (filtros.porte !== 'todos') {
+        params.append('porte', filtros.porte);
+      }
+      if (filtros.sexo !== 'todos') {
+        params.append('sexo', filtros.sexo);
+      }
+      if (filtros.status !== 'todos') {
+        params.append('disponivel', filtros.status === 'disponivel');
+      }
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/filtrar_animais?${params.toString()}`);
+        if (!res.ok) {
+          throw new Error('Falha ao buscar os animais');
+        }
+        const data = await res.json();
+        setPets(data.response || []);
+      } catch (error) {
+        console.error("Erro ao carregar pets:", error);
+        setPets([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPets();
+  }, [filtros]);
 
   return (
     <main className={styles.mainComFiltro}>
@@ -66,43 +82,51 @@ export default function TelaAdocao() {
         </div>
       </aside>
 
-      <section className={styles.filtrosAtivos}>
-  <h4>Filtros ativos:</h4>
-  <div className={styles.filtroItem}>
-    <strong>Porte:</strong> {filtros.porte === 'todos' ? 'Qualquer' : filtros.porte}
-  </div>
-  <div className={styles.filtroItem}>
-    <strong>Sexo:</strong> {filtros.sexo === 'todos' ? 'Qualquer' : filtros.sexo}
-  </div>
-  <div className={styles.filtroItem}>
-    <strong>Status:</strong> {filtros.status === 'todos' ? 'Qualquer' : filtros.status}
-  </div>
-</section>
-
-      <section className={styles.pets}>
-        {petsFiltrados.map((pet, index) => (
-          <div key={index} className={styles.pet}>
-            <Image
-              src={`/images/${pet.imagem}`}
-              alt={pet.nome}
-              width={100}
-              height={100}
-            />
-            <p className={styles.name}>{pet.nome}</p>
-            <strong className={pet.sexo === 'macho' ? styles.macho : styles.femea}>
-              {pet.sexo === 'macho' ? 'Macho' : 'Fêmea'}
-            </strong>
-            <span className={pet.status === 'disponivel' ? styles.disponivel : styles.adopted}>
-              {pet.status === 'disponivel' ? 'DISPONÍVEL' : 'JÁ ADOTADO'}
-            </span>
-            {pet.status === 'disponivel' && (
-              <Link className={styles.link} href="/confirmaAdocao">
-                Adotar
-              </Link>
-            )}
+      <div style={{ flex: 1 }}>
+        <section className={styles.filtrosAtivos}>
+          <h4>Filtros ativos:</h4>
+          <div className={styles.filtroItem}>
+            <strong>Porte:</strong> {filtros.porte === 'todos' ? 'Qualquer' : filtros.porte}
           </div>
-        ))}
-      </section>
+          <div className={styles.filtroItem}>
+            <strong>Sexo:</strong> {filtros.sexo === 'todos' ? 'Qualquer' : filtros.sexo}
+          </div>
+          <div className={styles.filtroItem}>
+            <strong>Status:</strong> {filtros.status === 'todos' ? 'Qualquer' : filtros.status}
+          </div>
+        </section>
+
+        <section className={styles.pets}>
+          {loading ? (
+            <p>Carregando animais...</p>
+          ) : pets.length > 0 ? (
+            pets.map((pet) => (
+              <div key={pet.id} className={styles.pet}>
+                <Image
+                  src={pet.imagem ? `${API_BASE_URL}/imagem/${pet.imagem}` : '/images/placeholder.png'}
+                  alt={pet.nome}
+                  width={100}
+                  height={100}
+                />
+                <p className={styles.name}>{pet.nome}</p>
+                <strong className={pet.sexo === 'macho' ? styles.macho : styles.femea}>
+                  {pet.sexo === 'macho' ? 'Macho' : 'Fêmea'}
+                </strong>
+                <span className={pet.disponivel ? styles.disponivel : styles.adopted}>
+                  {pet.disponivel ? 'DISPONÍVEL' : 'JÁ ADOTADO'}
+                </span>
+                {pet.disponivel && (
+                  <Link className={styles.link} href={`/confirmaAdocao/${pet.id}`}>
+                    Adotar
+                  </Link>
+                )}
+              </div>
+            ))
+          ) : (
+            <p>Nenhum animal encontrado com esses filtros.</p>
+          )}
+        </section>
+      </div>
     </main>
   );
 }
