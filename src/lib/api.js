@@ -13,6 +13,7 @@ export const API_ROUTES = {
   infoCliente: (key) => `${API_BASE_URL}/info_c/${key}`,
   listarClientes: `${API_BASE_URL}/listar_clientes`,
   editarCliente: (key) => `${API_BASE_URL}/editar_cliente/${key}`,
+  mudarSenha: (key) => `${API_BASE_URL}/mudar_senha/${key}`,
   deletarCliente: (key) => `${API_BASE_URL}/deletar_cliente/${key}`,
 
   // Animal
