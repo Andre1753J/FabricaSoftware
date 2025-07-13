@@ -11,6 +11,13 @@ const MinhaConta = () => {
   const [editData, setEditData] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
+  const [passwordData, setPasswordData] = useState({
+    senhaAtual: '',
+    novaSenha: '',
+    confirmarNovaSenha: '',
+  });
+  const [passwordError, setPasswordError] = useState('');
 
   const fetchData = async () => {
     setLoading(true);
@@ -84,6 +91,51 @@ const MinhaConta = () => {
     }
   };
 
+  const handleOpenPasswordModal = () => {
+    setPasswordError('');
+    setPasswordData({ senhaAtual: '', novaSenha: '', confirmarNovaSenha: '' });
+    setIsChangingPassword(true);
+  };
+
+  const handleClosePasswordModal = () => setIsChangingPassword(false);
+
+  const handlePasswordInputChange = (e) => {
+    const { name, value } = e.target;
+    setPasswordData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handlePasswordSave = async (e) => {
+    e.preventDefault();
+    setPasswordError('');
+
+    if (passwordData.novaSenha.length < 8) {
+      return setPasswordError('A nova senha deve ter no mínimo 8 caracteres.');
+    }
+    if (passwordData.novaSenha !== passwordData.confirmarNovaSenha) {
+      return setPasswordError('As novas senhas não coincidem.');
+    }
+
+    const key = localStorage.getItem("clienteKey");
+    try {
+      const response = await fetch(API_ROUTES.mudarSenha(key), {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(passwordData),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Falha ao alterar a senha.');
+      }
+
+      localStorage.setItem("clienteKey", data.data.newKey);
+      alert('Senha alterada com sucesso!');
+      handleClosePasswordModal();
+    } catch (err) {
+      setPasswordError(err.message);
+    }
+  };
+
   if (loading) return <div className={styles.centeredMessage}>Carregando...</div>;
   if (error) return <div className={styles.centeredMessage}>Erro: {error}</div>;
 
@@ -112,7 +164,7 @@ const MinhaConta = () => {
 
         <div className={styles.securitySection}>
           <h2 className={styles.t2}>Senha e Segurança</h2>
-          <button className={styles.changePasswordButton}>Mudar senha</button>
+          <button className={styles.changePasswordButton} onClick={handleOpenPasswordModal}>Mudar senha</button>
           <button className={styles.logoutButton}>Sair da Conta</button>
           <button className={styles.deleteButton}>Excluir Conta</button>
         </div>
@@ -140,6 +192,31 @@ const MinhaConta = () => {
               <div className={styles.modalActions}>
                 <button type="button" className={styles.cancelButton} onClick={handleCloseModal}>Cancelar</button>
                 <button type="submit" className={styles.saveButton}>Pronto</button>
+              </div>
+            </form>
+          </div>
+        )}
+
+        {isChangingPassword && (
+          <div className={styles.modalOverlay}>
+            <form className={styles.modalContent} onSubmit={handlePasswordSave}>
+              <h2 className={styles.t2}>Mudar Senha</h2>
+              <div className={styles.editItem}>
+                <span className={styles.infoLabel}>Senha Atual:</span>
+                <input name="senhaAtual" type="password" value={passwordData.senhaAtual} onChange={handlePasswordInputChange} className={styles.editInput} required />
+              </div>
+              <div className={styles.editItem}>
+                <span className={styles.infoLabel}>Nova Senha:</span>
+                <input name="novaSenha" type="password" value={passwordData.novaSenha} onChange={handlePasswordInputChange} className={styles.editInput} required />
+              </div>
+              <div className={styles.editItem}>
+                <span className={styles.infoLabel}>Confirmar Nova Senha:</span>
+                <input name="confirmarNovaSenha" type="password" value={passwordData.confirmarNovaSenha} onChange={handlePasswordInputChange} className={styles.editInput} required />
+              </div>
+              {passwordError && <div style={{ color: 'red', marginTop: '10px', width: '100%', textAlign: 'center' }}>{passwordError}</div>}
+              <div className={styles.modalActions}>
+                <button type="button" className={styles.cancelButton} onClick={handleClosePasswordModal}>Cancelar</button>
+                <button type="submit" className={styles.saveButton}>Salvar Nova Senha</button>
               </div>
             </form>
           </div>
