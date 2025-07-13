@@ -10,6 +10,7 @@ export const API_ROUTES = {
   // Cliente
   cadastrarCliente: `${API_BASE_URL}/cadastrar_c`,
   cadastrarClientePt2: (key) => `${API_BASE_URL}/cadastrar_c_pt2/${key}`,
+  infoCliente: (key) => `${API_BASE_URL}/info_c/${key}`,
   listarClientes: `${API_BASE_URL}/listar_clientes`,
   editarCliente: (key) => `${API_BASE_URL}/editar_cliente/${key}`,
   deletarCliente: (key) => `${API_BASE_URL}/deletar_cliente/${key}`,
