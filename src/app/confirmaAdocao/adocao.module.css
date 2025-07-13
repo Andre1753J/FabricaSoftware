@@ -132,3 +132,26 @@
         color: white;
     }
 }
+
+/* Media Queries para Responsividade */
+@media (max-width: 800px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .gato,
+    .info_gerais,
+    .info,
+    .info_gato {
+        max-width: 90%;
+        width: 100%;
+    }
+
+    .botaos {
+        flex-direction: column;
+        width: 90%;
+        max-width: 400px;
+    }
+}

@@ -116,7 +116,6 @@ export default function FichaAnimal() {
                 nome: formData.nome,
                 dt_nascimento: formData.dataNascimento,
                 sexo: formData.sexo,
-                disponivel: 1,
                 descricao: formData.descricao,
                 castrado: formData.castrado ? 1 : 0,
                 vacinado: formData.vacinado ? 1 : 0,
@@ -153,8 +152,16 @@ export default function FichaAnimal() {
             });
 
             if (!imgResp.ok) {
-                const imgResult = await imgResp.json();
-                throw new Error(imgResult.response || "Erro ao enviar a imagem do animal.");
+                let errorMsg = "Erro ao enviar a imagem do animal.";
+                try {
+                    // Tenta extrair uma mensagem de erro mais específica do corpo da resposta
+                    const errorData = await imgResp.json();
+                    errorMsg = errorData.response || errorData.message || errorData.error || JSON.stringify(errorData);
+                } catch (e) {
+                    // Se o corpo não for JSON ou houver outro erro, usa o status da resposta
+                    errorMsg = `Falha no upload: ${imgResp.status} ${imgResp.statusText}`;
+                }
+                throw new Error(errorMsg);
             }
 
             router.push("/pagInfo");

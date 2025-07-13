@@ -11,7 +11,7 @@ export default function TelaAdocao() {
   const [filtros, setFiltros] = useState({
     porte: 'todos',
     sexo: 'todos',
-    status: 'todos'
+    especie: 'todos'
   });
 
   const handleFiltro = (tipo, valor) => {
@@ -32,8 +32,8 @@ export default function TelaAdocao() {
       if (filtros.sexo !== 'todos') {
         params.append('sexo', filtros.sexo);
       }
-      if (filtros.status !== 'todos') {
-        params.append('disponivel', filtros.status === 'disponivel');
+      if (filtros.especie !== 'todos') {
+        params.append('especie', filtros.especie);
       }
 
       try {
@@ -78,10 +78,10 @@ export default function TelaAdocao() {
         </div>
 
         <div className={styles.filtroGrupo}>
-          <p>Status:</p>
-          <button onClick={() => handleFiltro('status', 'todos')}>Todos</button>
-          <button onClick={() => handleFiltro('status', 'disponivel')}>Disponível</button>
-          <button onClick={() => handleFiltro('status', 'adotado')}>Adotado</button>
+          <p>Espécie:</p>
+          <button onClick={() => handleFiltro('especie', 'todos')}>Todos</button>
+          <button onClick={() => handleFiltro('especie', 'Cachorro')}>Cachorro</button>
+          <button onClick={() => handleFiltro('especie', 'Gato')}>Gato</button>
         </div>
       </aside>
 
@@ -95,7 +95,7 @@ export default function TelaAdocao() {
             <strong>Sexo:</strong> {filtros.sexo === 'todos' ? 'Qualquer' : filtros.sexo}
           </div>
           <div className={styles.filtroItem}>
-            <strong>Status:</strong> {filtros.status === 'todos' ? 'Qualquer' : filtros.status}
+            <strong>Espécie:</strong> {filtros.especie === 'todos' ? 'Qualquer' : filtros.especie}
           </div>
         </section>
 
@@ -112,6 +112,7 @@ export default function TelaAdocao() {
                   height={100}
                 />
                 <p className={styles.name}>{pet.nome}</p>
+                <p className={styles.species}>{pet.especie}</p>
                 <strong className={pet.sexo === 'macho' ? styles.macho : styles.femea}>
                   {pet.sexo === 'macho' ? 'Macho' : 'Fêmea'}
                 </strong>
