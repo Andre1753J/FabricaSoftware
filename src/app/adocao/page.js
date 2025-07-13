@@ -41,11 +41,11 @@ export default function TelaAdocao() {
         if (!res.ok) {
           // Tenta ler a mensagem de erro específica do backend
           const errorData = await res.json().catch(() => null);
-          const errorMessage = errorData?.response || `Falha ao buscar os animais (Status: ${res.status})`;
+          const errorMessage = errorData?.error || `Falha ao buscar os animais (Status: ${res.status})`;
           throw new Error(errorMessage);
         }
         const data = await res.json();
-        setPets(data.response || []);
+        setPets(data.data || []);
       } catch (error) {
         console.error("Erro ao carregar pets:", error.message);
         setPets([]);
