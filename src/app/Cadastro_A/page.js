@@ -134,11 +134,11 @@ export default function FichaAnimal() {
 
             const respData = await resp.json();
             if (!resp.ok) {
-                throw new Error(respData.response || "Erro ao cadastrar o animal.");
+                throw new Error(respData.error || "Erro ao cadastrar o animal.");
             }
 
-            const idAnimal = respData.id;
-            if (!idAnimal) {
+            const idAnimal = respData.data?.animalId;
+            if (!idAnimal) { // A verificação agora é mais robusta
                 throw new Error("ID do animal não foi retornado pelo backend.");
             }
 
