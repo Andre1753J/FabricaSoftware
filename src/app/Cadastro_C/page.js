@@ -32,14 +32,17 @@ export default function Cliente() {
                 body: JSON.stringify({ email, senha }),
             });
             const data = await resp.json();
-            console.log("Resposta do servidor:", data);
             if (resp.ok) {
-                if (data.response) {
-                    localStorage.setItem("clienteKey", data.response);
+                // CORREÇÃO: A chave vem dentro de data.data.key
+                if (data.data && data.data.key) {
+                    localStorage.setItem("clienteKey", data.data.key);
+                    // Apenas redireciona se a chave for salva com sucesso
+                    router.push(`/Cadastro_C2`);
+                } else {
+                    setErro("Chave de cadastro não recebida do servidor.");
                 }
-                router.push(`/Cadastro_C2`);
             } else {
-                setErro(data.response || data.message || data.erro || "Erro ao cadastrar.");
+                setErro(data.error || data.erro || "Erro ao cadastrar.");
             }
         } catch (error) {
             console.error("Falha na requisição de cadastro:", error);
