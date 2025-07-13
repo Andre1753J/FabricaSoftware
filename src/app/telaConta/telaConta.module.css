@@ -42,8 +42,8 @@
 
 .editButton,
 .changePasswordButton,
-.deactivateButton,
-.logoutButton {
+.logoutButton,
+.deleteButton {
     display: block;
     width: 100%;
     padding: 10px;
@@ -64,14 +64,9 @@
     color: #fff;
 }
 
-.deactivateButton {
-    background-color: #dc3545;
-    color: #fff;
-}
-
 .logoutButton {
-    background-color: #ffc107;
-    color: #000;
+    background-color: #6c757d; /* Cinza para uma ação neutra */
+    color: #fff;
 }
 
 .modalOverlay {
@@ -110,20 +105,8 @@
     border-radius: 4px;
 }
 
-.cancelButton,
-.saveButton {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.cancelButton {
-    background-color: #6c757d;
+.deleteButton {
+    background-color: #dc3545; /* Vermelho para ação destrutiva */
     color: #fff;
 }
 
@@ -135,4 +118,54 @@
 .cancelButton:hover,
 .saveButton:hover {
     opacity: 0.9;
+}
+
+.modalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.cancelButton,
+.saveButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .contaContainer {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .infoItem, .editItem {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .editInput {
+        width: 100%;
+    }
+
+    .modalActions {
+        flex-direction: column;
+    }
+    .cancelButton, .saveButton {
+        width: 100%;
+    }
+}
+
+.centeredMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    font-size: 1.2rem;
+    color: #555;
 }
