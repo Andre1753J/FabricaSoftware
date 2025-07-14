@@ -31,11 +31,18 @@ export default function TelaLogin() {
                 body: JSON.stringify({ email, senha }),
             });
             const data = await resp.json();
-            if (resp.ok && data.response) {
-                localStorage.setItem("clienteKey", data.response); // não deve ter um .key aqui e sim .response se estiver errado troque
+            console.log("Resposta da API de login (para depuração):", data);
+
+            // A API de login retorna um objeto JSON, como { data: { key: "..." } }.
+            // O erro "[object Object]" acontecia ao tentar salvar o objeto 'data' inteiro.
+            // Precisamos salvar apenas a string da chave, que está em 'data.data.key'.
+            if (resp.ok && data && data.data && data.data.key) {
+                localStorage.setItem("clienteKey", data.data.key);
                 router.push('/pagInfo');
             } else {
-                setErro(data.message || "Email ou senha inválidos.");
+                // A mensagem de erro também vem no objeto JSON
+                const errorMessage = (data && (data.message || data.error)) || "Email ou senha inválidos.";
+                setErro(errorMessage);
             }
         } catch {
             setErro("Erro de conexão com o servidor.");

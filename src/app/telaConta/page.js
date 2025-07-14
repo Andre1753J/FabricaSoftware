@@ -1,12 +1,13 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import styles from './telaConta.module.css';
 import RotaSegura from '@/components/rotaSegura';
 import { API_ROUTES } from '@/lib/api';
 
 const MinhaConta = () => {
   const [isEditing, setIsEditing] = useState(false);
+  const router = useRouter();
   const [userData, setUserData] = useState(null);
   const [editData, setEditData] = useState({});
   const [loading, setLoading] = useState(true);
@@ -136,6 +137,44 @@ const MinhaConta = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("clienteKey");
+    alert("Você foi desconectado com sucesso.");
+    router.push('/'); // Redireciona para a página inicial
+  };
+
+  const handleDeleteAccount = async () => {
+    const confirmed = window.confirm(
+      "Tem certeza que deseja excluir sua conta? Esta ação é irreversível e todos os seus dados, incluindo animais cadastrados, serão perdidos."
+    );
+
+    if (confirmed) {
+      const key = localStorage.getItem("clienteKey");
+      if (!key) {
+        alert("Erro: Usuário não autenticado.");
+        return;
+      }
+
+      try {
+        const response = await fetch(API_ROUTES.deletarCliente(key), {
+          method: 'DELETE',
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || data.erro || 'Falha ao excluir a conta.');
+        }
+
+        alert('Conta excluída com sucesso!');
+        localStorage.removeItem("clienteKey");
+        router.push('/'); // Redireciona para a página inicial
+      } catch (err) {
+        alert(`Erro ao excluir a conta: ${err.message}`);
+      }
+    }
+  };
+
   if (loading) return <div className={styles.centeredMessage}>Carregando...</div>;
   if (error) return <div className={styles.centeredMessage}>Erro: {error}</div>;
 
@@ -165,8 +204,8 @@ const MinhaConta = () => {
         <div className={styles.securitySection}>
           <h2 className={styles.t2}>Senha e Segurança</h2>
           <button className={styles.changePasswordButton} onClick={handleOpenPasswordModal}>Mudar senha</button>
-          <button className={styles.logoutButton}>Sair da Conta</button>
-          <button className={styles.deleteButton}>Excluir Conta</button>
+          <button className={styles.logoutButton} onClick={handleLogout}>Sair da Conta</button>
+          <button className={styles.deleteButton} onClick={handleDeleteAccount}>Excluir Conta</button>
         </div>
 
         {isEditing && (

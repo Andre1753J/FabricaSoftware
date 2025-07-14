@@ -22,16 +22,17 @@ export const API_ROUTES = {
   listarAnimais: `${API_BASE_URL}/listar_animais`,
   listarAnimaisCliente: (key) => `${API_BASE_URL}/listar_animais_cliente/${key}`,
   editarAnimal: (key, animalId) => `${API_BASE_URL}/editar_a/${key}/${animalId}`,
-  deletarAnimal: (key, animalId) => `${API_BASE_URL}/deletar_animal/${key}/${animalId}`,
+  deletarAnimal: (key, animalId) => `${API_BASE_URL}/remover_a/${key}/${animalId}`, // Corrigido para corresponder ao backend
+  detalharAnimal: (id) => `${API_BASE_URL}/animal/${id}`, // Rota que estava faltando
 
   // Adoção
-  solicitarAdocao: (key, animalId) => `${API_BASE_URL}/solicitar_adocao/${key}/${animalId}`,
+  solicitarAdocao: (key) => `${API_BASE_URL}/solicitar_adocao/${key}`, // Corrigido: ID do animal vai no corpo
   listarAdocoesCliente: (key) => `${API_BASE_URL}/listar_adocoes_cliente/${key}`,
   listarPedidosRecebidos: (key) => `${API_BASE_URL}/listar_pedidos_recebidos/${key}`,
   aceitarAdocao: (key, adocaoId) => `${API_BASE_URL}/aceitar_adocao/${key}/${adocaoId}`,
   recusarAdocao: (key, adocaoId) => `${API_BASE_URL}/recusar_adocao/${key}/${adocaoId}`,
   cancelarAdocao: (key, adocaoId) => `${API_BASE_URL}/cancelar_adocao/${key}/${adocaoId}`,
 
-  // buscarAnimal: (animalId) => `${API_BASE_URL}/animal/${animalId}`,
-  // buscarCliente: (clienteId) => `${API_BASE_URL}/cliente/${clienteId}`,
+  // Imagem
+  imagem: (nome) => `${API_BASE_URL}/imagem/${nome}`, // Rota que estava faltando
 };
