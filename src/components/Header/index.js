@@ -2,11 +2,13 @@
 import { useState, useEffect } from 'react';
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 import styles from "./Header.module.css";
 
 export default function Header() {
     const [abrir, setAbrir] = useState(false);
     const [logado, setLogado] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         const key = localStorage.getItem("clienteKey");
@@ -14,7 +16,11 @@ export default function Header() {
     }, []);
 
     function abrirCoisa() {
-        setAbrir(!abrir);
+        if (logado) {
+            setAbrir(!abrir);
+        } else {
+            router.push('/telaLogin');
+        }
     }
 
     function fecharDropdown() {
@@ -38,24 +44,28 @@ export default function Header() {
                         <Link href='/telaContato'>Contatos</Link>
                     </li>
                     <li className={styles.servicoContainer}>
-                        <span className={styles.nada} onClick={abrirCoisa}>Serviço</span>
+                        <span className={styles.nada} onClick={abrirCoisa}>Serviços</span>
                         {abrir && (
                             <div className={styles.divNHeader}>
-                                <Link className={styles.dropBotao} href='/Cadastro_A' onClick={fecharDropdown}>
-                                    Criar Ficha Animal
-                                </Link>
-                                <Link className={styles.dropBotao} href='/adocao' onClick={fecharDropdown}>
-                                    Tela de Adoção
-                                </Link>
-                                <Link className={styles.dropBotao} href='/telaConta' onClick={fecharDropdown}>
-                                    Conta
-                                </Link>
-                                <Link className={styles.dropBotao} href='/Pedidos' onClick={fecharDropdown}>
-                                    Pedidos de Adoção
-                                </Link>
-                                <Link className={styles.dropBotao} href='/Solicitações' onClick={fecharDropdown}>
-                                    Solicitações de Adoção
-                                </Link>
+                                <div className={styles.dropdownRow}>
+                                    <Link className={styles.dropBotao} href='/Cadastro_A' onClick={fecharDropdown}>
+                                        Criar Ficha Animal
+                                    </Link>
+                                    <Link className={styles.dropBotao} href='/adocao' onClick={fecharDropdown}>
+                                        Tela de Adoção
+                                    </Link>
+                                    <Link className={styles.dropBotao} href='/telaConta' onClick={fecharDropdown}>
+                                        Conta
+                                    </Link>
+                                </div>
+                                <div className={styles.dropdownRow}>
+                                    <Link className={styles.dropBotao} href='/meus-pedidos' onClick={fecharDropdown}>
+                                        Meus Pedidos
+                                    </Link>
+                                    <Link className={styles.dropBotao} href='/solicitacoes' onClick={fecharDropdown}>
+                                        Solicitações Recebidas
+                                    </Link>
+                                </div>
                             </div>
                         )}
                     </li>

@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import RotaSegura from '@/components/rotaSegura';
 import styles from './adocao.module.css';
-import Image from 'next/image';
+// import Image from 'next/image'; // Temporariamente desabilitado para teste
 import { API_ROUTES } from '@/lib/api';
 
 function calcularIdade(dataNascimento) {
@@ -22,9 +22,10 @@ function calcularIdade(dataNascimento) {
     return `${idadeMeses} mes(es)`;
 }
 
-export default function ConfirmarAdocaoPage({ params }) {
+export default function ConfirmarAdocaoPage() {
     const router = useRouter();
-    const { id: animalId } = params; // Pega o ID diretamente dos parâmetros da rota
+    const params = useParams();
+    const animalId = params?.id;
     
     const [animal, setAnimal] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -105,13 +106,13 @@ export default function ConfirmarAdocaoPage({ params }) {
 
             <div className={styles.container}>
                 <div className={styles.gato}>
-                    <Image
+                    {/* Usando a tag <img> para teste de diagnóstico. */}
+                    <img
                         src={animal.imagens && animal.imagens.length > 0 ? API_ROUTES.imagem(animal.imagens[0]) : "/images/brawlGato.png"}
                         alt={`Foto de ${animal.nome}`}
-                        width={400}
-                        height={400}
+                        width="400"
+                        height="400"
                         className={styles.cat}
-                        priority
                     />
                 </div>
 

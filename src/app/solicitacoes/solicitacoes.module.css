@@ -1,0 +1,84 @@
+.main {
+    padding: 20px;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+}
+
+.titulo {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.centeredMessage {
+    margin-top: 50px;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 700px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.info p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.info strong {
+    color: #000;
+}
+
+.status {
+    padding: 3px 8px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.pendente { background-color: #ffc107; }
+.aprovado { background-color: #28a745; }
+.recusado { background-color: #dc3545; }
+
+.botoes {
+    display: flex;
+    gap: 10px;
+}
+
+.botao {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.botao:hover { opacity: 0.8; }
+.aprovar { background-color: #28a745; }
+.recusar { background-color: #dc3545; }

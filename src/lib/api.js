@@ -26,12 +26,11 @@ export const API_ROUTES = {
   detalharAnimal: (id) => `${API_BASE_URL}/animal/${id}`, // Rota que estava faltando
 
   // Adoção
-  solicitarAdocao: (key) => `${API_BASE_URL}/solicitar_adocao/${key}`, // Corrigido: ID do animal vai no corpo
-  listarAdocoesCliente: (key) => `${API_BASE_URL}/listar_adocoes_cliente/${key}`,
-  listarPedidosRecebidos: (key) => `${API_BASE_URL}/listar_pedidos_recebidos/${key}`,
-  aceitarAdocao: (key, adocaoId) => `${API_BASE_URL}/aceitar_adocao/${key}/${adocaoId}`,
-  recusarAdocao: (key, adocaoId) => `${API_BASE_URL}/recusar_adocao/${key}/${adocaoId}`,
-  cancelarAdocao: (key, adocaoId) => `${API_BASE_URL}/cancelar_adocao/${key}/${adocaoId}`,
+  solicitarAdocao: (key) => `${API_BASE_URL}/solicitar_adocao/${key}`, // O ID do animal vai no corpo da requisição
+  minhasSolicitacoes: (key) => `${API_BASE_URL}/minhas_solicitacoes/${key}`,
+  solicitacoesRecebidas: (key) => `${API_BASE_URL}/solicitacoes_recebidas/${key}`,
+  resolverAdocao: (key) => `${API_BASE_URL}/resolver_adocao/${key}`, // O ID da adoção e o status vão no corpo
+  cancelarAdocao: (key, animalId) => `${API_BASE_URL}/cancelar_adocao/${key}/${animalId}`,
 
   // Imagem
   imagem: (nome) => `${API_BASE_URL}/imagem/${nome}`, // Rota que estava faltando
