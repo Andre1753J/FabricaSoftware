@@ -1,5 +1,16 @@
 .main {
     padding: 20px;
+    padding-top: 80px; /* Espaço para o header fixo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+}
+
+.centeredMessage {
+    padding-top: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,6 +21,7 @@
 
 .palavra {
     font-size: 1.2rem;
+    line-height: 1.6;
     font-weight: bold;
     margin: 10px 0;
     color: #000;
@@ -47,6 +59,13 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 100%;
     height: auto;
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+}
+
+.donorInfo {
+    margin-top: 20px;
+    font-style: italic;
+    color: #e0e0e0;
 }
 
 .info_gerais {
@@ -72,6 +91,25 @@
     font-size: 1.2rem;
     color: #333;
 }
+.info_gato h3 {
+    margin-bottom: 10px;
+    color: #6a11cb;
+}
+
+.healthInfo {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.healthItems {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.1rem;
+}
 
 .botaos {
     display: flex;
@@ -89,6 +127,11 @@
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+.bot_1:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
 }
 
 .bot_1 {
@@ -123,6 +166,15 @@
         color: #fff;
     }
 
+    .healthInfo {
+        background-color: #2a2a2a;
+        color: #fff;
+    }
+
+    .info_gato h3 {
+        color: #9d78f0;
+    }
+
     .info_gerais {
         background: linear-gradient(to right, #6a11cb, #2575fc);
     }
@@ -144,7 +196,8 @@
     .gato,
     .info_gerais,
     .info,
-    .info_gato {
+    .info_gato,
+    .healthInfo {
         max-width: 90%;
         width: 100%;
     }
@@ -153,5 +206,10 @@
         flex-direction: column;
         width: 90%;
         max-width: 400px;
+    }
+
+    .healthItems {
+        flex-direction: column;
+        gap: 10px;
     }
 }
