@@ -2,28 +2,19 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { API_ROUTES } from '@/lib/api'; // Usando o alias para um caminho mais robusto
+import { API_ROUTES } from '@/lib/api';
 import styles from './Adocao.module.css';
-import LoadingSpinner from '@/components/LoadingSpinner'; // Usando o alias para um caminho mais robusto
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 export default function AdocaoPage() {
   const [animais, setAnimais] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Futuramente, você pode adicionar o estado para os filtros aqui
-  // const [filtros, setFiltros] = useState({ especie: '', sexo: '', porte: '' });
-
   useEffect(() => {
     const fetchAnimais = async () => {
-      setLoading(true);
-      setError(null);
       try {
-        // Quando implementar os filtros, você poderá adicioná-los à URL
-        // ex: const url = new URL(API_ROUTES.listarAnimaisDisponiveis);
-        // url.searchParams.append('especie', filtros.especie);
         const response = await fetch(API_ROUTES.listarAnimaisDisponiveis);
-        
         if (!response.ok) {
           throw new Error('Não foi possível carregar os animais.');
         }
@@ -37,58 +28,36 @@ export default function AdocaoPage() {
     };
 
     fetchAnimais();
-  }, []); // Adicione 'filtros' como dependência quando implementar
+  }, []);
 
   if (loading) {
     return <LoadingSpinner />;
   }
 
   if (error) {
-    return <div className={styles.filtroItem}>Erro: {error}</div>;
+    return <div className={styles.centeredMessage}>Erro: {error}</div>;
   }
 
   return (
-    <div className={styles.mainComFiltro}>
-      <aside className={styles.filtros}>
-        <h3>Filtros</h3>
-        <div className={styles.filtroGrupo}>
-          <p>Espécie</p>
-          {/* Lógica de filtro a ser implementada */}
-          <button>Cachorro</button>
-          <button>Gato</button>
-        </div>
-        <div className={styles.filtroGrupo}>
-          <p>Sexo</p>
-          <button>Macho</button>
-          <button>Fêmea</button>
-        </div>
-      </aside>
+    <main className={styles.main}>
+      <h1 className={styles.titulo}>Encontre seu Novo Amigo</h1>
+      <p className={styles.subtitulo}>Veja os animais que estão esperando por um lar.</p>
       
-      <div style={{flex: 1}}>
-        {animais.length === 0 && !loading ? (
-          <p>Nenhum animal encontrado com os filtros selecionados.</p>
-        ) : (
-          <div className={styles.pets}>
+      {animais.length === 0 ? (
+        <div className={styles.centeredMessage}>Nenhum animal disponível para adoção no momento.</div>
+      ) : (
+        <div className={styles.grid}>
           {animais.map((animal) => (
-              <div key={animal.id_animal} className={styles.pet}>
-                <img 
-                  src={`http://localhost:3001/uploads/${animal.imagem_animal}`} 
-                  alt={`Foto de ${animal.nome}`} 
-                />
-                <h4 className={styles.name}>{animal.nome}</h4>
-                <p className={styles.species}>{animal.especie}</p>
-                <p className={animal.sexo === 'Fêmea' ? styles.femea : styles.macho}>{animal.sexo}</p>
-                <span className={animal.status === 'disponivel' ? styles.disponivel : styles.adopted}>
-                  {animal.status}
-                </span>
-                <Link href={`/animal/${animal.id_animal}`} className={styles.link}>
-                    Ver mais
-                </Link>
-              </div>
+            <Link href={`/animal/${animal.id_animal}`} key={animal.id_animal} className={styles.card}>
+                <img src={`http://localhost:3001/uploads/${animal.imagem_animal}`} alt={`Foto de ${animal.nome}`} className={styles.cardImage} />
+                <div className={styles.cardContent}>
+                  <h2 className={styles.cardTitle}>{animal.nome}</h2>
+                  <p className={styles.cardInfo}>{animal.especie} - {animal.sexo}</p>
+                </div>
+            </Link>
           ))}
-          </div>
-        )}
-      </div>
-    </div>
+        </div>
+      )}
+    </main>
   );
 }

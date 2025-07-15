@@ -1,0 +1,87 @@
+.main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+.titulo {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.centeredMessage {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  padding: 3rem 0;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.info {
+  flex-grow: 1;
+}
+
+.info p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.info a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.info a:hover {
+  text-decoration: underline;
+}
+
+.status {
+  font-weight: bold;
+  text-transform: capitalize;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.pendente { background-color: #ffc107; color: #333; }
+.aprovado { background-color: #28a745; }
+.recusado { background-color: #dc3545; }
+
+.acoes {
+  align-self: center;
+}
+
+.botaoCancelar {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #fceeee;
+  color: #dc3545;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.botaoCancelar:hover {
+  background-color: #f8d7da;
+}

@@ -27,7 +27,7 @@ export function AuthProvider({ children }) {
   const login = (key) => {
     localStorage.setItem('clienteKey', key);
     setUserKey(key);
-    router.push('/perfil'); // Exemplo: redirecionar para o perfil após o login
+    router.push('/pagInfo'); // Exemplo: redirecionar para o perfil após o login
   };
 
   const logout = () => {

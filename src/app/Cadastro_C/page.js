@@ -1,94 +1,105 @@
 "use client";
-import { useState } from "react";
-import styles from './cadastro_C.module.css';
-import { API_ROUTES } from "@/lib/api";
-import { useRouter } from "next/navigation";
 
-export default function Cliente() {
-    const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
-    const [erro, setErro] = useState("");
-    const [loading, setLoading] = useState(false);
-    const router = useRouter();
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { API_ROUTES } from '@/lib/api';
+import styles from './Cadastro.module.css'; // Usaremos um CSS module para estilização
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setErro("");
+export default function CadastroClientePage() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    senha: '',
+    confirmarSenha: '',
+    telefone: '',
+    data_nascimento: '',
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-        if (!email || !senha) {
-            setErro("Preencha todos os campos.");
-            return;
-        }
-        if (senha.length < 8) {
-            setErro("A senha deve ter pelo menos 8 caracteres.");
-            return;
-        }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-        setLoading(true);
-        try {
-            const resp = await fetch(API_ROUTES.cadastrarCliente, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, senha }),
-            });
-            const data = await resp.json();
-            if (resp.ok) {
-                // CORREÇÃO: A chave vem dentro de data.data.key
-                if (data.data && data.data.key) {
-                    localStorage.setItem("clienteKey", data.data.key);
-                    // Apenas redireciona se a chave for salva com sucesso
-                    router.push(`/Cadastro_C2`);
-                } else {
-                    setErro("Chave de cadastro não recebida do servidor.");
-                }
-            } else {
-                setErro(data.error || data.erro || "Erro ao cadastrar.");
-            }
-        } catch (error) {
-            console.error("Falha na requisição de cadastro:", error);
-            setErro("Erro de conexão com o servidor. Verifique o console.");
-        }
-        setLoading(false);
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
 
-    return (
-        <section className={styles.section}>
-            <div className={styles.container}>
-                <h1 className={styles.title}>Cadastro Cliente</h1>
-                <form className={styles.form} onSubmit={handleSubmit}>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="email">EMAIL</label>
-                        <input
-                            className={styles.input}
-                            id="email"
-                            name="email"
-                            placeholder="Digite seu endereço de email"
-                            type="email"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label className={styles.label} htmlFor="pass">SENHA</label>
-                        <input
-                            className={styles.input}
-                            id="pass"
-                            name="pass"
-                            placeholder="Digite a senha para ser cadastrada"
-                            type="password"
-                            minLength={8}
-                            value={senha}
-                            onChange={e => setSenha(e.target.value)}
-                            required
-                        />
-                    </div>
-                    {erro && <div style={{ color: "red" }}>{erro}</div>}
-                    <button type="submit" className={styles.button} disabled={loading}>
-                        {loading ? "Enviando..." : "Continuar"}
-                    </button>
-                </form>
-            </div>
-        </section>
-    );
+    if (formData.senha !== formData.confirmarSenha) {
+      setError('As senhas não coincidem.');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      // Remove o 'confirmarSenha' antes de enviar para a API
+      const { confirmarSenha, ...payload } = formData;
+
+      const response = await fetch(API_ROUTES.cadastroCliente, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Ocorreu um erro ao realizar o cadastro.');
+      }
+
+      alert('Cadastro realizado com sucesso! Você será redirecionado para o login.');
+      router.push('/login');
+
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <main className={styles.main}>
+      <div className={styles.formContainer}>
+        <h1 className={styles.titulo}>Crie sua Conta</h1>
+        <form onSubmit={handleSubmit}>
+          <div className={styles.inputGroup}>
+            <label htmlFor="nome">Nome Completo</label>
+            <input type="text" name="nome" id="nome" value={formData.nome} onChange={handleChange} required />
+          </div>
+          <div className={styles.inputGroup}>
+            <label htmlFor="email">Email</label>
+            <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} required />
+          </div>
+          <div className={styles.inputGroup}>
+            <label htmlFor="telefone">Telefone</label>
+            <input type="tel" name="telefone" id="telefone" value={formData.telefone} onChange={handleChange} required />
+          </div>
+          <div className={styles.inputGroup}>
+            <label htmlFor="data_nascimento">Data de Nascimento</label>
+            <input type="date" name="data_nascimento" id="data_nascimento" value={formData.data_nascimento} onChange={handleChange} required />
+          </div>
+          <div className={styles.inputGroup}>
+            <label htmlFor="senha">Senha</label>
+            <input type="password" name="senha" id="senha" value={formData.senha} onChange={handleChange} required />
+          </div>
+          <div className={styles.inputGroup}>
+            <label htmlFor="confirmarSenha">Confirmar Senha</label>
+            <input type="password" name="confirmarSenha" id="confirmarSenha" value={formData.confirmarSenha} onChange={handleChange} required />
+          </div>
+          {error && <p className={styles.error}>{error}</p>}
+          <button type="submit" className={styles.submitButton} disabled={loading}>
+            {loading ? 'Cadastrando...' : 'Cadastrar'}
+          </button>
+        </form>
+      </div>
+    </main>
+  );
 }
