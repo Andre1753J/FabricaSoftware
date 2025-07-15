@@ -1,78 +1,68 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext'; // Importando o hook de autenticação
 import styles from "./Header.module.css";
 
 export default function Header() {
-    const [abrir, setAbrir] = useState(false);
-    const [logado, setLogado] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const { isLoggedIn, logout } = useAuth(); // Usando o contexto
     const router = useRouter();
 
-    useEffect(() => {
-        const key = localStorage.getItem("clienteKey");
-        if (key) setLogado(true);
-    }, []);
-
-    function abrirCoisa() {
-        if (logado) {
-            setAbrir(!abrir);
-        } else {
-            router.push('/telaLogin');
-        }
-    }
-
-    function fecharDropdown() {
-        setAbrir(false);
-    }
+    const handleLogout = () => {
+        logout();
+        alert("Você foi desconectado.");
+    };
 
     return (
         <header className={styles.header}>
-            <div className={styles.logo}>
-                <Image className={styles.img} width={80} height={80} src="/images/Logo Pet shop roxo.png" alt='logo Pets World' />
-            </div>
+            <Link href="/" aria-label="Página Inicial">
+                <Image className={styles.logoImage} width={80} height={80} src="/images/Logo Pet shop roxo.png" alt='Logo Pets World' />
+            </Link>
+            
             <nav className={styles.nav}>
-                <ul className={styles.list}>
-                    <li>
-                        <Link href={logado ? "/pagInfo" : "/"}>Início</Link>
-                    </li>
-                    <li>
-                        <Link href='/sobreNos'>Sobre</Link>
-                    </li>
-                    <li>
-                        <Link href='/telaContato'>Contatos</Link>
-                    </li>
-                    <li className={styles.servicoContainer}>
-                        <span className={styles.nada} onClick={abrirCoisa}>Serviços</span>
-                        {abrir && (
-                            <div className={styles.divNHeader}>
-                                <div className={styles.dropdownRow}>
-                                    <Link className={styles.dropBotao} href='/Cadastro_A' onClick={fecharDropdown}>
-                                        Criar Ficha Animal
-                                    </Link>
-                                    <Link className={styles.dropBotao} href='/adocao' onClick={fecharDropdown}>
-                                        Tela de Adoção
-                                    </Link>
-                                    <Link className={styles.dropBotao} href='/telaConta' onClick={fecharDropdown}>
-                                        Conta
-                                    </Link>
-                                </div>
-                                <div className={styles.dropdownRow}>
-                                    <Link className={styles.dropBotao} href='/meus-pedidos' onClick={fecharDropdown}>
-                                        Meus Pedidos
-                                    </Link>
-                                    <Link className={styles.dropBotao} href='/solicitacoes' onClick={fecharDropdown}>
-                                        Solicitações Recebidas
-                                    </Link>
-                                </div>
+                <ul className={styles.navList}>
+                    <li><Link href={isLoggedIn ? "/pagInfo" : "/"}>Início</Link></li>
+                    <li><Link href='/adocao'>Adoção</Link></li>
+                    <li><Link href='/sobreNos'>Sobre</Link></li>
+                    <li><Link href='/telaContato'>Contato</Link></li>
+                    
+                    {/* Dropdown de Serviços */}
+                    <li 
+                        className={styles.servicoContainer}
+                        onMouseEnter={() => setIsDropdownOpen(true)}
+                        onMouseLeave={() => setIsDropdownOpen(false)}
+                    >
+                        <span className={styles.navLink}>Serviços ▼</span>
+                        {isDropdownOpen && (
+                            <div className={styles.dropdownMenu}>
+                                {isLoggedIn ? (
+                                    <>
+                                        <Link href='/Cadastro_A' className={styles.dropdownLink}>Cadastrar Animal</Link>
+                                        <Link href='/telaConta' className={styles.dropdownLink}>Minha Conta</Link>
+                                        <Link href='/meus-pedidos' className={styles.dropdownLink}>Meus Pedidos</Link>
+                                        <Link href='/solicitacoes' className={styles.dropdownLink}>Solicitações Recebidas</Link>
+                                    </>
+                                ) : (
+                                    <div className={styles.dropdownLoginMessage}>
+                                        <p>Faça login para acessar os serviços.</p>
+                                        <Link href="/telaLogin" className={styles.dropdownLoginButton}>Login</Link>
+                                    </div>
+                                )}
                             </div>
                         )}
                     </li>
                 </ul>
             </nav>
-            <div>
-                <Image className={styles.img} width={70} height={70} src="/images/noIcon.png" alt='F4' />
+
+            <div className={styles.authActions}>
+                {isLoggedIn ? (
+                    <button onClick={handleLogout} className={styles.authButton}>Sair</button>
+                ) : (
+                    <Link href="/telaLogin" className={styles.authButton}>Login</Link>
+                )}
             </div>
         </header>
     );
