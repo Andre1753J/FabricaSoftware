@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import Link from "next/link";
+import Link from 'next/link';
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext'; // Importando o hook de autenticação
@@ -10,6 +10,14 @@ export default function Header() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const { isLoggedIn, logout } = useAuth(); // Usando o contexto
     const router = useRouter();
+
+    const handleLinkClick = (e, href) => {
+        if (!isLoggedIn && href !== '/telaLogin') {
+            e.preventDefault();
+            router.push('/telaLogin');
+        }
+    };
+
 
     const handleLogout = () => {
         logout();
@@ -24,7 +32,7 @@ export default function Header() {
             
             <nav className={styles.nav}>
                 <ul className={styles.navList}>
-                    <li><Link href={isLoggedIn ? "/pagInfo" : "/"}>Início</Link></li>
+                    <li><Link href={isLoggedIn ? "/pagInfo" : "/"} >Início</Link></li>
                     <li><Link href='/adocao'>Adoção</Link></li>
                     <li><Link href='/sobreNos'>Sobre</Link></li>
                     <li><Link href='/telaContato'>Contato</Link></li>
@@ -40,10 +48,10 @@ export default function Header() {
                             <div className={styles.dropdownMenu}>
                                 {isLoggedIn ? (
                                     <>
-                                        <Link href='/Cadastro_A' className={styles.dropdownLink}>Cadastrar Animal</Link>
-                                        <Link href='/telaConta' className={styles.dropdownLink}>Minha Conta</Link>
-                                        <Link href='/meus-pedidos' className={styles.dropdownLink}>Meus Pedidos</Link>
-                                        <Link href='/solicitacoes' className={styles.dropdownLink}>Solicitações Recebidas</Link>
+                                        <Link href="/Cadastro_A" className={styles.dropdownLink}>Cadastrar Animal</Link>
+                                        <Link href="/telaConta" className={styles.dropdownLink}>Minha Conta</Link>
+                                        <Link href="/meus-pedidos" className={styles.dropdownLink}>Meus Pedidos</Link>
+                                        <Link href="/solicitacoes" className={styles.dropdownLink}>Solicitações Recebidas</Link>
                                     </>
                                 ) : (
                                     <div className={styles.dropdownLoginMessage}>
@@ -61,7 +69,7 @@ export default function Header() {
                 {isLoggedIn ? (
                     <button onClick={handleLogout} className={styles.authButton}>Sair</button>
                 ) : (
-                    <Link href="/telaLogin" className={styles.authButton}>Login</Link>
+                        <Link href="/telaLogin" className={styles.authButton} >Login</Link>
                 )}
             </div>
         </header>
