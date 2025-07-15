@@ -1,24 +1,24 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 export default function RotaSegura({ children }) {
     const router = useRouter();
-    const [autenticado, setAutenticado] = useState(null);
+    const { isLoggedIn, userKey } = useAuth();
 
     useEffect(() => {
-        // Só roda no client
-        const key = typeof window !== "undefined" ? localStorage.getItem("clienteKey") : null;
-        if (!key) {
+        // O `userKey` será `undefined` durante o carregamento inicial,
+        // `null` se o usuário não estiver logado, e uma string se estiver logado.
+        // Nós agimos apenas quando a verificação estiver completa (userKey não é undefined).
+        if (userKey === null) {
             router.replace("/telaLogin");
-        } else {
-            setAutenticado(true);
         }
-    }, [router]);
+    }, [userKey, router]);
 
-    if (autenticado === null) {
-        // Enquanto verifica, não mostra nada
-        return null;
+    if (!isLoggedIn) {
+        // Enquanto o contexto carrega ou se o usuário não está logado, mostra uma mensagem.
+        return <div>Verificando autenticação...</div>;
     }
 
     return children;

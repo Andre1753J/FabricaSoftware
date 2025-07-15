@@ -3,10 +3,12 @@
 import styles from './telaLogin.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useAuth } from '@/context/AuthContext';
 
 export default function TelaLogin() {
     const router = useRouter();
+    const { login } = useAuth();
     const [erro, setErro] = useState("");
 
     const handleSubmit = async (e) => {
@@ -37,7 +39,7 @@ export default function TelaLogin() {
             // O erro "[object Object]" acontecia ao tentar salvar o objeto 'data' inteiro.
             // Precisamos salvar apenas a string da chave, que está em 'data.data.key'.
             if (resp.ok && data && data.data && data.data.key) {
-                localStorage.setItem("clienteKey", data.data.key);
+                login(data.data.key); // Usa a função do contexto para fazer login
                 router.push('/pagInfo');
             } else {
                 // A mensagem de erro também vem no objeto JSON
