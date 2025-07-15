@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { API_ROUTES } from '@/lib/api';
-import styles from './Cadastro.module.css'; // Usaremos um CSS module para estilização
+import styles from './cadastro_c.module.css'; // Usaremos um CSS module para estilização
 
 export default function CadastroClientePage() {
   const router = useRouter();
