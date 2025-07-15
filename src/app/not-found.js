@@ -1,21 +1,54 @@
-"use client";
+"use client"; // ESSA É A DIRETIVA MAIS IMPORTANTE DE TODAS.
+// Ela informa ao Next.js que este componente usa hooks de cliente (useState, useEffect)
+// e, portanto, deve ser renderizado no navegador, não no servidor.
+// Sem isso, o AuthProvider falha no build, e nenhum componente filho encontrará o contexto.
 
-import Link from 'next/link';
-import React from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-// Adicionar "use client" é crucial porque a página de erro 404
-// é renderizada dentro do seu Layout principal. Se o Layout tiver
-// componentes que usam hooks de cliente (como um Header com `useAuth`),
-// esta página também precisa ser um "Client Component" para evitar o erro de build.
+const AuthContext = createContext(null);
 
-export default function NotFound() {
+export function AuthProvider({ children }) {
+  const [userKey, setUserKey] = useState(null);
+  const [loading, setLoading] = useState(true); // Estado para saber se a verificação inicial terminou
+  const router = useRouter();
+
+  useEffect(() => {
+    try {
+      const storedKey = localStorage.getItem("clienteKey");
+      if (storedKey) {
+        setUserKey(storedKey);
+      }
+    } catch (error) {
+      console.error("Erro ao acessar o localStorage:", error);
+    } finally {
+      setLoading(false); // Finaliza o estado de carregamento
+    }
+  }, []);
+
+  const login = (key) => {
+    localStorage.setItem('clienteKey', key);
+    setUserKey(key);
+    router.push('/perfil');
+  };
+
+  const logout = () => {
+    localStorage.removeItem('clienteKey');
+    setUserKey(null);
+    router.push('/');
+  };
+
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px', fontFamily: 'sans-serif', color: '#333' }}>
-      <h1>404 - Página Não Encontrada</h1>
-      <p style={{ marginBottom: '2rem' }}>Oops! A página que você está procurando não existe ou foi movida.</p>
-      <Link href="/" style={{ color: '#fff', backgroundColor: '#0070f3', padding: '10px 20px', borderRadius: '5px', textDecoration: 'none' }}>
-        Voltar para a Página Inicial
-      </Link>
-    </div>
+    <AuthContext.Provider value={{ userKey, isAuthenticated: !loading && !!userKey, loading, login, logout }}>
+      {children}
+    </AuthContext.Provider>
   );
 }
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === null) {
+    throw new Error("useAuth deve ser usado dentro de um AuthProvider");
+  }
+  return context;
+};

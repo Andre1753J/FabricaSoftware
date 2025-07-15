@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import LoadingSpinner from './LoadingSpinner/LoadingSpinner'; // Importamos o novo componente de Spinner
+import LoadingSpinner from './LoadingSpinner'; // Importamos o novo componente de Spinner
 import { useRouter } from 'next/navigation';
 
 // Este é um High-Order Component (HOC) para proteger rotas
