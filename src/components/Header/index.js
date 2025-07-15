@@ -12,10 +12,10 @@ export default function Header() {
     const router = useRouter();
 
      const handleDropdownLinkClick = (e, href) => {
-         if (!isLoggedIn && (href === "/telaConta" || href === "/meus-pedidos" || href === "/solicitacoes")) {
+         if (!isLoggedIn && (href === "/telaConta" || href === "/meus-pedidos" || href === "/solicitacoes" || href === "/Cadastro_A")) {
              e.preventDefault();
              router.push('/telaLogin');
-         }
+         } 
      };
 
 
@@ -54,10 +54,7 @@ export default function Header() {
                                         </Link>
                                         <Link href="/meus-pedidos" className={styles.dropdownLink} onClick={(e) => handleDropdownLinkClick(e, "/meus-pedidos")}>
                                             Meus Pedidos
-                                        </Link>
-                                        <Link href="/solicitacoes" className={styles.dropdownLink} onClick={(e) => handleDropdownLinkClick(e, "/solicitacoes")}>
-                                            Solicitações Recebidas
-                                        </Link>
+                                        </Link>                                        
                                     </>
 
 
