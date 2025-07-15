@@ -11,12 +11,12 @@ export default function Header() {
     const { isLoggedIn, logout } = useAuth(); // Usando o contexto
     const router = useRouter();
 
-    const handleLinkClick = (e, href) => {
-        if (!isLoggedIn && href !== '/telaLogin') {
-            e.preventDefault();
-            router.push('/telaLogin');
-        }
-    };
+     const handleDropdownLinkClick = (e, href) => {
+         if (!isLoggedIn && (href === "/telaConta" || href === "/meus-pedidos" || href === "/solicitacoes")) {
+             e.preventDefault();
+             router.push('/telaLogin');
+         }
+     };
 
 
     const handleLogout = () => {
@@ -49,10 +49,18 @@ export default function Header() {
                                 {isLoggedIn ? (
                                     <>
                                         <Link href="/Cadastro_A" className={styles.dropdownLink}>Cadastrar Animal</Link>
-                                        <Link href="/telaConta" className={styles.dropdownLink}>Minha Conta</Link>
-                                        <Link href="/meus-pedidos" className={styles.dropdownLink}>Meus Pedidos</Link>
-                                        <Link href="/solicitacoes" className={styles.dropdownLink}>Solicitações Recebidas</Link>
+                                        <Link href="/telaConta" className={styles.dropdownLink} onClick={(e) => handleDropdownLinkClick(e, "/telaConta")}>
+                                            Minha Conta
+                                        </Link>
+                                        <Link href="/meus-pedidos" className={styles.dropdownLink} onClick={(e) => handleDropdownLinkClick(e, "/meus-pedidos")}>
+                                            Meus Pedidos
+                                        </Link>
+                                        <Link href="/solicitacoes" className={styles.dropdownLink} onClick={(e) => handleDropdownLinkClick(e, "/solicitacoes")}>
+                                            Solicitações Recebidas
+                                        </Link>
                                     </>
+
+
                                 ) : (
                                     <div className={styles.dropdownLoginMessage}>
                                         <p>Faça login para acessar os serviços.</p>
