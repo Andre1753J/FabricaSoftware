@@ -1,3 +1,5 @@
+"use client";
+
 import styles from './paginfo.module.css';
 import Link from 'next/link';
 

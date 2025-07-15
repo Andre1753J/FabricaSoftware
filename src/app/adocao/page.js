@@ -1,136 +1,94 @@
-'use client';
-import styles from './adocao.module.css';
-import Image from 'next/image';
+"use client";
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { API_BASE_URL } from '../../lib/api';
+import { API_ROUTES } from '@/lib/api'; // Usando o alias para um caminho mais robusto
+import styles from './Adocao.module.css';
+import LoadingSpinner from '@/components/LoadingSpinner'; // Usando o alias para um caminho mais robusto
 
-export default function TelaAdocao() {
-  const [pets, setPets] = useState([]);
+export default function AdocaoPage() {
+  const [animais, setAnimais] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filtros, setFiltros] = useState({
-    porte: 'todos',
-    sexo: 'todos',
-    especie: 'todos'
-  });
+  const [error, setError] = useState(null);
 
-  const handleFiltro = (tipo, valor) => {
-    setFiltros(prev => ({
-      ...prev,
-      [tipo]: valor
-    }));
-  };
+  // Futuramente, você pode adicionar o estado para os filtros aqui
+  // const [filtros, setFiltros] = useState({ especie: '', sexo: '', porte: '' });
 
   useEffect(() => {
-    const fetchPets = async () => {
+    const fetchAnimais = async () => {
       setLoading(true);
-      const params = new URLSearchParams();
-
-      if (filtros.porte !== 'todos') {
-        params.append('porte', filtros.porte);
-      }
-      if (filtros.sexo !== 'todos') {
-        params.append('sexo', filtros.sexo);
-      }
-      if (filtros.especie !== 'todos') {
-        params.append('especie', filtros.especie);
-      }
-
+      setError(null);
       try {
-        const res = await fetch(`${API_BASE_URL}/filtrar_animais?${params.toString()}`);
-        if (!res.ok) {
-          // Tenta ler a mensagem de erro específica do backend
-          const errorData = await res.json().catch(() => null);
-          const errorMessage = errorData?.error || `Falha ao buscar os animais (Status: ${res.status})`;
-          throw new Error(errorMessage);
+        // Quando implementar os filtros, você poderá adicioná-los à URL
+        // ex: const url = new URL(API_ROUTES.listarAnimaisDisponiveis);
+        // url.searchParams.append('especie', filtros.especie);
+        const response = await fetch(API_ROUTES.listarAnimaisDisponiveis);
+        
+        if (!response.ok) {
+          throw new Error('Não foi possível carregar os animais.');
         }
-        const data = await res.json();
-        setPets(data.data || []);
-      } catch (error) {
-        console.error("Erro ao carregar pets:", error.message);
-        setPets([]);
+        const data = await response.json();
+        setAnimais(data.data || []);
+      } catch (err) {
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchPets();
-  }, [filtros]);
+    fetchAnimais();
+  }, []); // Adicione 'filtros' como dependência quando implementar
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  if (error) {
+    return <div className={styles.filtroItem}>Erro: {error}</div>;
+  }
 
   return (
-    <main className={styles.mainComFiltro}>
+    <div className={styles.mainComFiltro}>
       <aside className={styles.filtros}>
-        <h3>Filtrar por características</h3>
-
+        <h3>Filtros</h3>
         <div className={styles.filtroGrupo}>
-          <p>Porte:</p>
-          <button onClick={() => handleFiltro('porte', 'todos')}>Todos</button>
-          <button onClick={() => handleFiltro('porte', 'pequeno')}>Pequeno</button>
-          <button onClick={() => handleFiltro('porte', 'medio')}>Médio</button>
-          <button onClick={() => handleFiltro('porte', 'grande')}>Grande</button>
+          <p>Espécie</p>
+          {/* Lógica de filtro a ser implementada */}
+          <button>Cachorro</button>
+          <button>Gato</button>
         </div>
-
         <div className={styles.filtroGrupo}>
-          <p>Sexo:</p>
-          <button onClick={() => handleFiltro('sexo', 'todos')}>Todos</button>
-          <button onClick={() => handleFiltro('sexo', 'macho')}>Macho</button>
-          <button onClick={() => handleFiltro('sexo', 'femea')}>Fêmea</button>
-        </div>
-
-        <div className={styles.filtroGrupo}>
-          <p>Espécie:</p>
-          <button onClick={() => handleFiltro('especie', 'todos')}>Todos</button>
-          <button onClick={() => handleFiltro('especie', 'Cachorro')}>Cachorro</button>
-          <button onClick={() => handleFiltro('especie', 'Gato')}>Gato</button>
+          <p>Sexo</p>
+          <button>Macho</button>
+          <button>Fêmea</button>
         </div>
       </aside>
-
-      <div style={{ flex: 1 }}>
-        <section className={styles.filtrosAtivos}>
-          <h4>Filtros ativos:</h4>
-          <div className={styles.filtroItem}>
-            <strong>Porte:</strong> {filtros.porte === 'todos' ? 'Qualquer' : filtros.porte}
-          </div>
-          <div className={styles.filtroItem}>
-            <strong>Sexo:</strong> {filtros.sexo === 'todos' ? 'Qualquer' : filtros.sexo}
-          </div>
-          <div className={styles.filtroItem}>
-            <strong>Espécie:</strong> {filtros.especie === 'todos' ? 'Qualquer' : filtros.especie}
-          </div>
-        </section>
-
-        <section className={styles.pets}>
-          {loading ? (
-            <p>Carregando animais...</p>
-          ) : pets.length > 0 ? (
-            pets.map((pet) => (
-              <div key={pet.id} className={styles.pet}>
-                <Image
-                  src={pet.imagem ? `${API_BASE_URL}/imagem/${pet.imagem}` : '/images/placeholder.png'}
-                  alt={pet.nome}
-                  width={100}
-                  height={100}
+      
+      <div style={{flex: 1}}>
+        {animais.length === 0 && !loading ? (
+          <p>Nenhum animal encontrado com os filtros selecionados.</p>
+        ) : (
+          <div className={styles.pets}>
+          {animais.map((animal) => (
+              <div key={animal.id_animal} className={styles.pet}>
+                <img 
+                  src={`http://localhost:3001/uploads/${animal.imagem_animal}`} 
+                  alt={`Foto de ${animal.nome}`} 
                 />
-                <p className={styles.name}>{pet.nome}</p>
-                <p className={styles.species}>{pet.especie}</p>
-                <strong className={pet.sexo === 'macho' ? styles.macho : styles.femea}>
-                  {pet.sexo === 'macho' ? 'Macho' : 'Fêmea'}
-                </strong>
-                <span className={pet.disponivel ? styles.disponivel : styles.adopted}>
-                  {pet.disponivel ? 'DISPONÍVEL' : 'JÁ ADOTADO'}
+                <h4 className={styles.name}>{animal.nome}</h4>
+                <p className={styles.species}>{animal.especie}</p>
+                <p className={animal.sexo === 'Fêmea' ? styles.femea : styles.macho}>{animal.sexo}</p>
+                <span className={animal.status === 'disponivel' ? styles.disponivel : styles.adopted}>
+                  {animal.status}
                 </span>
-                {pet.disponivel && (
-                  <Link className={styles.link} href={`/confirmaAdocao/${pet.id}`}>
-                    Adotar
-                  </Link>
-                )}
+                <Link href={`/animal/${animal.id_animal}`} className={styles.link}>
+                    Ver mais
+                </Link>
               </div>
-            ))
-          ) : (
-            <p>Nenhum animal encontrado com esses filtros.</p>
-          )}
-        </section>
+          ))}
+          </div>
+        )}
       </div>
-    </main>
+    </div>
   );
 }
