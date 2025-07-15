@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { API_ROUTES } from '@/lib/api';
-import styles from './Adocao.module.css';
+import styles from './adocao.module.css';
 import LoadingSpinner from '@/components/LoadingSpinner';
 
 export default function AdocaoPage() {

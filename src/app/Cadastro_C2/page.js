@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { API_ROUTES } from '@/lib/api'; 
-import styles from './Cadastro.module.css'; 
+import { API_ROUTES } from '@/lib/api';
+import styles from './cadastro.module.css'; // Usaremos um CSS module para estilização
 
 export default function CadastroPage() {
   const router = useRouter();
@@ -38,6 +38,7 @@ export default function CadastroPage() {
     setLoading(true);
 
     try {
+      // Remove o 'confirmarSenha' antes de enviar para a API
       const { confirmarSenha, ...payload } = formData;
 
       const response = await fetch(API_ROUTES.cadastroCliente, {
