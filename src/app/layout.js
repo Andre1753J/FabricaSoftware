@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 import "./globals.css";
 import Header from "@/components/Header";
-import StatusGate from "@/components/StatusGate";
+import { AuthProvider } from "@/context/AuthContext"; // Importe o AuthProvider
 
 export const metadata = {
   title: "Pet's World",
@@ -15,9 +15,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header/>
-        {children}
-        <Footer/>
+        <AuthProvider> {/* Envolvendo o app no AuthProvider */}
+          <Header />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
