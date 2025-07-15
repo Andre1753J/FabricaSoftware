@@ -1,4 +1,4 @@
-import { editar_A } from "../../../../../backPets/services/editar_A.js";
+import { editar_A } from "@/backPets/services/editar_A.js";
 import { NextResponse } from 'next/server';
 
 export async function POST(request) {

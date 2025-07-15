@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/context/AuthContext'; // Importando o hook de autenticação
+import { useAuth } from '@/app/auth'; // Importando o hook de autenticação
 import styles from "./Header.module.css";
 
 export default function Header() {
@@ -47,7 +47,7 @@ export default function Header() {
                         {isDropdownOpen && (
                             <div className={styles.dropdownMenu}>
                                 {isLoggedIn ? (
-                                    <>
+                                    <>                                        
                                         <Link href="/Cadastro_A" className={styles.dropdownLink}>Cadastrar Animal</Link>
                                         <Link href="/telaConta" className={styles.dropdownLink} onClick={(e) => handleDropdownLinkClick(e, "/telaConta")}>
                                             Minha Conta
@@ -55,8 +55,7 @@ export default function Header() {
                                         <Link href="/meus-pedidos" className={styles.dropdownLink} onClick={(e) => handleDropdownLinkClick(e, "/meus-pedidos")}>
                                             Meus Pedidos
                                         </Link>                                        
-                                    </>
-
+                                    </> 
 
                                 ) : (
                                     <div className={styles.dropdownLoginMessage}>
@@ -78,5 +77,5 @@ export default function Header() {
                 )}
             </div>
         </header>
-    );
+    );    
 }

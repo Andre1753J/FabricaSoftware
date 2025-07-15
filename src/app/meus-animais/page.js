@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../auth';
 import { useRouter } from 'next/navigation';
 import styles from './MeusAnimais.module.css';
 

@@ -1,4 +1,4 @@
-import { meusAnimais } from "../../../../../backPets/services/animais_do_C.js";
+import { meusAnimais } from "@/backPets/services/animais_do_C.js";
 import { NextResponse } from 'next/server';
 
 export async function POST(request) {

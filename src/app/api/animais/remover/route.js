@@ -1,4 +1,4 @@
-import { removerAnimal } from "../../../../../backPets/services/remover_A.js";
+import { removerAnimal } from "@/backPets/services/remover_A.js";
 import { NextResponse } from 'next/server';
 
 export async function POST(request) {
