@@ -5,6 +5,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'petsworldapi.dev.vilhena.ifro.edu.br',
+        port: '',
         pathname: '/imagem/**',
       },
     ],
