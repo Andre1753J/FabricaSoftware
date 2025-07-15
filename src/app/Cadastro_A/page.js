@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import withAuth from '@/components/withAuth'; // Protege a rota, garantindo que o usuário está logado
 import { API_ROUTES } from '@/lib/api';
-import styles from './CadastroAnimal.module.css'; // Usaremos um CSS module para estilo
+import styles from './cadastroanimal.module.css'; // Usaremos um CSS module para estilo
 
 function CadastroAnimalPage() {
   const router = useRouter();

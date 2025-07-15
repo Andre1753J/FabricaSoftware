@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import styles from './telaConta.module.css';
+import styles from './telaconta.module.css';
 import RotaSegura from '@/components/rotaSegura';
 import { API_ROUTES } from '@/lib/api';
 
